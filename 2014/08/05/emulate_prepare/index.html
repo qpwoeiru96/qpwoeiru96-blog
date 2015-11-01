@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PDO中的emluate prepare (模拟预处理) | Yet Another Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先说说什么是 PDO , 如果你是 MS 系的 Web 开发人员那你一定会知道 ADO（ActiveX Data Objects），其实 PDO 跟 ADO 差不多一样它实现了大部分关系型数据库(MySQL, MSSQL, SQLite, PostgreSQL)的访问层。PS: Java 也有个 JDO 。
+PHP 官方对它的解释如下:
+
+PDO provides a data-access a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PDO中的emluate prepare (模拟预处理)">
+<meta property="og:url" content="http://blog.sou.la/2014/08/05/emulate_prepare/">
+<meta property="og:site_name" content="Yet Another Blog">
+<meta property="og:description" content="首先说说什么是 PDO , 如果你是 MS 系的 Web 开发人员那你一定会知道 ADO（ActiveX Data Objects），其实 PDO 跟 ADO 差不多一样它实现了大部分关系型数据库(MySQL, MSSQL, SQLite, PostgreSQL)的访问层。PS: Java 也有个 JDO 。
+PHP 官方对它的解释如下:
+
+PDO provides a data-access a">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PDO中的emluate prepare (模拟预处理)">
+<meta name="twitter:description" content="首先说说什么是 PDO , 如果你是 MS 系的 Web 开发人员那你一定会知道 ADO（ActiveX Data Objects），其实 PDO 跟 ADO 差不多一样它实现了大部分关系型数据库(MySQL, MSSQL, SQLite, PostgreSQL)的访问层。PS: Java 也有个 JDO 。
+PHP 官方对它的解释如下:
+
+PDO provides a data-access a">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yet Another Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Write by Q</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/qpwoeiru96">Github</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/qpwoeiru96">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.sou.la"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-emulate_prepare" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/05/emulate_prepare/" class="article-date">
+  <time datetime="2014-08-05T09:48:54.000Z" itemprop="datePublished">8月 5 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PDO中的emluate prepare (模拟预处理)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先说说什么是 <a href="http://php.net/manual/en/book.pdo.php" target="_blank" rel="external">PDO</a> , 如果你是 MS 系的 Web 开发人员那你一定会知道 <a href="http://zh.wikipedia.org/zh/ADO" target="_blank" rel="external">ADO（ActiveX Data Objects）</a>，其实 PDO 跟 ADO 差不多一样它实现了大部分关系型数据库(MySQL, MSSQL, SQLite, PostgreSQL)的访问层。PS: Java 也有个 JDO 。</p>
+<p>PHP 官方对它的解释如下:</p>
+<blockquote>
+<p>PDO provides a data-access abstraction layer, which means that, regardless of which database you’re using, you use the same functions to issue queries and fetch data. PDO does not provide a database abstraction; it doesn’t rewrite SQL or emulate missing features. You should use a full-blown abstraction layer if you need that facility.<br><a id="more"></a></p>
+</blockquote>
+<p>简单转述下: PDO 提供了一个数据访问虚拟层，这个意思就是无论你使用了那种支持的数据库，你都可以使用相同的函数去执行查询跟获取数据。但它不是一个数据库虚拟层，他不会修改 SQL 语句亦不会模拟上层数据库没用的功能。</p>
+<p>举个简单的例子吧: MySQL 支持 <code>Limit</code> 跟 <code>Offset</code> 但是 MSSQL 只支持 <code>TOP</code>，如果你想写的代码能在两者的数据库实现迁移，那么你需要跟高级的封装。而这些 PDO 根本就不管。</p>
+<p>扯多了，回到正题，PDO 中的 <code>PDO::ATTR_EMULATE_PREPARES</code> 是拿来干什么的呢？这个得继续扯什么是 <a href="http://en.wikipedia.org/wiki/Prepared_statement" target="_blank" rel="external">prepared statement</a> 了。简而言之 prepared statement （预处理语句）其实就是用来解决语句结构一样但是参数不同的 SQL 每次都需要经过分析、编译、优化等步骤的一种语句实现方式，所以这里我更喜欢称其为 parameterized statement （参数化语句）。你亦可以理解为一种 SQL 模板技术，跟其他模板技术一样，你需要先写占位符后赋值。参数化语句一般有两个好处，第一就如上面所说的节省了相同语句分析、编译、优化等步骤，只需要一次编译多次运行。第二个是大家都喜闻乐见的阻止SQL注入的功能。在 console 上的使用方法可见文章 <a href="http://www.codedata.com.tw/database/mysql-tutorial-12-prepared-statement/" target="_blank" rel="external">MySQL 超新手入門（12）Prepared Statement</a>。</p>
+<p>至于 <code>PDO::ATTR_EMULATE_PREPARES</code>， 显而易见的这是在不支持 prepared statement 这个特性的数据库上的一种替代方法。模拟么，所以性能上肯定没有原生支持的好, 第二实现的不一定准确。</p>
+<p>比如如下的代码其实不是一种正确的模板，但是照样模拟处理通过，只是执行不成功而已。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$dbh</span> = <span class="keyword">new</span> PDO(<span class="string">"mysql:host=localhost;dbname=test;charset=utf8;"</span>);</div><div class="line"><span class="variable">$dbh</span><span class="variable">-&gt;setAttribute</span>(PDO::ATTR_EMULATE_PREPARES, <span class="keyword">true</span>);</div><div class="line"><span class="variable">$sql</span> = <span class="string">'SELECT * FROM course WHERE id = 1 ORDER :id :sort DESC'</span>; <span class="comment">//语法关键字 无法变成参数</span></div><div class="line"><span class="variable">$sth</span> = <span class="variable">$dbh</span><span class="variable">-&gt;prepare</span>(<span class="variable">$sql</span>);</div><div class="line">var_dump(<span class="variable">$sth</span><span class="variable">-&gt;debugDumpParams</span>());</div><div class="line"></div><div class="line"><span class="comment">// OUTPUT</span></div><div class="line"><span class="comment">// SQL: [54] SELECT * FROM course WHERE id = 1 ORDER :id :sort DESC</span></div><div class="line"><span class="comment">// Params:  0</span></div><div class="line"><span class="comment">// NULL</span></div></pre></td></tr></table></figure>
+
+<p>虽然 Yii 的作者在 Yii 中曾经吐槽过 MySQL 的 prepared statement 。 并且强烈推荐在 MySQL 数据库上开启 emluate prepare。</p>
+<blockquote>
+<p>@var boolean whether to turn on prepare emulation. Defaults to false, meaning PDO will use the native prepare support if available. For some databases (such as MySQL), this may need to be set true so that PDO can emulate the prepare support to bypass the buggy native prepare support. Note, this property is only effective for PHP 5.1.3 or above.<br>The default value is null, which will not change the ATTR_EMULATE_PREPARES value of PDO.</p>
+</blockquote>
+<p>而且事实上 MySQL 官方也承认在早期版本的 MySQL 中<a href="http://dev.mysql.com/doc/refman/5.1/en/query-cache-operation.html" target="_blank" rel="external">使用 prepared statement 无法利用查询缓存</a>，但是这些都随着 MySQL 的升级以及 mysqlnd 的引入成为了历史问题。</p>
+<p>开启 emulate prepare 还有另外一个问题就是无法返回正确是数据类型，比如你 <code>date</code> 返回 <code>string(10) &quot;1970-01-01&quot;</code> 我还可忍受， 你 id 字段返回 <code>string(4) &quot;1024&quot;</code> 做啥。 <a href="http://blog.ulf-wendel.de/2008/pdo_mysqlnd-the-new-features-of-pdo_mysql/" target="_blank" rel="external">参考文章</a></p>
+<p>我还专门进行了一个性能测试，测试代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"><span class="variable">$dbh</span> = <span class="keyword">new</span> PDO(<span class="string">"mysql:host=localhost;dbname=test;charset=utf8;"</span>);</div><div class="line"><span class="variable">$dbh</span><span class="variable">-&gt;setAttribute</span>(PDO::ATTR_EMULATE_PREPARES, <span class="keyword">true</span> || <span class="keyword">false</span>); <span class="comment">//两份测试代码唯一改变的地方就是这里</span></div><div class="line"><span class="variable">$sql</span> = <span class="string">'SELECT SQL_NO_CACHE * FROM course WHERE id = :id LIMIT 1'</span>;    </div><div class="line"><span class="variable">$sth</span> = <span class="variable">$dbh</span><span class="variable">-&gt;prepare</span>(<span class="variable">$sql</span>);</div><div class="line"><span class="variable">$startTime</span> = microtime(<span class="keyword">true</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt;= <span class="number">10000</span>; <span class="variable">$i</span>++)</div><div class="line">{    </div><div class="line">    <span class="variable">$sth</span><span class="variable">-&gt;execute</span>(<span class="keyword">array</span>(<span class="string">':id'</span> =&gt; rand(<span class="number">0</span>, <span class="number">500</span>)));</div><div class="line">    <span class="variable">$sth</span><span class="variable">-&gt;fetchAll</span>(PDO::FETCH_ASSOC);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">'TIME: '</span> . ((microtime(<span class="keyword">true</span>) - <span class="variable">$startTime</span>) * <span class="number">100</span>) . <span class="string">'ms'</span>;</div><div class="line"><span class="keyword">print</span> PHP_EOL;</div><div class="line"><span class="keyword">print</span> <span class="string">'MEMORY: '</span> . sprintf(<span class="string">' %.2fKB'</span>, memory_get_peak_usage(<span class="keyword">true</span>) / <span class="number">1024</span>);</div></pre></td></tr></table></figure>
+
+<p>连续测试 10 次，结果均在 115ms 跟 119ms 上下起伏，说明不开启 emluate prepare 确实性能上稍微有点优势，但是这种性能影响完全可以忽略不计。以下是测试结果之一: </p>
+<blockquote>
+<p>TIME: 114.66970443726ms<br>MEMORY:  256.00KB<br>TIME: 119.97771263123ms<br>MEMORY:  256.00KB</p>
+</blockquote>
+<p>综上所述其实 PDO 中的 emulate prepare 只是一个兼容方案，在它不完善的时候有过一段不被待见的历史，随着各方的进步，它的存在价值越来越小，特别是用 PDO MySQL 的同志们，你可以毫不犹豫的设置 <code>PDO::ATTR_EMULATE_PREPARES</code> 为 <code>false</code> 。</p>
+<hr>
+<ul>
+<li>2014-08-05 17:48:54 C</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/08/05/emulate_prepare/" data-id="ag3whu8iqbgocmm1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdo/">pdo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/08/08/quick-rasterize/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          C#中对图形快速栅格化的另类方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/08/01/repost-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">一个小规模创业项目的架构变迁史</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-graphics/">computer graphics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdo/">pdo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sphinx/">sphinx</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10.00px;">C#</a><a href="/tags/architecture/" style="font-size: 10.00px;">architecture</a><a href="/tags/computer-graphics/" style="font-size: 10.00px;">computer graphics</a><a href="/tags/css3/" style="font-size: 10.00px;">css3</a><a href="/tags/java/" style="font-size: 10.00px;">java</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a><a href="/tags/log/" style="font-size: 16.67px;">log</a><a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a><a href="/tags/nodejs/" style="font-size: 10.00px;">node.js</a><a href="/tags/pdo/" style="font-size: 10.00px;">pdo</a><a href="/tags/php/" style="font-size: 20.00px;">php</a><a href="/tags/sphinx/" style="font-size: 10.00px;">sphinx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">July 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/31/log-20141231/">2014 - 2015</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/svn-auto-push/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/how-to-build-your-first-php's-extension/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 QPWOEIRU96<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/qpwoeiru96" class="mobile-nav-link">Github</a>
+  
+    <a href="http://weibo.com/qpwoeiru96" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+
+<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

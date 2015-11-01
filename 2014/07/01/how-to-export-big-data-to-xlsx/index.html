@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PHP中如何导出大量数据到Excel | Yet Another Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言
+这是我的一个小 class : MyExcel 的实现解析，MyExcel 是一个快速导出数据到 Excel 的类。在我们线上实际环境中 14个字段的10000行数据从 PHP 请求开始到 MyExcel 渲染结束只需要3秒钟，这其中还包含 MySQL 后台数据的请求!!!截图如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP中如何导出大量数据到Excel">
+<meta property="og:url" content="http://blog.sou.la/2014/07/01/how-to-export-big-data-to-xlsx/">
+<meta property="og:site_name" content="Yet Another Blog">
+<meta property="og:description" content="前言
+这是我的一个小 class : MyExcel 的实现解析，MyExcel 是一个快速导出数据到 Excel 的类。在我们线上实际环境中 14个字段的10000行数据从 PHP 请求开始到 MyExcel 渲染结束只需要3秒钟，这其中还包含 MySQL 后台数据的请求!!!截图如下：">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2014/07/3681779040.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP中如何导出大量数据到Excel">
+<meta name="twitter:description" content="前言
+这是我的一个小 class : MyExcel 的实现解析，MyExcel 是一个快速导出数据到 Excel 的类。在我们线上实际环境中 14个字段的10000行数据从 PHP 请求开始到 MyExcel 渲染结束只需要3秒钟，这其中还包含 MySQL 后台数据的请求!!!截图如下：">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yet Another Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Write by Q</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/qpwoeiru96">Github</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/qpwoeiru96">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.sou.la"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-how-to-export-big-data-to-xlsx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/01/how-to-export-big-data-to-xlsx/" class="article-date">
+  <time datetime="2014-07-01T08:02:46.000Z" itemprop="datePublished">7月 1 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP中如何导出大量数据到Excel
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2>
+<p>这是我的一个小 class : <a href="https://github.com/qpwoeiru96/soucode/blob/master/MyExcel.php" target="_blank" rel="external">MyExcel</a> 的实现解析，MyExcel 是一个快速导出数据到 Excel 的类。在我们线上实际环境中 14个字段的10000行数据从 PHP 请求开始到 MyExcel 渲染结束只需要3秒钟，这其中还包含 MySQL 后台数据的请求!!!截图如下：</p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/07/3681779040.png" alt="MyExcel Example"></p>
+<a id="more"></a>
+
+<h2 id="正文">正文</h2>
+<p>在我做 <a href="http://lms2.9first.com" target="_blank" rel="external">先之LMS 2.0</a> 这个项目中， 管理这一块频繁利用到了报表导出这一个功能，因为管理员总是希望弄过报表观察出他们想要的数据（比如谁学的最认真，谁学的最勤快等等）。所以难题来了，在1.0当中很不幸的，数据量估计到了2000条程序就挂了，然而事实上我们2.0在最初也未必好多少。</p>
+<p>在最初我们使用的是 PHPExcel ，然而很不幸的我们的表现未比1.0当中好多少，1000条就快要出现 <code>Out of memory</code> 跟 <code>Out of time limit</code> 了。</p>
+<p>其实 PHPExcel 这条路是走不通了，就像是面向对象的程序比一般面向过程的程序慢原因一样，时间太多的浪费在数据的装箱与拆箱了。第二 PHPExcel 加载了我们太多不需要的功能。</p>
+<p>我转而投向了自己写 <a href="http://en.wikipedia.org/wiki/Office_Open_XML" target="_blank" rel="external">Office Open XML</a> 生成的阵营，看了下 xlsx 的解压文件夹，发现大有可搞性。</p>
+<p>首先默认 xlsx （Windows Office 2010 新建的  xlsx ）的文件夹格式如下显示：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">docProps #文档属性文件夹</div><div class="line">    -<span class="ruby"> app.xml</span></div><div class="line">    -<span class="ruby"> core.xml</span></div><div class="line">    -<span class="ruby"> custom.xml</span></div><div class="line">xl</div><div class="line">    -<span class="ruby"> styles.xml <span class="comment">#风格</span></span></div><div class="line">    -<span class="ruby"> theme</span></div><div class="line">        -<span class="ruby"> theme1.xml</span></div><div class="line">    -<span class="ruby"> workbook.xml <span class="comment">#工作簿</span></span></div><div class="line">    -<span class="ruby"> worksheets <span class="comment">#表格文件夹</span></span></div><div class="line">        -<span class="ruby"> sheet1.xml <span class="comment">#表格1</span></span></div><div class="line">        -<span class="ruby"> sheet2.xml <span class="comment">#表格2</span></span></div><div class="line">        -<span class="ruby"> sheet3.xml <span class="comment">#表格3</span></span></div><div class="line">    -<span class="ruby"> sharedStrings.xml <span class="comment">#共享字符定义 默认没有</span></span></div><div class="line">    -<span class="ruby"> _rels</span></div><div class="line">        -<span class="ruby"> workbook.xml.rels</span></div><div class="line">[Content_Types].xml</div><div class="line">_rels</div><div class="line">    -<span class="ruby"> .rels</span></div></pre></td></tr></table></figure>
+
+<p>其中最重要的就是 <code>sheetN.xml</code> 因为它是真正定义数据的地方，但是不一定是数据真正存在的地方，因为微软团队特别聪明的把字符串都放在 <code>sharedStrings.xml</code>，它就像是一个 <code>Array</code>, 这样你只需在 <code>sheetN.xml</code> 表明我引用了第n个字符串，而不是直接存储字符串在 <code>sheetN.xml</code> 里面。</p>
+<p>我觉得 <code>sharedStrings.xml</code> 的引入有两个优点，第一加快了 <code>sheetN.xml</code> 的解析速度，第二对于大量重复的文本，这无疑中就节省了大量的空间。</p>
+<p>当然仅仅就知道这些远远不够，事实上关于 Office Open XML 有两个标准必须要知道, 一个是 ECMA 376 另外一个是 ISO/IEC 29500，这两个标准其实差不多因为后者是前者的延伸啊，后面只是换了个更高端的名字而已。</p>
+<p>以下是我下载过来的 ECMA 376 第四个版本 共包含四个部分:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ECMA-<span class="number">376</span>, Fourth Edition, <span class="keyword">Part</span> <span class="number">1</span> - Fundamentals <span class="keyword">And</span> Markup <span class="keyword">Language</span> Reference.zip (<span class="number">41.6</span> MB)</div><div class="line">ECMA-<span class="number">376</span>, Fourth Edition, <span class="keyword">Part</span> <span class="number">2</span> - <span class="keyword">Open</span> Packaging Conventions.zip (<span class="number">1.33</span> MB)</div><div class="line">ECMA-<span class="number">376</span>, Fourth Edition, <span class="keyword">Part</span> <span class="number">3</span> - Markup Compatibility and Extensibility.zip (<span class="number">749</span> KB)</div><div class="line">ECMA-<span class="number">376</span>, Fourth Edition, <span class="keyword">Part</span> <span class="number">4</span> - Transitional Migration Features.zip (<span class="number">7.98</span> MB)</div></pre></td></tr></table></figure>
+
+<p>看到没有欲哭无泪啊，继 <a href="http://zh.wikipedia.org/zh/SCORM" target="_blank" rel="external">SCORM</a> 标准之后又来了一个大标准啊。当然不会偷懒的程序猿不是好程序猿啊。</p>
+<p>就像算法中经常采用空间换时间一样，在快速这个标题下事实上也是需要一定的东西去交换的，不然哪来的“能量守恒”啊。所以我决定舍弃大部分功能，只保留我们最需要的。</p>
+<ul>
+<li>不必要的新建 （导出都有模板 而且是固定的模板）</li>
+<li>不必要的 style 支持 （style 硬编码写入）</li>
+<li>仅支持有限的格式 [目前是 String 跟 Numeric ] 这两种格式</li>
+<li>字符串继续保存在 sharedStrings.xml 里面</li>
+<li><strong>记住：变得只是数据 其他都没变</strong></li>
+</ul>
+<p>现在的处理逻辑就非常明显了。</p>
+<ol>
+<li><p>复制一份模板，然后通过 ZipArchive 打开。</p>
+</li>
+<li><p>构建 SharedString 。这里你得分析一下 xl/sharedStrings.xml，保存原有的数组，然后添加数据的时候只需 append 即可。 </p>
+</li>
+<li><p>创建默认的表格。这里我们只关心 sheetData 这一个节点，因为里面存放着我们的数据，可以简单的认为 sheetData 是一个 二维数组，这里我们也需要分析下 sheetData 原始的数据然后保存，然后如果我们发现新的数据添加注入那么直接在这个二维数组上操作即可。但这里我是将其作为一个一维数组进行操作。</p>
+</li>
+<li><p>循环数据进行插入操作，判断数据类型以鉴别数据是存放在 sheetData 节点里面还是 SharedString 。</p>
+</li>
+<li><p>插入完成之后，直接输出 String 而不是通过 XMLDOM Handler 去处理。（这里是性能高的关键思路）</p>
+</li>
+<li><p>压缩，并且发送数据到 Client 然后删除文件。</p>
+</li>
+</ol>
+<p>以上就是MyExcel的核心逻辑，具体的实现细节可以查看代码。下面是一个简单的使用方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">&lt;?php</span></div><div class="line"><span class="comment">//实例化</span></div><div class="line"><span class="variable">$exporter</span> = <span class="keyword">new</span> \MyExcel\Exporter(<span class="keyword">array</span>(</div><div class="line">    <span class="comment">//临时文件夹</span></div><div class="line">    <span class="string">'tempDir'</span> =&gt; <span class="keyword">__DIR__</span>,</div><div class="line">    <span class="comment">//数据在第几行开始写入</span></div><div class="line">    <span class="string">'startRowIndex'</span> =&gt; <span class="number">3</span>,</div><div class="line">));</div><div class="line"></div><div class="line"><span class="comment">//打开模板</span></div><div class="line"><span class="variable">$exporter</span><span class="variable">-&gt;open</span>(<span class="keyword">__DIR__</span> . <span class="string">'/template.xlsx'</span>);</div><div class="line"></div><div class="line"><span class="variable">$i</span> = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="comment">//数据</span></div><div class="line"><span class="variable">$data</span> = array_map(<span class="function"><span class="keyword">function</span><span class="params">()</span> <span class="title">use</span><span class="params">(<span class="variable">$i</span>)</span> </span>{ </div><div class="line">    <span class="keyword">return</span> <span class="keyword">array</span>(</div><div class="line">        <span class="string">'id'</span> =&gt; <span class="variable">$i</span>++,</div><div class="line">        <span class="string">'title'</span> =&gt; uniqid(),</div><div class="line">        <span class="string">'date'</span> =&gt; date(<span class="string">'Y-m-d H:i:s'</span>, rand(<span class="number">0</span>, <span class="number">0x7fffffff</span>))</div><div class="line">    );</div><div class="line">}, range(<span class="number">0</span>, <span class="number">1000</span>));</div><div class="line"></div><div class="line"><span class="comment">//列的定义</span></div><div class="line"><span class="variable">$columnDefine</span> = <span class="keyword">array</span>(</div><div class="line">     <span class="string">'1'</span> =&gt; <span class="keyword">array</span>(<span class="string">'name'</span> =&gt; <span class="string">'id'</span>, <span class="string">'type'</span> =&gt; <span class="string">'numeric'</span>),</div><div class="line">     <span class="string">'2'</span> =&gt; <span class="keyword">array</span>(<span class="string">'name'</span> =&gt; <span class="string">'title'</span>, <span class="string">'type'</span> =&gt; <span class="string">'string'</span>),</div><div class="line">     <span class="string">'3'</span> =&gt; <span class="keyword">array</span>(<span class="string">'name'</span> =&gt; <span class="string">'date'</span>, <span class="string">'type'</span> =&gt; <span class="string">'string'</span>),</div><div class="line">     <span class="string">'4'</span> =&gt; <span class="keyword">array</span>(<span class="string">'name'</span> =&gt; <span class="string">'none'</span>, <span class="string">'type'</span> =&gt; <span class="string">'string'</span>)</div><div class="line">);</div><div class="line"></div><div class="line"><span class="comment">//在渲染每个 Row 的时候会自动调用</span></div><div class="line"><span class="variable">$eachRowHandler</span> = <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$row</span>)</span> </span>{</div><div class="line">    <span class="variable">$row</span>[<span class="string">'none'</span>] = rand(<span class="number">0</span>, <span class="number">99999</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//开始渲染</span></div><div class="line"><span class="variable">$exporter</span><span class="variable">-&gt;render</span>(<span class="variable">$data</span>, <span class="variable">$columnDefine</span>, <span class="variable">$eachRowHandler</span>);</div><div class="line"></div><div class="line"><span class="comment">//保存文件</span></div><div class="line"><span class="variable">$exporter</span><span class="variable">-&gt;save</span>();</div></pre></td></tr></table></figure>
+
+
+
+<p>它的可扩展性非常好，事实上你可以应对不同的场景实现不同的功能，比如支持 单元格数据类型 （数据显示更加上友好）， 多个数据表 （应对大数据量 分表显然在哪都适用啊）。也可以在我的版本上优化，事实上它还有发掘的地方。比如 SharedString 处理这一块。当然我不想把他变成 PHPExcel ，高效才是 MyExcel 的关键。</p>
+<hr>
+<ul>
+<li>2014-07-01 17:54:44 A</li>
+<li>2014-07-28 17:47:22 U</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/07/01/how-to-export-big-data-to-xlsx/" data-id="ups7ftowl128wnrz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/07/02/classical-typesetting/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          古文排版的简易实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/06/30/startup/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">新的开始</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-graphics/">computer graphics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdo/">pdo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sphinx/">sphinx</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10.00px;">C#</a><a href="/tags/architecture/" style="font-size: 10.00px;">architecture</a><a href="/tags/computer-graphics/" style="font-size: 10.00px;">computer graphics</a><a href="/tags/css3/" style="font-size: 10.00px;">css3</a><a href="/tags/java/" style="font-size: 10.00px;">java</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a><a href="/tags/log/" style="font-size: 16.67px;">log</a><a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a><a href="/tags/nodejs/" style="font-size: 10.00px;">node.js</a><a href="/tags/pdo/" style="font-size: 10.00px;">pdo</a><a href="/tags/php/" style="font-size: 20.00px;">php</a><a href="/tags/sphinx/" style="font-size: 10.00px;">sphinx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">July 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/31/log-20141231/">2014 - 2015</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/svn-auto-push/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/how-to-build-your-first-php's-extension/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 QPWOEIRU96<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/qpwoeiru96" class="mobile-nav-link">Github</a>
+  
+    <a href="http://weibo.com/qpwoeiru96" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+
+<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

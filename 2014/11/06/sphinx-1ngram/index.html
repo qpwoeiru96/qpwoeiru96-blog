@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Yet Another Blog</title>
+  <title>Sphinx 一元切分 | Yet Another Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yet Another Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yet Another Blog">
-<meta property="og:url" content="http://blog.sou.la/">
+  <meta name="description" content="最佳东方的找工作用的是 Sphinx 进行分词的，但是限于特定行业的问题，所以有时候总是分的不准，比如一家名叫 佛山|陶花园|艺宿馆|酒店|管理|有限公司 这个问题就大了。所以经常接到这样的Bug反馈单，直到最近实在是不胜其扰。准备将分词算法改成用一元切分了。一元切分的优点是匹配精度高，无需预先准备任何词库，但是缺点也非常明显，因为使用的是倒排索引所以一旦数据量太多很容易造成索引过大而导致效率不高">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sphinx 一元切分">
+<meta property="og:url" content="http://blog.sou.la/2014/11/06/sphinx-1ngram/">
 <meta property="og:site_name" content="Yet Another Blog">
-<meta property="og:description" content="Yet Another Blog">
+<meta property="og:description" content="最佳东方的找工作用的是 Sphinx 进行分词的，但是限于特定行业的问题，所以有时候总是分的不准，比如一家名叫 佛山|陶花园|艺宿馆|酒店|管理|有限公司 这个问题就大了。所以经常接到这样的Bug反馈单，直到最近实在是不胜其扰。准备将分词算法改成用一元切分了。一元切分的优点是匹配精度高，无需预先准备任何词库，但是缺点也非常明显，因为使用的是倒排索引所以一旦数据量太多很容易造成索引过大而导致效率不高">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yet Another Blog">
-<meta name="twitter:description" content="Yet Another Blog">
+<meta name="twitter:title" content="Sphinx 一元切分">
+<meta name="twitter:description" content="最佳东方的找工作用的是 Sphinx 进行分词的，但是限于特定行业的问题，所以有时候总是分的不准，比如一家名叫 佛山|陶花园|艺宿馆|酒店|管理|有限公司 这个问题就大了。所以经常接到这样的Bug反馈单，直到最近实在是不胜其扰。准备将分词算法改成用一元切分了。一元切分的优点是匹配精度高，无需预先准备任何词库，但是缺点也非常明显，因为使用的是倒排索引所以一旦数据量太多很容易造成索引过大而导致效率不高">
 
   
     <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
@@ -68,260 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-log-20141231" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/31/log-20141231/" class="article-date">
-  <time datetime="2014-12-31T05:24:02.000Z" itemprop="datePublished">12月 31 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/31/log-20141231/">2014 - 2015</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/12/31/log-20141231/" data-id="actkbhav0zi86mpp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-recovery-data-from-binlog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/04/recovery-data-from-binlog/" class="article-date">
-  <time datetime="2014-12-04T09:19:04.000Z" itemprop="datePublished">12月 4 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>什么是 binlog，顾名思义二进制日志 (binary log) 么。</p>
-<p>在 MySQL 中二进制日志包含了所有更新了数据或者已经潜在更新了数据（例如，没有匹配任何行的一个DELETE）的所有语句。语句以“事件”的形式保存，它描述数据更改。二进制日志还包含关于每个更新数据库的语句的执行时间信息。它不包含没有修改任何数据的语句。</p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/12/04/recovery-data-from-binlog/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/12/04/recovery-data-from-binlog/" data-id="plqul8uvd4fq145z" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-svn-auto-push" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/27/svn-auto-push/" class="article-date">
-  <time datetime="2014-11-27T06:32:08.000Z" itemprop="datePublished">11月 27 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/11/27/svn-auto-push/" data-id="9shcpip2d11fis4i" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-build-your-first-php&#39;s-extension" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/27/how-to-build-your-first-php's-extension/" class="article-date">
-  <time datetime="2014-11-27T06:32:06.000Z" itemprop="datePublished">11月 27 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>��д�������еĵ�һ��PHP��չ</p>
-<h2 id="׼��ƪ">׼��ƪ</h2>
-<p>������Ҫ�ǳ����� PHP ֪ʶ�������˽� PHP ��ʵ�ֻ��ƣ��Ƚ϶���C���Ի������ر���֪��ָ����ʹ�÷�ʽ���������û��ƣ�������������ͨ�����ġ�<a href="http://www.php-internals.com/" target="_blank" rel="external">��������PHP�ں�</a>����΢��һ���ı���ԭ������Ȼ����Ҳ���Բ���������ʹ�õ���Visual Studio��</p>
-<p>��������Ҫ׼��һ�� Windows �� C �����������Ƽ��� <a href="http://www.microsoft.com/en-us/download/details.aspx?id=34673" target="_blank" rel="external">Visual Studio 2012 Express</a> �����༭��������������һ���ˡ�Ϊ�˼���ѧϰ�ɱ�����ǿ���Ƽ��� GUI ���߾��� GUI �ģ���Ҫ���������еĲ���·��</p>
-<p>���������ǾͿ�ʼ����������Ҫ�� PHP Դ���� PHP ���а汾����Ȼ�����¾�Ҫ�����µġ�������2014��12��8�� PHP ���µ��ȶ��汾�� 5.6.3 �� Դ�������ص�ַ�ǣ�<a href="http://windows.php.net/downloads/releases/php-5.6.3-src.zip" target="_blank" rel="external">http://windows.php.net/downloads/releases/php-5.6.3-src.zip</a> ���а汾�����ص�ַ�ǣ�<a href="http://windows.php.net/downloads/releases/php-5.6.3-nts-Win32-VC11-x86.zip" target="_blank" rel="external">http://windows.php.net/downloads/releases/php-5.6.3-nts-Win32-VC11-x86.zip</a> ����Ȼ��ѡ���� VC11 ����Visual Studio 2012���䣩Non Thread Safe (���̰߳�ȫ�� �İ汾��</p>
-<p>��ѹ������ѹ����������Դ���������¼��� src ����</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/11/27/how-to-build-your-first-php's-extension/" data-id="ippz4acg6mhqz15a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sexy_template" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/10/sexy_template/" class="article-date">
-  <time datetime="2014-11-10T11:08:56.000Z" itemprop="datePublished">11月 10 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="背景">背景</h2>
-<p><a href="https://github.com/qpwoeiru96/SexyTemplate" target="_blank" rel="external">SexyTemplate</a> 是我最近写的一个模板引擎，初衷是吐槽一下 PHPCMS 的模板引擎，以及我们前端经常用 <a href="https://github.com/aui/artTemplate" target="_blank" rel="external">artTemplate</a> 来制作我们的前端页面，为了方便移植啊。</p>
-<p>所以我也仿照 artTemplate 写了一个模板引擎，第一代版本应该是一个下午就写出来了，速度应该说是非常快，这其中有两点：第一个仿造别人的思路去写一个东西，第二个是本人浸淫 PHP (拍黄片) 多年，语法什么的早已经非常熟悉了。</p>
-<h2 id="使用方法">使用方法</h2>
-<p>使用方法一项秉承着我的原则：KISS （Keep It Simple, Stupid）, 简单易用，再说复杂的我也写不出来啊。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实例化一个编译类</span></div><div class="line"><span class="variable">$ST</span> = <span class="keyword">new</span> SexyTemplate\Compiler();</div><div class="line"><span class="variable">$template</span> = <span class="string">'&lt;pre&gt;hello world! this is &lt;%var_dump($self)%&gt;. &lt;%==$content%&gt;&lt;/pre&gt;'</span>;</div><div class="line"></div><div class="line"><span class="comment">//开启全部的语法糖</span></div><div class="line"><span class="variable">$st</span><span class="variable">-&gt;enableAllSyntax</span>();</div><div class="line"></div><div class="line"><span class="comment">//开启debug功能会提示语法错误</span></div><div class="line"><span class="variable">$st</span><span class="variable">-&gt;debug</span> = <span class="keyword">true</span>;</div><div class="line"></div><div class="line"><span class="comment">//编译完成之后 会返回一个执行包装器</span></div><div class="line"><span class="variable">$wrapper</span> = <span class="variable">$ST</span><span class="variable">-&gt;compile</span>(<span class="variable">$template</span>);</div><div class="line"></div><div class="line"><span class="comment">//你可以打印查看编译出来的源</span></div><div class="line"><span class="comment">//highlight_string('&lt;?php ' . $wrapper);</span></div><div class="line"></div><div class="line"><span class="comment">//绑定 $self 环境 并且输入变量执行</span></div><div class="line"><span class="keyword">print</span> <span class="variable">$wrapper</span></div><div class="line">    <span class="variable">-&gt;bind</span>(<span class="variable">$this</span>)</div><div class="line">    <span class="variable">-&gt;render</span>([<span class="string">'content'</span> =&gt; <span class="string">'i am SexyTemplate'</span>]);</div></pre></td></tr></table></figure>
-
-<p>可以再 <a href="http://tools.sou.la/SexyTemplate/demo/" target="_blank" rel="external">线上</a> 体验一下 SexyTemplate 的在线编译功能。</p>
-<h2 id="语法支持">语法支持</h2>
-<p>第一代是非常的简单，只是将形如下面的模板字符串：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hello world, i am &lt;<span class="variable">%=</span><span class="variable">$name</span><span class="variable">%&gt;</span></div><div class="line">&lt;<span class="variable">%foreach</span> (<span class="variable">$favourites</span> as <span class="variable">$fav</span>) {<span class="variable">%&gt;</span></div><div class="line">i like &lt;<span class="variable">%=</span><span class="variable">$fav</span><span class="variable">%&gt;</span>. </div><div class="line">&lt;<span class="variable">%}</span><span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
-
-<p>转换成相应的PHP代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">extract(<span class="variable">$vars</span>);<span class="keyword">unset</span>(<span class="variable">$vars</span>);<span class="variable">$STR</span> = <span class="string">""</span>; <span class="variable">$STC</span> = <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$s</span>)</span> <span class="title">use</span><span class="params">(&<span class="variable">$STR</span>)</span> </span>{ <span class="variable">$STR</span> .= <span class="variable">$s</span>;};</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">hello world, i am ');</div><div class="line"><span class="variable">$STV</span> = <span class="variable">$name</span>;<span class="variable">$STC</span>(htmlspecialchars(<span class="variable">$STV</span>));<span class="keyword">unset</span>(<span class="variable">$STV</span>);</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">');</div><div class="line"><span class="keyword">foreach</span> (<span class="variable">$favourites</span> <span class="keyword">as</span> <span class="variable">$fav</span>) {;</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">i like ');</div><div class="line"><span class="variable">$STV</span> = <span class="variable">$fav</span>;<span class="variable">$STC</span>(htmlspecialchars(<span class="variable">$STV</span>));<span class="keyword">unset</span>(<span class="variable">$STV</span>);</div><div class="line"><span class="variable">$STC</span>(<span class="string">'. </span></div><div class="line">');</div><div class="line">};</div><div class="line"><span class="keyword">unset</span>(<span class="variable">$STC</span>);<span class="keyword">return</span> <span class="variable">$STR</span>;</div></pre></td></tr></table></figure>
-
-<p>诸位看官你们一看就知道这逼格明显不够高。很多东西还没有弄到，比如一些装逼的语法糖，所以第二版本我着重处理了一下语法糖。</p>
-<p>比如支持这样的语法糖（第一代已经支持）:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PHP 的起始标签是 &lt;<span class="variable">%=</span><span class="variable">$startTag</span><span class="variable">%&gt;</span>， 闭合标签是 &lt;<span class="variable">%=</span>=<span class="variable">$endTag</span><span class="variable">%&gt;</span> 。</div></pre></td></tr></table></figure>
-
-<p>生成这样的表达式:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'PHP 的起始标签是 '</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$startTag</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'， 闭合标签是 '</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="variable">$endTag</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">' 。'</span>;</div></pre></td></tr></table></figure>
-
-<p>还有这样的语法糖:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="vbscript">&lt;%<span class="keyword">loop</span> $article[<span class="string">"tags"</span>] $tag%&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span><span class="vbscript">&lt;%=$tag%&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></div><div class="line"><span class="vbscript">&lt;%/<span class="keyword">loop</span>%&gt;</span></div><div class="line"><span class="vbscript">&lt;%<span class="keyword">loop</span> $items $index $item%&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="vbscript">&lt;%=$item-&gt;name%&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line"><span class="vbscript">&lt;%/<span class="keyword">loop</span>%&gt;</span></div></pre></td></tr></table></figure>
-
-<p>生成这样的表达式:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">foreach</span>(<span class="variable">$article</span>[<span class="string">"tags"</span>] <span class="keyword">as</span> <span class="variable">$tag</span>):;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">    &lt;a href="#"&gt;';</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$tag</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'&lt;/a&gt;</span></div><div class="line">';</div><div class="line"><span class="keyword">endforeach</span>;;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">';</div><div class="line"><span class="keyword">foreach</span>(<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$index</span> =&gt; <span class="variable">$item</span>):;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">    &lt;p&gt;';</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$item</span><span class="variable">-&gt;name</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'&lt;/p&gt;</span></div><div class="line">';</div><div class="line"><span class="keyword">endforeach</span>;;</div></pre></td></tr></table></figure>
-
-<p>这样的语法糖支持的代码写的非常简单，比如第一个的转义字符串的功能，代码里面仅仅是这样的。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 用来支持 == 跟 = 输出/转义输出</div><div class="line"> */</div><div class="line">$<span class="keyword">this</span>-&gt;insertParser(<span class="string">'#^(?&lt;mark&gt;={1,2}) *(?&lt;statement&gt;.*)#i'</span>, function ($mark, $statement) {</div><div class="line">    <span class="keyword">return</span> T_COLLECT_HEAD . ($mark === <span class="string">'=='</span> ? $statement : <span class="string">"htmlspecialchars({$statement})"</span>);</div><div class="line">});</div></pre></td></tr></table></figure>
-
-<p>即使第二个 loop 稍微复杂了点，但也不过是这样的：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$varRe</span> = <span class="string">'\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'</span>;</div><div class="line"><span class="variable">$varMixRe</span> = <span class="string">'\$[a-zA-Z_\x7f-\xff][^ ]*'</span>;</div><div class="line"></div><div class="line"><span class="variable">$this</span>-&gt;insertParser(<span class="string">"#^/loop$|^loop {1,}(?&lt;array&gt;{<span class="variable">$varMixRe</span>}) {1,}(?&lt;key&gt;{<span class="variable">$varRe</span>}) *(?&lt;val&gt;{<span class="variable">$varRe</span>})?#"</span>, function(<span class="variable">$array</span>, <span class="variable">$key</span>, <span class="variable">$val</span>, <span class="variable">$matches</span>) {</div><div class="line">    <span class="keyword">if</span> (!<span class="variable">$array</span>) <span class="keyword">return</span> <span class="string">"endforeach;"</span>;</div><div class="line">    <span class="keyword">return</span> <span class="variable">$val</span> ? <span class="string">"foreach({<span class="variable">$array</span>} as {<span class="variable">$key</span>} =&gt; {<span class="variable">$val</span>}):"</span> : <span class="string">"foreach({<span class="variable">$array</span>} as {<span class="variable">$key</span>}):"</span>;</div><div class="line">});</div></pre></td></tr></table></figure>
-
-<p>一切依赖于神奇的方法: </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 插入语法分析钩子</div><div class="line"> *</div><div class="line"> *<span class="javadoctag"> @param</span> string $re 正则表达式</div><div class="line"> *<span class="javadoctag"> @param</span> callable $callback 调用函数</div><div class="line"> *<span class="javadoctag"> @param</span> bool $insertAtEnd 是否插入在最后面</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> function <span class="title">insertParser</span>($re, callable $callback, $insertAtEnd = <span class="keyword">false</span>);</div></pre></td></tr></table></figure>
-
-<p>通过这个方法你可以非常简单的添加自己所需要的语法，无需复杂的语法分析知识，当然这也有一个毛病就是正则的分析能力明显没有完善的语法扫描器强，容易出现遗漏或者误判的情况。特别是针对字符串分析，如果不依赖堆栈（stack) 等数据结构是很容易出现误判的。</p>
-<h2 id="语法错误提示">语法错误提示</h2>
-<p>一个模板引擎非常重要的一点就是错误提示功能，否则很难进行模板开发。</p>
-<p>比如原始模板是这样的:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="variable">%loop</span> <span class="variable">$items</span> <span class="variable">$index</span> <span class="variable">$item</span><span class="variable">%&gt;</span></div><div class="line">    &lt;<span class="variable">%=</span><span class="variable">$item</span>-&gt;name<span class="variable">%&gt;</span></div><div class="line">&lt;<span class="variable">%/</span>looop<span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
-
-<p>loop 多了一个 o，看一下错误提示是如何提示的:</p>
-<p>错误信息: syntax error, unexpected ‘/‘<br>错误位置: 第8行<br>模板代码:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> &lt;<span class="variable">%loop</span> <span class="variable">$items</span> <span class="variable">$index</span> <span class="variable">$item</span><span class="variable">%&gt;</span></div><div class="line"><span class="number">2</span>     &lt;<span class="variable">%=</span><span class="variable">$item</span>-&gt;name<span class="variable">%&gt;</span></div><div class="line"><span class="number">3</span> &lt;<span class="variable">%/</span>looop<span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
-
-<p>PHP代码:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1 <span class="php"><span class="preprocessor">&lt;?php</span> </span></div><div class="line"><span class="number">2</span> <span class="keyword">foreach</span>(<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$index</span> =&gt; <span class="variable">$item</span>):;</div><div class="line"><span class="number">3</span> <span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">4    ';</div><div class="line"><span class="number">5</span> <span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$item</span><span class="variable">-&gt;name</span>);</div><div class="line"><span class="number">6</span> <span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">7 ';</div><div class="line"><span class="number">8</span> /looop;</div></pre></td></tr></table></figure>
-
-<p>这里有一个缺陷是未能在原始位置提示出位置，这个在前期通过跟踪 $line 是可以搞定的，但是用户一旦添加自定义的语法糖那么这个跟踪很可能就变得无效，但是即使这样，这样的错误提示对于修复语法错误也是绰绰有余了。想想 Smarty 为了能在扫描阶段就提示语法错误放了多少东西进去，而且还没完全解决好！！！</p>
-<h2 id="模板包含">模板包含</h2>
-<p><del><strong>这一块不打算包含进实际的 SexyTemplate 功能中，事实上 loop 这个语法糖也不会包含进去，因为 SexyTemplate 的特性简单但是扩展性强，除了默认的 == 跟 = 这两个语法糖其他语法糖皆不会包含在内。</strong></del></p>
-<p>原谅我在这里打脸了，幸好打的不算是很严重，语法糖是包含的，但是默认是不开启的。而且编译文件功能也包含在内但是形成了另外一个单独的 FileCompiler 类。</p>
-<p>include 这个东西PHP是自带的，但是明显包含的不可能是未经过编译的模板文件对吧，所以这一块需要 SexyTemplate 特别处理下，也是通过语法糖，当然更重要的是处理引用关系。</p>
-<p>Talk is cheap. Show me the code.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//插入include的语法分析正则</span></div><div class="line"><span class="variable">$this</span><span class="variable">-&gt;insertParser</span>(<span class="string">'#^include +([\'"])(?&lt;file&gt;[^\1]+)\1$#'</span>, <span class="keyword">array</span>(<span class="variable">$this</span>, <span class="string">'parseInclude'</span>));</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 分析引用数据</div><div class="line"> *</div><div class="line"> *<span class="phpdoc"> @param</span> string $file 文件名称</div><div class="line"> *<span class="phpdoc"> @param</span> array $matches 匹配到的数据</div><div class="line"> *<span class="phpdoc"> @return</span> bool|\SexyTemplate\Wrapper</div><div class="line"> *<span class="phpdoc"> @throws</span> Exception</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">parseInclude</span><span class="params">(<span class="variable">$file</span>, <span class="variable">$matches</span>)</span></span></div><div class="line">{</div><div class="line">    <span class="comment">//判断文件是否存在</span></div><div class="line">    <span class="variable">$filePath</span> = <span class="variable">$this</span><span class="variable">-&gt;templateDir</span> . DIRECTORY_SEPARATOR . <span class="variable">$file</span> . <span class="variable">$this</span><span class="variable">-&gt;templateExt</span>;</div><div class="line">    <span class="variable">$filePath</span> = str_replace([<span class="string">'/'</span>, <span class="string">'\\'</span>], DIRECTORY_SEPARATOR, <span class="variable">$filePath</span>);</div><div class="line"></div><div class="line">    <span class="comment">//不存在抛出异常 这个不算是模板语法错误</span></div><div class="line">    <span class="keyword">if</span>(!file_exists(<span class="variable">$filePath</span>)) {</div><div class="line">        <span class="variable">$position</span> = <span class="string">"&lt;%$matches[0]%&gt;"</span>;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="keyword">Exception</span>(<span class="string">"template file '{$filePath}' is not found, pleast check at {$position}."</span>);</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="comment">//直接编译即可 而且也支持模板里面嵌套模板</span></div><div class="line">    <span class="keyword">return</span> <span class="variable">$this</span><span class="variable">-&gt;compile</span>(file_get_contents(<span class="variable">$filePath</span>));</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>同志们，寥寥几行就完美支持了模板引用，太“神奇”了。当然这里需要继承自 SexyTemplate ，具体代码可以查看 类 FileCompiler 。</p>
-<h2 id="布局(layout)/继承(extend)">布局(layout)/继承(extend)</h2>
-<p>按照 Jade 里面的 layout 思想其实跟 include 差不多，只不过是先编译 layout.html 再将表达式插入布局其中，同时再添加个对 &lt;%=content%&gt; 的处理。所以稍微改写一下上面的代码即可以支持 Jade 里面的 layout 处理方式。</p>
-<p>至于 Smarty 里面的 extend 跟 block 的实现着稍显麻烦，这个需要数据结构的支持，事实上是将模板打成这样如图的数据结构，这样能保证层级结构正确，无论是继承还是包含只是相应的两两多维数组之间的合并操作。当然这只是我的猜想未去验证，不过也八九不离十，这个无法仅仅通过插入语法分析器去完成，需要更改 compile 方法的逻辑 (OMG！！！)。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">normalObj = {</div><div class="line">    <span class="string">"children"</span> : [],</div><div class="line">    <span class="string">"name"</span> : <span class="string">"body"</span>,</div><div class="line">}</div><div class="line"></div><div class="line">[</div><div class="line"><span class="label">    normalObj:</span>head</div><div class="line"><span class="label">        normalObj:</span>css</div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">        normalObj:</span><span class="keyword">js</span></div><div class="line"><span class="label">    normalObj:</span>body</div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">        normalObj:</span><span class="string">"cotent"</span></div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">    normalObj:</span>foot</div><div class="line">]</div></pre></td></tr></table></figure>
-
-<h2 id="其他">其他</h2>
-<p>$self 变量的支持使得 模板可以调用运行环境开放的公共方法。</p>
-<p>还是一句话：KISS。虽然 Simple 但是强大的扩展能力使得 SexyTemplate “无所不能啊”。</p>
-<hr>
-<ul>
-<li>2014-11-10 19:08:56 C</li>
-<li>2014-11-11 15:04:13 U</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/11/10/sexy_template/" data-id="tnm7j7cft3xpwyoh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sphinx-1ngram" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-sphinx-1ngram" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/11/06/sphinx-1ngram/" class="article-date">
   <time datetime="2014-11-06T03:03:00.000Z" itemprop="datePublished">11月 6 2014</time>
@@ -334,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/06/sphinx-1ngram/">Sphinx 一元切分</a>
+    <h1 class="article-title" itemprop="name">
+      Sphinx 一元切分
     </h1>
   
 
@@ -370,217 +117,29 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-log-20141028" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/10/28/log-20141028/" class="article-date">
-  <time datetime="2014-10-28T14:51:13.000Z" itemprop="datePublished">10月 28 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2014/11/10/sexy_template/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
+          谈谈 SexyTemplate
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/28/log-20141028/">说说最近看过的几部电影</a>
-    </h1>
   
+    <a href="/2014/10/28/log-20141028/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">说说最近看过的几部电影</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>心花路放</strong></p>
-<p>宁浩继续的把昆汀一套进行升级，虽然戏中还是有点黑色喜剧但是无疑这部片子的色调是明亮的。相比之前的多条线同时行进，这次的两条线仍然非常的精彩，片尾一个大大的蒙太奇无疑把我们耍的不清。</p>
-<p><strong>后会无期</strong></p>
-<p>无疑，韩少是个段子手。虽然看过几部韩寒的作品，但是他那种行云流水的文字真不是我这种喜欢写实的人喜欢的，但歌真的很棒。</p>
-<p><strong>银河护卫队</strong></p>
-<p>I am Groooooooooot。</p>
-<p><strong>忍者神龟：变种时代</strong></p>
-<p>四个小绿巨人跟他们的老鼠粑粑的故事，情节一般般，特效还行，米开朗基罗是全片亮点，当然女士们也可以冲着这四个巨大的会说话的野生乌龟头去。时间过于紧凑，角色人物铺垫不够深入，当然欧美人毫无问题啊，毕竟从小就熟悉。毫无疑问，这是盗版，因为国内还没上映么。</p>
-<p><strong>那夜凌晨，我坐上了旺角开往大埔的红VAN</strong></p>
-<p>这部在国内不出名，因为里面的几句台词有点敏感词的味道。这是根据同名网络小说改编而来的，主要讲的是：主角游梓池（阿池）于某天晚上和朋友“唱K”过后，于凌晨时份乘坐由九龙旺角前往新界大埔的红色公共小巴（俗称“红van”）回家，该小巴经过狮子山隧道后，主角发现车厢外的世界、所有汽车及人均消失，只剩下小巴本身及车厢内的17人（16名乘客和1名司机），仿佛进入了另外一个时空。故事发展出一连串的神秘事件，而乘客则开始一个继一个地无故死亡，随后又有一戴着防毒面具的神秘人出现；令到主角需要解开一切谜团，以期望可以重回原来的世界。</p>
-<p>限于改编跟篇幅的原因，第一部给我们留了太多的悬念，而且出现很多违反物理因素的事件存在，再加上惠英红的存在一度让我以为这又是一部香港鬼片，看到后面又一度以为是超自然片，其实是部背景设定比较另类的科幻片。</p>
-<p>说说我的观感：</p>
-<p>电影有点类似末世生存片，17个人毫无头绪的游离在空无一人的香港大街上，晚上灯火辉煌但就是一个人都没有，这无疑燃起了我心底最深沉的恐怖（我小时常常做梦如果世界只剩下我一个人怎么办）。几个角色我们也能看到其他末世电影的味道：比如惠英红的设定就非常类似斯蒂芬·金《迷雾》里面那个神婆。</p>
-<p>虽然只有17个人但是在末世片当中最为重要的伦理道德肯定是少不了的，奸尸审判这一幕明显是全片的高潮。当然作者的口味还算是比较轻的，因为此文的重点不在这。</p>
-<p>虽然掺杂了那么多奇奇怪怪的东西，虽然有点莫名其妙，虽然只有这么一集，但是此片无疑把我的胃口吊的足足的，因为它唤起了我自小以来的恐怖感。就像某人说的：它的恐怖不是来自于灵异，而是来自真真实实的生活中，就在我们的周围！！！</p>
-<p><strong> 亲爱的 </strong></p>
-<p>全片一直没有高潮，但是小高潮不断，没有刻意的去煽情，否则这片子又是另外一部《妈妈再爱我一次》了。</p>
-<p>但我一直觉得中间那段抢孩子拍的不够过瘾，似乎用长镜头一推到底感觉更好。</p>
-<hr>
-<ul>
-<li>2014-10-28 22:51:13 C</li>
-<li>2014-11-11 01:01:39 U</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/10/28/log-20141028/" data-id="o15qf3rkt5g70eb8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-  
-    <article id="post-quick-rasterize" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/08/08/quick-rasterize/" class="article-date">
-  <time datetime="2014-08-08T09:47:03.000Z" itemprop="datePublished">8月 8 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/08/quick-rasterize/">C#中对图形快速栅格化的另类方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在编写 红外热像图在线监测系统 这个软件的时候，需要在界面上画图形并且图形覆盖区域的一些温度信息，简单一点讲就是判断图形内点的集合，然后去取这些点在对应热图像的温度数据然后再图表上渲染出来，可能这对于学过计算机图形学的大神来说很容易啊，抡着 <a href="http://en.wikipedia.org/wiki/Digital_differential_analyzer_%28graphics_algorithm%29" target="_blank" rel="external">DDA</a>、<a href="http://zh.wikipedia.org/zh/%E5%B8%83%E9%9B%B7%E6%A3%AE%E6%BC%A2%E5%A7%86%E7%9B%B4%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95" target="_blank" rel="external">Bresenham</a>、<a href="http://netclass.csu.edu.cn/NCourse/hep089/Chapter2/CG_Txt_2_015.htm" target="_blank" rel="external">Scan-Line Filling</a> 这些大锤就出来了，但是对于我这个算法渣我就痛苦了。</p>
-<p><img src="http://sou.la/blog/usr/uploads/2014/08/3826554130.png" alt="enter image description here"></p>
-<p><img src="http://sou.la/blog/usr/uploads/2014/08/247601891.png" alt="enter image description here"></p>
-<p>
-        
-          <p class="article-more-link">
-            <a href="/2014/08/08/quick-rasterize/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/08/08/quick-rasterize/" data-id="y4i9c47wt0t70xob" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-graphics/">computer graphics</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-emulate_prepare" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/08/05/emulate_prepare/" class="article-date">
-  <time datetime="2014-08-05T09:48:54.000Z" itemprop="datePublished">8月 5 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/05/emulate_prepare/">PDO中的emluate prepare (模拟预处理)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先说说什么是 <a href="http://php.net/manual/en/book.pdo.php" target="_blank" rel="external">PDO</a> , 如果你是 MS 系的 Web 开发人员那你一定会知道 <a href="http://zh.wikipedia.org/zh/ADO" target="_blank" rel="external">ADO（ActiveX Data Objects）</a>，其实 PDO 跟 ADO 差不多一样它实现了大部分关系型数据库(MySQL, MSSQL, SQLite, PostgreSQL)的访问层。PS: Java 也有个 JDO 。</p>
-<p>PHP 官方对它的解释如下:</p>
-<blockquote>
-<p>PDO provides a data-access abstraction layer, which means that, regardless of which database you’re using, you use the same functions to issue queries and fetch data. PDO does not provide a database abstraction; it doesn’t rewrite SQL or emulate missing features. You should use a full-blown abstraction layer if you need that facility.<br>
-        
-          <p class="article-more-link">
-            <a href="/2014/08/05/emulate_prepare/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/08/05/emulate_prepare/" data-id="ag3whu8iqbgocmm1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdo/">pdo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-repost-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/08/01/repost-1/" class="article-date">
-  <time datetime="2014-08-01T15:50:37.000Z" itemprop="datePublished">8月 1 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/01/repost-1/">一个小规模创业项目的架构变迁史</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原作者：<a href="http://weibo.com/emsn1026" target="_blank" rel="external">赵震一</a> 发布于: 2014-03-26 12:07:58<br>推荐下作者的译书：<img src="http://218.249.32.138/web/9787121231155.jpg" alt="RESTful Web APIs中文版"> <a href="http://www.phei.com.cn/module/goods/wssd_content.jsp?bookid=40042" target="_blank" rel="external">购买地址</a></p>
-<hr>
-<p>创业是个经久不衰的buzzword，尤其是在《黑客与画家》一书引入国内后，大批技术屌丝怀揣梦想，涌入了创业大潮。而我也曾是该洪流中的一员，但是在经历四年的创业后，并没有取得令人满意的成绩，所以我选择了回到企业，换一种方式来实现自己的价值。但是，我还是决定使用“创业”二字来做一次标题党。</p>
-<p>有这样的一群程序员，他们的主要工作是负责企业的后台管理系统开发，大部分时间在与业务逻辑打交道，并且可能由于公司分工明细，产品的用户也不多等原因，他们几乎不需要考虑服务器、数据库等运维工程师需要考虑的性能问题，并且对互联网产品中经常要考虑的并发同步、事务控制、可用性保障等没有太多的概念，而当时的我就是这样一个程序员，因此这一路走了不少弯路。在看了厂内这么多高大上的技术分享之后，我也来聊聊我在创业期间经历的一个小规模系统的架构变迁以及在这个过程中遇到的问题，技术平常无奇，只做泛泛之谈。</p>
-<p>我要谈论的这个创业项目是一个线上优惠券平台，并且是围绕阿里这个大平台的：我们通过调用TOP的各类API及拼装UMP工具来构建优惠券营销工具；服务器使用的是万网的云主机；而我们的客户也是淘宝、天猫的买家卖家。其实每个创业项目的生死大都不是技术上的原因造成的，但是我在本文中主要聊的是技术方面的话题，如果要问这个系统为什么没有用到高大上的技术，那么我只能说业务没有上去，所以没有熬到需要高大上技术的阶段。</p>
-<p>作为创业项目，大部分人的思路是采用简单熟悉的技术方案尽快发布一个原型，然后根据用户与市场的反馈进行快速地迭代。技术与架构上的解决方案都是在支撑现有业务遇到了瓶颈或是预见到将会遇到问题时才会改进或变化。为了避免过度设计，我也是这么干的。下面就按阶段来聊聊我们的优惠券平台在这个过程中的系统架构变迁，该系统主要采用的是Java相关的技术。</p>
-
-        
-          <p class="article-more-link">
-            <a href="/2014/08/01/repost-1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.sou.la/2014/08/01/repost-1/" data-id="rpf1hg45bg4zme2k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/architecture/">architecture</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 </section>
         
           <aside id="sidebar">

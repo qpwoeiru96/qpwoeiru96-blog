@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>单片机入门之扩展字模 | Yet Another Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="双十一的时候，手贱抽了几个红包，如何用掉呢 ，想在当当买几本书，后来想想就凭自己这种惰性估计买回来也不会看！所以就买了个单片机，实在没东西可以买了，再说红包也就那么50元。
+刚刚今天到手，做了个LED的测试，心想有点简单啊，干脆弄弄彩屏的东西吧！看了下Demo，也非常简单啊，改了代码：
+123456789101112131415161718192021222324252627#include&lt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单片机入门之扩展字模">
+<meta property="og:url" content="http://blog.sou.la/2013/11/16/extend-character/">
+<meta property="og:site_name" content="Yet Another Blog">
+<meta property="og:description" content="双十一的时候，手贱抽了几个红包，如何用掉呢 ，想在当当买几本书，后来想想就凭自己这种惰性估计买回来也不会看！所以就买了个单片机，实在没东西可以买了，再说红包也就那么50元。
+刚刚今天到手，做了个LED的测试，心想有点简单啊，干脆弄弄彩屏的东西吧！看了下Demo，也非常简单啊，改了代码：
+123456789101112131415161718192021222324252627#include&lt">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2013/11/3062791070.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单片机入门之扩展字模">
+<meta name="twitter:description" content="双十一的时候，手贱抽了几个红包，如何用掉呢 ，想在当当买几本书，后来想想就凭自己这种惰性估计买回来也不会看！所以就买了个单片机，实在没东西可以买了，再说红包也就那么50元。
+刚刚今天到手，做了个LED的测试，心想有点简单啊，干脆弄弄彩屏的东西吧！看了下Demo，也非常简单啊，改了代码：
+123456789101112131415161718192021222324252627#include&lt">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yet Another Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Write by Q</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/qpwoeiru96">Github</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/qpwoeiru96">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.sou.la"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-extend-character" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/11/16/extend-character/" class="article-date">
+  <time datetime="2013-11-15T18:12:00.000Z" itemprop="datePublished">11月 16 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      单片机入门之扩展字模
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>双十一的时候，手贱抽了几个红包，如何用掉呢 ，想在当当买几本书，后来想想就凭自己这种惰性估计买回来也不会看！所以就买了个单片机，实在没东西可以买了，再说红包也就那么50元。</p>
+<p>刚刚今天到手，做了个LED的测试，心想有点简单啊，干脆弄弄彩屏的东西吧！看了下Demo，也非常简单啊，改了代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#include&lt;reg51.h&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span>"gui.h"</span></div><div class="line"></div><div class="line"><span class="comment">/****************************************************************************</span></div><div class="line">*函数名    ：main</div><div class="line">*输  入    ：无</div><div class="line">*输  出    ：无</div><div class="line">*功  能    ：主函数</div><div class="line">*说  明    ：由于单片机显示图片的时候，程序比较大，如果你使用的是89C52的单片机，</div><div class="line">*          * 请注意你程序的大小是否超过了单片机的内存大小，超过了会运行失败。</div><div class="line">****************************************************************************/</div><div class="line"></div><div class="line"><span class="keyword">void</span> main (<span class="keyword">void</span>)</div><div class="line">{</div><div class="line">    TFT_Init();  <span class="comment">//初始化TFT</span></div><div class="line">    GUI_ClearScreen(BLACK);</div><div class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</div><div class="line">    {</div><div class="line">        GUI_Write32CnChar(<span class="number">22</span>, <span class="number">0</span>, <span class="string">"普中科技"</span>, RED, BLACK);</div><div class="line">        GUI_Line(<span class="number">22</span>, <span class="number">29</span>, <span class="number">150</span>, <span class="number">29</span>, RED);</div><div class="line">        GUI_WriteASCII(<span class="number">30</span>, <span class="number">30</span>, <span class="string">"PRECHIN"</span>, RED, BLACK);</div><div class="line">        GUI_Line(<span class="number">10</span>, <span class="number">55</span>, <span class="number">164</span>, <span class="number">55</span>, RED);</div><div class="line">        GUI_WriteASCII(<span class="number">0</span>, <span class="number">56</span>,<span class="string">"!@#45^&amp;fsf"</span>, RED, BLACK);</div><div class="line">        GUI_Write14CnChar(<span class="number">0</span>, <span class="number">90</span>, <span class="string">"年月日星期摄氏度"</span>, RED, BLACK);</div><div class="line">        <span class="keyword">while</span>(<span class="number">1</span>);                   </div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>就将普中科技改成我的名字，然后编译上传到单片机愣是发现单片机没有显示。心想莫非是字模不全吧，这几十块钱的单片机ROM也就几KB，别说放本txt了，估计见GB2312的字库放全都有困难。在扒了下，发现字库的定义是在CHARCODE.h，认真看了一下果真就只是定义了那么几个。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ------------------  汉字字模的数据结构定义 ------------------------ //</span></div><div class="line"><span class="keyword">struct</span>  Cn32CharTypeDef                   <span class="comment">// 汉字字模数据结构 </span></div><div class="line">{</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span>  Index[<span class="number">2</span>];            <span class="comment">// 汉字内码索引,一个汉字占两个字节 </span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span>   Msk[<span class="number">116</span>];            <span class="comment">// 点阵码数据(32*29/8) </span></div><div class="line">};</div><div class="line"><span class="comment">/////////////////////////////////////////////////////////////////////////</span></div><div class="line"><span class="comment">// 汉字字模表,大小为：32*29                                                          //</span></div><div class="line"><span class="comment">// 汉字库: 楷体二号,横向取模左高位,数据排列:从左到右从上到下           //</span></div><div class="line"><span class="comment">/////////////////////////////////////////////////////////////////////////</span></div><div class="line"><span class="keyword">struct</span>  Cn32CharTypeDef code CnChar32x29[]=</div><div class="line">{</div><div class="line"><span class="comment">/*--  文字:  普  --*/</span></div><div class="line"><span class="comment">/*--  楷体_GB231222;  此字体下对应的点阵为：宽x高=30x29   --*/</span></div><div class="line"><span class="comment">/*--  宽度不是8的倍数，现调整为：宽度x高度=32x29  --*/</span></div><div class="line"><span class="string">"普"</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x18</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x60</span>,<span class="number">0x38</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x70</span>,<span class="number">0x78</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x38</span>,<span class="number">0xF0</span>,<span class="number">0x00</span>,</div><div class="line"><span class="number">0x00</span>,<span class="number">0x39</span>,<span class="number">0xC0</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x11</span>,<span class="number">0xFC</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xFF</span>,<span class="number">0xFC</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xFF</span>,<span class="number">0x80</span>,<span class="number">0x00</span>,</div><div class="line"><span class="number">0x00</span>,<span class="number">0x19</span>,<span class="number">0x8C</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x19</span>,<span class="number">0x9C</span>,<span class="number">0x00</span>,<span class="number">0x03</span>,<span class="number">0x99</span>,<span class="number">0xB8</span>,<span class="number">0x00</span>,<span class="number">0x01</span>,<span class="number">0xD9</span>,<span class="number">0xF0</span>,<span class="number">0x00</span>,</div><div class="line"><span class="number">0x01</span>,<span class="number">0xD9</span>,<span class="number">0xC1</span>,<span class="number">0xC0</span>,<span class="number">0x00</span>,<span class="number">0x1B</span>,<span class="number">0xFF</span>,<span class="number">0xF0</span>,<span class="number">0x07</span>,<span class="number">0xFF</span>,<span class="number">0xFF</span>,<span class="number">0xF0</span>,<span class="number">0xFF</span>,<span class="number">0xF0</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,</div><div class="line"><span class="number">0x78</span>,<span class="number">0x00</span>,<span class="number">0x40</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xDF</span>,<span class="number">0xF0</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xFF</span>,<span class="number">0xF0</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xC0</span>,<span class="number">0x70</span>,<span class="number">0x00</span>,</div><div class="line"><span class="number">0x00</span>,<span class="number">0xCF</span>,<span class="number">0x70</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xFF</span>,<span class="number">0x70</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xD0</span>,<span class="number">0x70</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xC0</span>,<span class="number">0x70</span>,<span class="number">0x00</span>,</div><div class="line"><span class="number">0x00</span>,<span class="number">0xC0</span>,<span class="number">0x70</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0xFF</span>,<span class="number">0xF0</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x7F</span>,<span class="number">0xE0</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x40</span>,<span class="number">0x60</span>,<span class="number">0x00</span>,</div><div class="line"><span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x60</span>,<span class="number">0x00</span>,</div></pre></td></tr></table></figure>
+
+<p>添加字模这个是事情，说简单也简单，早在我小学玩FC的时候就碰到过，那时候有一个游戏叫做《英烈群侠传》，开头就可以给自己取名字，这个取名字的过程就是一个添加字模的过程。</p>
+<p><img src="http://sou.la/blog/usr/uploads/2013/11/3062791070.png" alt="英烈群侠传"></p>
+<p>现在当然不能这么添加，一个个字模都得手动输入那得多蛋疼啊，所以得用程序去解决，而且也简单，将文字描绘到画布上，取特定范围的像素，使用rgb2hsb获取亮度值，然后再根据亮度值转成0或者1，再转成二进制就可以了。</p>
+<p>最开始我使用的是 PHP的 GD 来渲染字体，刷刷的代码也出来了：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">rgb2hsb</span><span class="params">(<span class="variable">$r</span>,<span class="variable">$g</span>,<span class="variable">$b</span>)</span></span></div><div class="line">{</div><div class="line">    <span class="comment">// RGB TO HSB</span></div><div class="line">    <span class="comment">// Convert Red, Green, and Blue to percentages</span></div><div class="line"></div><div class="line">    <span class="comment">//PercentRed = Red divided by 255</span></div><div class="line">    <span class="comment">//PercentGreen = Green divided by 255</span></div><div class="line">    <span class="comment">//PercentBlue = Blue divided by 255</span></div><div class="line">    <span class="variable">$pr</span> = <span class="variable">$r</span>/<span class="number">255</span>;</div><div class="line">    <span class="variable">$pg</span> = <span class="variable">$g</span>/<span class="number">255</span>;</div><div class="line">    <span class="variable">$pb</span> = <span class="variable">$b</span>/<span class="number">255</span>;</div><div class="line"></div><div class="line">    <span class="comment">//Determine maximum and minimum percentages</span></div><div class="line"></div><div class="line">    <span class="variable">$max</span> = max(<span class="variable">$pr</span>,<span class="variable">$pg</span>,<span class="variable">$pb</span>);</div><div class="line">    <span class="variable">$min</span> = min(<span class="variable">$pr</span>,<span class="variable">$pg</span>,<span class="variable">$pb</span>);</div><div class="line"></div><div class="line">    <span class="comment">//Determine the Delta</span></div><div class="line">    <span class="variable">$delta</span> = <span class="variable">$max</span> - <span class="variable">$min</span>;</div><div class="line"></div><div class="line">    <span class="variable">$brightness</span> = <span class="variable">$max</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="variable">$max</span> != <span class="number">0</span>) {</div><div class="line">        <span class="variable">$s</span> = <span class="variable">$delta</span> / <span class="variable">$max</span>;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="variable">$s</span> = <span class="number">0</span>;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="variable">$s</span> == <span class="number">0</span>) {</div><div class="line">        <span class="variable">$hue</span> = <span class="number">0</span>;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line"></div><div class="line">        <span class="variable">$rc</span> = (<span class="variable">$max</span> - <span class="variable">$pr</span>)/<span class="variable">$delta</span>;</div><div class="line">        <span class="variable">$gc</span> = (<span class="variable">$max</span> - <span class="variable">$pg</span>)/<span class="variable">$delta</span>;</div><div class="line">        <span class="variable">$bc</span> = (<span class="variable">$mas</span> - <span class="variable">$pb</span>)/<span class="variable">$delta</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(<span class="variable">$max</span> == <span class="variable">$pr</span>) {</div><div class="line">            <span class="variable">$hue</span> = <span class="variable">$bc</span> - <span class="variable">$gc</span>;</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(<span class="variable">$max</span> == <span class="variable">$pg</span>) {</div><div class="line">            <span class="variable">$hue</span> = <span class="number">2</span> + <span class="variable">$rc</span> - <span class="variable">$bc</span>;</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(<span class="variable">$max</span> == <span class="variable">$pb</span>) {</div><div class="line">            <span class="variable">$hue</span> = <span class="number">4</span> + <span class="variable">$gc</span> - <span class="variable">$rc</span>;</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="variable">$hue</span> = <span class="variable">$hue</span> * <span class="number">60</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(<span class="variable">$hue</span> &lt; <span class="number">0</span>) {</div><div class="line">            <span class="variable">$hue</span> = <span class="variable">$hue</span> + <span class="number">360</span>;</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="variable">$saturation</span> = <span class="variable">$s</span> * <span class="number">100</span>;</div><div class="line">    <span class="variable">$brightness</span> = <span class="variable">$brightness</span> * <span class="number">100</span>;</div><div class="line"></div><div class="line">    <span class="comment">// $hue is Hue in degrees</span></div><div class="line">    <span class="comment">// $saturation is Saturation in percent</span></div><div class="line">    <span class="comment">// $brightness is Brighness in percent</span></div><div class="line">    <span class="keyword">return</span> <span class="variable">$brightness</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="variable">$fontSize</span> = <span class="number">32</span>;</div><div class="line"></div><div class="line"><span class="variable">$im</span> = imagecreatetruecolor(<span class="variable">$fontSize</span>, <span class="variable">$fontSize</span>);</div><div class="line"></div><div class="line"><span class="variable">$white</span> = imagecolorallocate(<span class="variable">$im</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>);</div><div class="line"><span class="variable">$grey</span>  = imagecolorallocate(<span class="variable">$im</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">128</span>);</div><div class="line"><span class="variable">$black</span> = imagecolorallocate(<span class="variable">$im</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">imagefilledrectangle(<span class="variable">$im</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="variable">$fontSize</span>, <span class="variable">$fontSize</span>, <span class="variable">$white</span>);</div><div class="line"></div><div class="line"><span class="variable">$text</span> = <span class="string">'猪'</span>;</div><div class="line"></div><div class="line"><span class="comment">//$font = "arial.ttf";</span></div><div class="line"><span class="comment">//$font = 'simsun.ttc'; //宋体</span></div><div class="line"><span class="comment">//$font = 'simkai.ttf'; //楷体</span></div><div class="line"><span class="variable">$font</span> = <span class="string">'msyh.ttf'</span>; <span class="comment">//微软雅黑</span></div><div class="line"></div><div class="line">imagettftext(<span class="variable">$im</span>, <span class="variable">$fontSize</span> * <span class="number">0.75</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="variable">$fontSize</span> * <span class="number">0.87</span>, <span class="variable">$black</span>, <span class="variable">$font</span>, <span class="variable">$text</span>);</div><div class="line"></div><div class="line"><span class="variable">$i</span> = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="variable">$char</span> = <span class="keyword">array</span>();</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="variable">$y</span> = <span class="number">2</span>; <span class="variable">$y</span> &lt; <span class="variable">$fontSize</span> - <span class="number">1</span>; <span class="variable">$y</span>++) {</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="variable">$x</span> = <span class="number">0</span>; <span class="variable">$x</span> &lt; <span class="variable">$fontSize</span>; <span class="variable">$x</span>++) {</div><div class="line"></div><div class="line">        <span class="variable">$rgb</span> = ImageColorAt(<span class="variable">$im</span>, <span class="variable">$x</span>, <span class="variable">$y</span>);</div><div class="line">        <span class="variable">$r</span> = (<span class="variable">$rgb</span> &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>;</div><div class="line">        <span class="variable">$g</span> = (<span class="variable">$rgb</span> &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>;</div><div class="line">        <span class="variable">$b</span> = <span class="variable">$rgb</span> &amp; <span class="number">0xFF</span>;</div><div class="line"></div><div class="line">        <span class="variable">$c</span> = rgb2hsb(<span class="variable">$r</span>, <span class="variable">$g</span>, <span class="variable">$b</span>) &gt;= <span class="number">60</span> ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">        <span class="variable">$char</span>[<span class="variable">$i</span> / <span class="number">8</span>] = <span class="keyword">isset</span>(<span class="variable">$char</span>[<span class="variable">$i</span> / <span class="number">8</span>]) ?  (<span class="variable">$char</span>[<span class="variable">$i</span> / <span class="number">8</span>] &lt;&lt; <span class="number">1</span>) + <span class="variable">$c</span> : <span class="variable">$c</span>;</div><div class="line"></div><div class="line">        <span class="variable">$i</span> ++;</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">"/*--  文字:  {$text}  --*/"</span>, PHP_EOL;</div><div class="line"><span class="keyword">echo</span> <span class="string">"/*--  楷体_GB231222;  此字体下对应的点阵为：宽x高=30x29   --*/"</span>, PHP_EOL;</div><div class="line"><span class="keyword">echo</span> <span class="string">"/*--  宽度不是8的倍数，现调整为：宽度x高度=32x29  --*/"</span>, PHP_EOL;</div><div class="line"><span class="keyword">echo</span> <span class="string">"\"{$text}\","</span>;</div><div class="line"><span class="keyword">foreach</span>(<span class="variable">$char</span> <span class="keyword">as</span> &amp;<span class="variable">$c</span>) {</div><div class="line">    <span class="variable">$c</span> = <span class="string">'0x'</span> . str_pad(strtoupper(base_convert(<span class="variable">$c</span>, <span class="number">10</span>, <span class="number">16</span>)), <span class="number">2</span>, <span class="string">"0"</span>, STR_PAD_LEFT);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">116</span>; <span class="variable">$i</span>++) {</div><div class="line">    <span class="keyword">echo</span> <span class="variable">$char</span>[<span class="variable">$i</span>], <span class="string">','</span>;</div><div class="line">    <span class="keyword">if</span>( (<span class="variable">$i</span>+<span class="number">1</span>) % <span class="number">16</span> == <span class="number">0</span>) <span class="keyword">echo</span> PHP_EOL;</div><div class="line">}</div><div class="line"></div><div class="line">imagedestroy(<span class="variable">$im</span>);</div></pre></td></tr></table></figure>
+
+<p>使用效果非常的不错，至少我的名字是显示出来！微调下百分比可以显示更符合的字体。随后我想应该 HTML5 的 Canvas 应该也可以的！</p>
+<p>然后又开始刷刷的写代码了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> hanzi2dianzhen = (<span class="function"><span class="keyword">function</span><span class="params">(d)</span> </span>{</div><div class="line"></div><div class="line">    <span class="comment">// From http://raphaeljs.com/</span></div><div class="line">    <span class="comment">// 根据此函数可以获取像素的亮度百分比 </span></div><div class="line">    <span class="comment">// 后来发现 他只是修改alpha通道 其实是黑色的</span></div><div class="line">    <span class="comment">// 所以无需用到此函数</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">rgb2hsb</span> <span class="params">(r, g, b)</span> </span>{</div><div class="line">        r /= <span class="number">255</span>;</div><div class="line">        g /= <span class="number">255</span>;</div><div class="line">        b /= <span class="number">255</span>;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> H, S, V, C;</div><div class="line">        V = <span class="built_in">Math</span>.max(r, g, b);</div><div class="line">        C = V - <span class="built_in">Math</span>.min(r, g, b);</div><div class="line">        H = (C == <span class="number">0</span> ? <span class="literal">null</span> :</div><div class="line">             V == r ? (g - b) / C :</div><div class="line">             V == g ? (b - r) / C + <span class="number">2</span> :</div><div class="line">                      (r - g) / C + <span class="number">4</span></div><div class="line">            );</div><div class="line">        H = ((H + <span class="number">360</span>) % <span class="number">6</span>) * <span class="number">60</span> / <span class="number">360</span>;</div><div class="line">        S = C == <span class="number">0</span> ? <span class="number">0</span> : C / V;</div><div class="line">        <span class="keyword">return</span> {h: H, s: S, b: V};</div><div class="line">    };</div><div class="line"></div><div class="line">    <span class="keyword">var</span> c = d.createElement(<span class="string">'CANVAS'</span>);</div><div class="line"></div><div class="line">    c.height = <span class="number">100</span>;</div><div class="line">    c.width = <span class="number">100</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> ctx = c.getContext(<span class="string">'2d'</span>);</div><div class="line"></div><div class="line">    <span class="comment">// 不使用图像平滑技术</span></div><div class="line">    ctx.imageSmoothingEnabled       = <span class="literal">false</span>;</div><div class="line">    ctx.webkitImageSmoothingEnabled = <span class="literal">false</span>;</div><div class="line">    ctx.mozImageSmoothingEnabled    = <span class="literal">false</span>;</div><div class="line"></div><div class="line">    <span class="comment">//设置文字的基线</span></div><div class="line">    ctx.textBaseline = <span class="string">"top"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> paintFont = <span class="function"><span class="keyword">function</span><span class="params">(char, size, font)</span> </span>{</div><div class="line"></div><div class="line">        ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, c.width, c.height);</div><div class="line">        <span class="comment">//设置文字类型</span></div><div class="line">        ctx.font = [size, <span class="string">'px'</span>, <span class="string">' '</span>, font].join(<span class="string">''</span>);</div><div class="line"></div><div class="line">        <span class="comment">//填充文字</span></div><div class="line">        ctx.fillText(char, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">var</span> getDianZhen = <span class="function"><span class="keyword">function</span><span class="params">(x, y)</span> </span>{</div><div class="line"></div><div class="line">        <span class="keyword">var</span> percent = <span class="built_in">arguments</span>[<span class="number">2</span>] ? <span class="built_in">arguments</span>[<span class="number">2</span>] : <span class="number">0.5</span>;</div><div class="line">            offsetX = <span class="built_in">arguments</span>[<span class="number">3</span>] ? <span class="built_in">arguments</span>[<span class="number">3</span>] : <span class="number">0</span>,</div><div class="line">            offsetY = <span class="built_in">arguments</span>[<span class="number">4</span>] ? <span class="built_in">arguments</span>[<span class="number">4</span>] : <span class="number">0</span>,</div><div class="line">            result  = [];</div><div class="line"></div><div class="line">        <span class="keyword">var</span> imgData = ctx.getImageData(offsetX, offsetY, x, y);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; x; i++) {</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; y; j++) {</div><div class="line">                <span class="keyword">var</span> pos = i * y + j;</div><div class="line">                result.push( imgData.data[ pos * <span class="number">4</span> + <span class="number">3</span>] / <span class="number">255</span> &gt; percent ? <span class="number">1</span> : <span class="number">0</span> );</div><div class="line">            }</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">return</span> {</div><div class="line">        paintFont : paintFont,</div><div class="line">        getDianZhen : getDianZhen</div><div class="line">    }</div><div class="line"></div><div class="line">})(<span class="built_in">document</span>);</div></pre></td></tr></table></figure>
+
+<p>完整的代码可见：<a href="http://sou.la/blog/usr/uploads/2013/11/1633285267.html" title="hanzi2dianzhen.html" target="_blank" rel="external">hanzi2dianzhen.html</a>&nbsp;</p>
+<p>随后又看了下单片机如何显示图片，发现这东西真的是非常非常的原始，你必须得一个一个像素渲染，如果放个jpg进去还得自己写个解压算法，麻痹的就这内存，放个BMP的脸都难啊。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2013/11/16/extend-character/" data-id="ovpa1j8ulg328p9f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/12/13/yii-tips/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Yii中的小坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/11/07/fastcgi_finish_request/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">快速提高php响应能力之fastcgi_finish_request篇</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-graphics/">computer graphics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdo/">pdo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sphinx/">sphinx</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10.00px;">C#</a><a href="/tags/architecture/" style="font-size: 10.00px;">architecture</a><a href="/tags/computer-graphics/" style="font-size: 10.00px;">computer graphics</a><a href="/tags/css3/" style="font-size: 10.00px;">css3</a><a href="/tags/java/" style="font-size: 10.00px;">java</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a><a href="/tags/log/" style="font-size: 16.67px;">log</a><a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a><a href="/tags/nodejs/" style="font-size: 10.00px;">node.js</a><a href="/tags/pdo/" style="font-size: 10.00px;">pdo</a><a href="/tags/php/" style="font-size: 20.00px;">php</a><a href="/tags/sphinx/" style="font-size: 10.00px;">sphinx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">July 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/31/log-20141231/">2014 - 2015</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/svn-auto-push/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/how-to-build-your-first-php's-extension/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 QPWOEIRU96<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/qpwoeiru96" class="mobile-nav-link">Github</a>
+  
+    <a href="http://weibo.com/qpwoeiru96" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+
+<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

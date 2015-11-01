@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: php | Yet Another Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Yet Another Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yet Another Blog">
+<meta property="og:url" content="http://blog.sou.la/tags/php/">
+<meta property="og:site_name" content="Yet Another Blog">
+<meta property="og:description" content="Yet Another Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yet Another Blog">
+<meta name="twitter:description" content="Yet Another Blog">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yet Another Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Write by Q</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/qpwoeiru96">Github</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/qpwoeiru96">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.sou.la"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-sexy_template" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/10/sexy_template/" class="article-date">
+  <time datetime="2014-11-10T11:08:56.000Z" itemprop="datePublished">11月 10 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景">背景</h2>
+<p><a href="https://github.com/qpwoeiru96/SexyTemplate" target="_blank" rel="external">SexyTemplate</a> 是我最近写的一个模板引擎，初衷是吐槽一下 PHPCMS 的模板引擎，以及我们前端经常用 <a href="https://github.com/aui/artTemplate" target="_blank" rel="external">artTemplate</a> 来制作我们的前端页面，为了方便移植啊。</p>
+<p>所以我也仿照 artTemplate 写了一个模板引擎，第一代版本应该是一个下午就写出来了，速度应该说是非常快，这其中有两点：第一个仿造别人的思路去写一个东西，第二个是本人浸淫 PHP (拍黄片) 多年，语法什么的早已经非常熟悉了。</p>
+<h2 id="使用方法">使用方法</h2>
+<p>使用方法一项秉承着我的原则：KISS （Keep It Simple, Stupid）, 简单易用，再说复杂的我也写不出来啊。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实例化一个编译类</span></div><div class="line"><span class="variable">$ST</span> = <span class="keyword">new</span> SexyTemplate\Compiler();</div><div class="line"><span class="variable">$template</span> = <span class="string">'&lt;pre&gt;hello world! this is &lt;%var_dump($self)%&gt;. &lt;%==$content%&gt;&lt;/pre&gt;'</span>;</div><div class="line"></div><div class="line"><span class="comment">//开启全部的语法糖</span></div><div class="line"><span class="variable">$st</span><span class="variable">-&gt;enableAllSyntax</span>();</div><div class="line"></div><div class="line"><span class="comment">//开启debug功能会提示语法错误</span></div><div class="line"><span class="variable">$st</span><span class="variable">-&gt;debug</span> = <span class="keyword">true</span>;</div><div class="line"></div><div class="line"><span class="comment">//编译完成之后 会返回一个执行包装器</span></div><div class="line"><span class="variable">$wrapper</span> = <span class="variable">$ST</span><span class="variable">-&gt;compile</span>(<span class="variable">$template</span>);</div><div class="line"></div><div class="line"><span class="comment">//你可以打印查看编译出来的源</span></div><div class="line"><span class="comment">//highlight_string('&lt;?php ' . $wrapper);</span></div><div class="line"></div><div class="line"><span class="comment">//绑定 $self 环境 并且输入变量执行</span></div><div class="line"><span class="keyword">print</span> <span class="variable">$wrapper</span></div><div class="line">    <span class="variable">-&gt;bind</span>(<span class="variable">$this</span>)</div><div class="line">    <span class="variable">-&gt;render</span>([<span class="string">'content'</span> =&gt; <span class="string">'i am SexyTemplate'</span>]);</div></pre></td></tr></table></figure>
+
+<p>可以再 <a href="http://tools.sou.la/SexyTemplate/demo/" target="_blank" rel="external">线上</a> 体验一下 SexyTemplate 的在线编译功能。</p>
+<h2 id="语法支持">语法支持</h2>
+<p>第一代是非常的简单，只是将形如下面的模板字符串：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hello world, i am &lt;<span class="variable">%=</span><span class="variable">$name</span><span class="variable">%&gt;</span></div><div class="line">&lt;<span class="variable">%foreach</span> (<span class="variable">$favourites</span> as <span class="variable">$fav</span>) {<span class="variable">%&gt;</span></div><div class="line">i like &lt;<span class="variable">%=</span><span class="variable">$fav</span><span class="variable">%&gt;</span>. </div><div class="line">&lt;<span class="variable">%}</span><span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
+
+<p>转换成相应的PHP代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">extract(<span class="variable">$vars</span>);<span class="keyword">unset</span>(<span class="variable">$vars</span>);<span class="variable">$STR</span> = <span class="string">""</span>; <span class="variable">$STC</span> = <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$s</span>)</span> <span class="title">use</span><span class="params">(&<span class="variable">$STR</span>)</span> </span>{ <span class="variable">$STR</span> .= <span class="variable">$s</span>;};</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">hello world, i am ');</div><div class="line"><span class="variable">$STV</span> = <span class="variable">$name</span>;<span class="variable">$STC</span>(htmlspecialchars(<span class="variable">$STV</span>));<span class="keyword">unset</span>(<span class="variable">$STV</span>);</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">');</div><div class="line"><span class="keyword">foreach</span> (<span class="variable">$favourites</span> <span class="keyword">as</span> <span class="variable">$fav</span>) {;</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">i like ');</div><div class="line"><span class="variable">$STV</span> = <span class="variable">$fav</span>;<span class="variable">$STC</span>(htmlspecialchars(<span class="variable">$STV</span>));<span class="keyword">unset</span>(<span class="variable">$STV</span>);</div><div class="line"><span class="variable">$STC</span>(<span class="string">'. </span></div><div class="line">');</div><div class="line">};</div><div class="line"><span class="keyword">unset</span>(<span class="variable">$STC</span>);<span class="keyword">return</span> <span class="variable">$STR</span>;</div></pre></td></tr></table></figure>
+
+<p>诸位看官你们一看就知道这逼格明显不够高。很多东西还没有弄到，比如一些装逼的语法糖，所以第二版本我着重处理了一下语法糖。</p>
+<p>比如支持这样的语法糖（第一代已经支持）:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PHP 的起始标签是 &lt;<span class="variable">%=</span><span class="variable">$startTag</span><span class="variable">%&gt;</span>， 闭合标签是 &lt;<span class="variable">%=</span>=<span class="variable">$endTag</span><span class="variable">%&gt;</span> 。</div></pre></td></tr></table></figure>
+
+<p>生成这样的表达式:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'PHP 的起始标签是 '</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$startTag</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'， 闭合标签是 '</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="variable">$endTag</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">' 。'</span>;</div></pre></td></tr></table></figure>
+
+<p>还有这样的语法糖:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="vbscript">&lt;%<span class="keyword">loop</span> $article[<span class="string">"tags"</span>] $tag%&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span><span class="vbscript">&lt;%=$tag%&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></div><div class="line"><span class="vbscript">&lt;%/<span class="keyword">loop</span>%&gt;</span></div><div class="line"><span class="vbscript">&lt;%<span class="keyword">loop</span> $items $index $item%&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="vbscript">&lt;%=$item-&gt;name%&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line"><span class="vbscript">&lt;%/<span class="keyword">loop</span>%&gt;</span></div></pre></td></tr></table></figure>
+
+<p>生成这样的表达式:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">foreach</span>(<span class="variable">$article</span>[<span class="string">"tags"</span>] <span class="keyword">as</span> <span class="variable">$tag</span>):;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">    &lt;a href="#"&gt;';</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$tag</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'&lt;/a&gt;</span></div><div class="line">';</div><div class="line"><span class="keyword">endforeach</span>;;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">';</div><div class="line"><span class="keyword">foreach</span>(<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$index</span> =&gt; <span class="variable">$item</span>):;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">    &lt;p&gt;';</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$item</span><span class="variable">-&gt;name</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'&lt;/p&gt;</span></div><div class="line">';</div><div class="line"><span class="keyword">endforeach</span>;;</div></pre></td></tr></table></figure>
+
+<p>这样的语法糖支持的代码写的非常简单，比如第一个的转义字符串的功能，代码里面仅仅是这样的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 用来支持 == 跟 = 输出/转义输出</div><div class="line"> */</div><div class="line">$<span class="keyword">this</span>-&gt;insertParser(<span class="string">'#^(?&lt;mark&gt;={1,2}) *(?&lt;statement&gt;.*)#i'</span>, function ($mark, $statement) {</div><div class="line">    <span class="keyword">return</span> T_COLLECT_HEAD . ($mark === <span class="string">'=='</span> ? $statement : <span class="string">"htmlspecialchars({$statement})"</span>);</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>即使第二个 loop 稍微复杂了点，但也不过是这样的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$varRe</span> = <span class="string">'\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'</span>;</div><div class="line"><span class="variable">$varMixRe</span> = <span class="string">'\$[a-zA-Z_\x7f-\xff][^ ]*'</span>;</div><div class="line"></div><div class="line"><span class="variable">$this</span>-&gt;insertParser(<span class="string">"#^/loop$|^loop {1,}(?&lt;array&gt;{<span class="variable">$varMixRe</span>}) {1,}(?&lt;key&gt;{<span class="variable">$varRe</span>}) *(?&lt;val&gt;{<span class="variable">$varRe</span>})?#"</span>, function(<span class="variable">$array</span>, <span class="variable">$key</span>, <span class="variable">$val</span>, <span class="variable">$matches</span>) {</div><div class="line">    <span class="keyword">if</span> (!<span class="variable">$array</span>) <span class="keyword">return</span> <span class="string">"endforeach;"</span>;</div><div class="line">    <span class="keyword">return</span> <span class="variable">$val</span> ? <span class="string">"foreach({<span class="variable">$array</span>} as {<span class="variable">$key</span>} =&gt; {<span class="variable">$val</span>}):"</span> : <span class="string">"foreach({<span class="variable">$array</span>} as {<span class="variable">$key</span>}):"</span>;</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>一切依赖于神奇的方法: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 插入语法分析钩子</div><div class="line"> *</div><div class="line"> *<span class="javadoctag"> @param</span> string $re 正则表达式</div><div class="line"> *<span class="javadoctag"> @param</span> callable $callback 调用函数</div><div class="line"> *<span class="javadoctag"> @param</span> bool $insertAtEnd 是否插入在最后面</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> function <span class="title">insertParser</span>($re, callable $callback, $insertAtEnd = <span class="keyword">false</span>);</div></pre></td></tr></table></figure>
+
+<p>通过这个方法你可以非常简单的添加自己所需要的语法，无需复杂的语法分析知识，当然这也有一个毛病就是正则的分析能力明显没有完善的语法扫描器强，容易出现遗漏或者误判的情况。特别是针对字符串分析，如果不依赖堆栈（stack) 等数据结构是很容易出现误判的。</p>
+<h2 id="语法错误提示">语法错误提示</h2>
+<p>一个模板引擎非常重要的一点就是错误提示功能，否则很难进行模板开发。</p>
+<p>比如原始模板是这样的:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="variable">%loop</span> <span class="variable">$items</span> <span class="variable">$index</span> <span class="variable">$item</span><span class="variable">%&gt;</span></div><div class="line">    &lt;<span class="variable">%=</span><span class="variable">$item</span>-&gt;name<span class="variable">%&gt;</span></div><div class="line">&lt;<span class="variable">%/</span>looop<span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
+
+<p>loop 多了一个 o，看一下错误提示是如何提示的:</p>
+<p>错误信息: syntax error, unexpected ‘/‘<br>错误位置: 第8行<br>模板代码:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> &lt;<span class="variable">%loop</span> <span class="variable">$items</span> <span class="variable">$index</span> <span class="variable">$item</span><span class="variable">%&gt;</span></div><div class="line"><span class="number">2</span>     &lt;<span class="variable">%=</span><span class="variable">$item</span>-&gt;name<span class="variable">%&gt;</span></div><div class="line"><span class="number">3</span> &lt;<span class="variable">%/</span>looop<span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
+
+<p>PHP代码:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1 <span class="php"><span class="preprocessor">&lt;?php</span> </span></div><div class="line"><span class="number">2</span> <span class="keyword">foreach</span>(<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$index</span> =&gt; <span class="variable">$item</span>):;</div><div class="line"><span class="number">3</span> <span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">4    ';</div><div class="line"><span class="number">5</span> <span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$item</span><span class="variable">-&gt;name</span>);</div><div class="line"><span class="number">6</span> <span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">7 ';</div><div class="line"><span class="number">8</span> /looop;</div></pre></td></tr></table></figure>
+
+<p>这里有一个缺陷是未能在原始位置提示出位置，这个在前期通过跟踪 $line 是可以搞定的，但是用户一旦添加自定义的语法糖那么这个跟踪很可能就变得无效，但是即使这样，这样的错误提示对于修复语法错误也是绰绰有余了。想想 Smarty 为了能在扫描阶段就提示语法错误放了多少东西进去，而且还没完全解决好！！！</p>
+<h2 id="模板包含">模板包含</h2>
+<p><del><strong>这一块不打算包含进实际的 SexyTemplate 功能中，事实上 loop 这个语法糖也不会包含进去，因为 SexyTemplate 的特性简单但是扩展性强，除了默认的 == 跟 = 这两个语法糖其他语法糖皆不会包含在内。</strong></del></p>
+<p>原谅我在这里打脸了，幸好打的不算是很严重，语法糖是包含的，但是默认是不开启的。而且编译文件功能也包含在内但是形成了另外一个单独的 FileCompiler 类。</p>
+<p>include 这个东西PHP是自带的，但是明显包含的不可能是未经过编译的模板文件对吧，所以这一块需要 SexyTemplate 特别处理下，也是通过语法糖，当然更重要的是处理引用关系。</p>
+<p>Talk is cheap. Show me the code.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//插入include的语法分析正则</span></div><div class="line"><span class="variable">$this</span><span class="variable">-&gt;insertParser</span>(<span class="string">'#^include +([\'"])(?&lt;file&gt;[^\1]+)\1$#'</span>, <span class="keyword">array</span>(<span class="variable">$this</span>, <span class="string">'parseInclude'</span>));</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 分析引用数据</div><div class="line"> *</div><div class="line"> *<span class="phpdoc"> @param</span> string $file 文件名称</div><div class="line"> *<span class="phpdoc"> @param</span> array $matches 匹配到的数据</div><div class="line"> *<span class="phpdoc"> @return</span> bool|\SexyTemplate\Wrapper</div><div class="line"> *<span class="phpdoc"> @throws</span> Exception</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">parseInclude</span><span class="params">(<span class="variable">$file</span>, <span class="variable">$matches</span>)</span></span></div><div class="line">{</div><div class="line">    <span class="comment">//判断文件是否存在</span></div><div class="line">    <span class="variable">$filePath</span> = <span class="variable">$this</span><span class="variable">-&gt;templateDir</span> . DIRECTORY_SEPARATOR . <span class="variable">$file</span> . <span class="variable">$this</span><span class="variable">-&gt;templateExt</span>;</div><div class="line">    <span class="variable">$filePath</span> = str_replace([<span class="string">'/'</span>, <span class="string">'\\'</span>], DIRECTORY_SEPARATOR, <span class="variable">$filePath</span>);</div><div class="line"></div><div class="line">    <span class="comment">//不存在抛出异常 这个不算是模板语法错误</span></div><div class="line">    <span class="keyword">if</span>(!file_exists(<span class="variable">$filePath</span>)) {</div><div class="line">        <span class="variable">$position</span> = <span class="string">"&lt;%$matches[0]%&gt;"</span>;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="keyword">Exception</span>(<span class="string">"template file '{$filePath}' is not found, pleast check at {$position}."</span>);</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="comment">//直接编译即可 而且也支持模板里面嵌套模板</span></div><div class="line">    <span class="keyword">return</span> <span class="variable">$this</span><span class="variable">-&gt;compile</span>(file_get_contents(<span class="variable">$filePath</span>));</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>同志们，寥寥几行就完美支持了模板引用，太“神奇”了。当然这里需要继承自 SexyTemplate ，具体代码可以查看 类 FileCompiler 。</p>
+<h2 id="布局(layout)/继承(extend)">布局(layout)/继承(extend)</h2>
+<p>按照 Jade 里面的 layout 思想其实跟 include 差不多，只不过是先编译 layout.html 再将表达式插入布局其中，同时再添加个对 &lt;%=content%&gt; 的处理。所以稍微改写一下上面的代码即可以支持 Jade 里面的 layout 处理方式。</p>
+<p>至于 Smarty 里面的 extend 跟 block 的实现着稍显麻烦，这个需要数据结构的支持，事实上是将模板打成这样如图的数据结构，这样能保证层级结构正确，无论是继承还是包含只是相应的两两多维数组之间的合并操作。当然这只是我的猜想未去验证，不过也八九不离十，这个无法仅仅通过插入语法分析器去完成，需要更改 compile 方法的逻辑 (OMG！！！)。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">normalObj = {</div><div class="line">    <span class="string">"children"</span> : [],</div><div class="line">    <span class="string">"name"</span> : <span class="string">"body"</span>,</div><div class="line">}</div><div class="line"></div><div class="line">[</div><div class="line"><span class="label">    normalObj:</span>head</div><div class="line"><span class="label">        normalObj:</span>css</div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">        normalObj:</span><span class="keyword">js</span></div><div class="line"><span class="label">    normalObj:</span>body</div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">        normalObj:</span><span class="string">"cotent"</span></div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">    normalObj:</span>foot</div><div class="line">]</div></pre></td></tr></table></figure>
+
+<h2 id="其他">其他</h2>
+<p>$self 变量的支持使得 模板可以调用运行环境开放的公共方法。</p>
+<p>还是一句话：KISS。虽然 Simple 但是强大的扩展能力使得 SexyTemplate “无所不能啊”。</p>
+<hr>
+<ul>
+<li>2014-11-10 19:08:56 C</li>
+<li>2014-11-11 15:04:13 U</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/11/10/sexy_template/" data-id="tnm7j7cft3xpwyoh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sphinx-1ngram" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/06/sphinx-1ngram/" class="article-date">
+  <time datetime="2014-11-06T03:03:00.000Z" itemprop="datePublished">11月 6 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/06/sphinx-1ngram/">Sphinx 一元切分</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最佳东方的找工作用的是 Sphinx 进行分词的，但是限于特定行业的问题，所以有时候总是分的不准，比如一家名叫 佛山|陶花园|艺宿馆|酒店|管理|有限公司 这个问题就大了。所以经常接到这样的Bug反馈单，直到最近实在是不胜其扰。准备将分词算法改成用一元切分了。一元切分的优点是匹配精度高，无需预先准备任何词库，但是缺点也非常明显，因为使用的是倒排索引所以一旦数据量太多很容易造成索引过大而导致效率不高，不过幸好我们这边搜索的是公司用户名，再大也大不到哪里去。</p>
+<p>改的很简单, 参照了 <a href="http://www.coreseek.cn/products-install/ngram_len_cjk/" target="_blank" rel="external">一元切分模式核心配置</a>:</p>
+<p>以下是原始的配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">index job_search-company_name</div><div class="line">{</div><div class="line"></div><div class="line">    <span class="variable">source            =</span> job_search-company_name</div><div class="line">    <span class="variable">path              =</span> /home/data/coreseek/job_search-company_name</div><div class="line">    <span class="variable">docinfo           =</span> extern</div><div class="line">    <span class="variable">mlock             =</span> <span class="number">0</span></div><div class="line">    <span class="variable">morphology        =</span> none</div><div class="line">    <span class="variable">min_word_len      =</span> <span class="number">1</span></div><div class="line">    <span class="variable">html_strip        =</span> <span class="number">0</span></div><div class="line">    <span class="variable">charset_dictpath  =</span> /usr/local/mmseg/etc/ <span class="comment">#BSD、Linux环境下设置，/符号结尾</span></div><div class="line">    <span class="comment">#charset_dictpath = etc/</span></div><div class="line">    <span class="variable">charset_type      =</span> zh_cn.utf-<span class="number">8</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>以下是修改之后的配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">index job_search<span class="attribute">-company_name</span></div><div class="line">{</div><div class="line"></div><div class="line">    source            <span class="subst">=</span> job_search<span class="attribute">-company_name</span></div><div class="line">    path              <span class="subst">=</span> /home/<span class="built_in">data</span>/coreseek/job_search<span class="attribute">-company_name</span></div><div class="line">    docinfo           <span class="subst">=</span> extern</div><div class="line">    mlock             <span class="subst">=</span> <span class="number">0</span></div><div class="line">    morphology        <span class="subst">=</span> <span class="literal">none</span></div><div class="line">    min_word_len      <span class="subst">=</span> <span class="number">1</span></div><div class="line">    html_strip        <span class="subst">=</span> <span class="number">0</span></div><div class="line">    <span class="variable">#charset_dictpath</span>  <span class="subst">=</span> /usr/<span class="built_in">local</span>/mmseg/etc<span class="subst">/</span> <span class="variable">#BSD</span>、Linux环境下设置，<span class="subst">/</span>符号结尾</div><div class="line">    <span class="variable">#charset_dictpath</span> <span class="subst">=</span> etc<span class="subst">/</span></div><div class="line">    charset_type<span class="subst">=</span>utf<span class="subst">-</span><span class="number">8</span></div><div class="line">    ngram_len<span class="subst">=</span><span class="number">1</span>        </div><div class="line">    ngram_chars <span class="subst">=</span> U<span class="subst">+</span><span class="number">4E00</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">9</span>FBF, U<span class="subst">+</span><span class="number">3400.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">4</span>DBF, U<span class="subst">+</span><span class="number">20000.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">2</span>A6DF, U<span class="subst">+</span>F900<span class="built_in">..</span>U<span class="subst">+</span>FAFF,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">2</span>F800<span class="built_in">..</span>U<span class="subst">+</span><span class="number">2</span>FA1F, U<span class="subst">+</span><span class="number">2E80</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">2</span>EFF, U<span class="subst">+</span><span class="number">2</span>F00<span class="built_in">..</span>U<span class="subst">+</span><span class="number">2</span>FDF, U<span class="subst">+</span><span class="number">3100.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">312</span>F, U<span class="subst">+</span><span class="number">31</span>A0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">31</span>BF,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">3040.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">309</span>F, U<span class="subst">+</span><span class="number">30</span>A0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">30</span>FF, U<span class="subst">+</span><span class="number">31</span>F0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">31</span>FF, U<span class="subst">+</span>AC00<span class="built_in">..</span>U<span class="subst">+</span>D7AF, U<span class="subst">+</span><span class="number">1100.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">11</span>FF,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">3130.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">318</span>F, U<span class="subst">+</span>A000<span class="built_in">..</span>U<span class="subst">+</span>A48F, U<span class="subst">+</span>A490<span class="built_in">..</span>U<span class="subst">+</span>A4CF</div><div class="line">    charset_table <span class="subst">=</span> U<span class="subst">+</span>FF10<span class="built_in">..</span>U<span class="subst">+</span>FF19<span class="subst">-&gt;</span><span class="number">0.</span><span class="number">.9</span>, <span class="number">0.</span><span class="number">.9</span>, U<span class="subst">+</span>FF41<span class="built_in">..</span>U<span class="subst">+</span>FF5A<span class="subst">-&gt;</span>a<span class="built_in">..</span>z, U<span class="subst">+</span>FF21<span class="built_in">..</span>U<span class="subst">+</span>FF3A<span class="subst">-&gt;</span>a<span class="built_in">..</span>z,<span class="subst">\</span></div><div class="line">        A<span class="built_in">..</span>Z<span class="subst">-&gt;</span>a<span class="built_in">..</span>z, a<span class="built_in">..</span>z, U<span class="subst">+</span><span class="number">0149</span>, U<span class="subst">+</span><span class="number">017</span>F, U<span class="subst">+</span><span class="number">0138</span>, U<span class="subst">+</span><span class="number">00</span>DF, U<span class="subst">+</span><span class="number">00</span>FF, U<span class="subst">+</span><span class="number">00</span>C0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">00</span>D6<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">00E0</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">00</span>F6,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">00E0</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">00</span>F6, U<span class="subst">+</span><span class="number">00</span>D8<span class="built_in">..</span>U<span class="subst">+</span><span class="number">00</span>DE<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">00</span>F8<span class="built_in">..</span>U<span class="subst">+</span><span class="number">00</span>FE, U<span class="subst">+</span><span class="number">00</span>F8<span class="built_in">..</span>U<span class="subst">+</span><span class="number">00</span>FE, U<span class="subst">+</span><span class="number">0100</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0101</span>, U<span class="subst">+</span><span class="number">0101</span>,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0102</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0103</span>, U<span class="subst">+</span><span class="number">0103</span>, U<span class="subst">+</span><span class="number">0104</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0105</span>, U<span class="subst">+</span><span class="number">0105</span>, U<span class="subst">+</span><span class="number">0106</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0107</span>, U<span class="subst">+</span><span class="number">0107</span>, U<span class="subst">+</span><span class="number">0108</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0109</span>,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0109</span>, U<span class="subst">+</span><span class="number">010</span>A<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">010</span>B, U<span class="subst">+</span><span class="number">010</span>B, U<span class="subst">+</span><span class="number">010</span>C<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">010</span>D, U<span class="subst">+</span><span class="number">010</span>D, U<span class="subst">+</span><span class="number">010</span>E<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">010</span>F, U<span class="subst">+</span><span class="number">010</span>F,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0110</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0111</span>, U<span class="subst">+</span><span class="number">0111</span>, U<span class="subst">+</span><span class="number">0112</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0113</span>, U<span class="subst">+</span><span class="number">0113</span>, U<span class="subst">+</span><span class="number">0114</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0115</span>, U<span class="subst">+</span><span class="number">0115</span>, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0116</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0117</span>,U<span class="subst">+</span><span class="number">0117</span>, U<span class="subst">+</span><span class="number">0118</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0119</span>, U<span class="subst">+</span><span class="number">0119</span>, U<span class="subst">+</span><span class="number">011</span>A<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">011</span>B, U<span class="subst">+</span><span class="number">011</span>B, U<span class="subst">+</span><span class="number">011</span>C<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">011</span>D,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">011</span>D,U<span class="subst">+</span><span class="number">011</span>E<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">011</span>F, U<span class="subst">+</span><span class="number">011</span>F, U<span class="subst">+</span><span class="number">0130</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0131</span>, U<span class="subst">+</span><span class="number">0131</span>, U<span class="subst">+</span><span class="number">0132</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0133</span>, U<span class="subst">+</span><span class="number">0133</span>, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0134</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0135</span>,U<span class="subst">+</span><span class="number">0135</span>, U<span class="subst">+</span><span class="number">0136</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0137</span>, U<span class="subst">+</span><span class="number">0137</span>, U<span class="subst">+</span><span class="number">0139</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">013</span>A, U<span class="subst">+</span><span class="number">013</span>A, U<span class="subst">+</span><span class="number">013</span>B<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">013</span>C, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">013</span>C,U<span class="subst">+</span><span class="number">013</span>D<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">013</span>E, U<span class="subst">+</span><span class="number">013</span>E, U<span class="subst">+</span><span class="number">013</span>F<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0140</span>, U<span class="subst">+</span><span class="number">0140</span>, U<span class="subst">+</span><span class="number">0141</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0142</span>, U<span class="subst">+</span><span class="number">0142</span>, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0143</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0144</span>,U<span class="subst">+</span><span class="number">0144</span>, U<span class="subst">+</span><span class="number">0145</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0146</span>, U<span class="subst">+</span><span class="number">0146</span>, U<span class="subst">+</span><span class="number">0147</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0148</span>, U<span class="subst">+</span><span class="number">0148</span>, U<span class="subst">+</span><span class="number">014</span>A<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">014</span>B, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">014</span>B,U<span class="subst">+</span><span class="number">014</span>C<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">014</span>D, U<span class="subst">+</span><span class="number">014</span>D, U<span class="subst">+</span><span class="number">014</span>E<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">014</span>F, U<span class="subst">+</span><span class="number">014</span>F, U<span class="subst">+</span><span class="number">0150</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0151</span>, U<span class="subst">+</span><span class="number">0151</span>, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0152</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0153</span>,U<span class="subst">+</span><span class="number">0153</span>, U<span class="subst">+</span><span class="number">0154</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0155</span>, U<span class="subst">+</span><span class="number">0155</span>, U<span class="subst">+</span><span class="number">0156</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0157</span>, U<span class="subst">+</span><span class="number">0157</span>, U<span class="subst">+</span><span class="number">0158</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0159</span>,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0159</span>,U<span class="subst">+</span><span class="number">015</span>A<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">015</span>B, U<span class="subst">+</span><span class="number">015</span>B, U<span class="subst">+</span><span class="number">015</span>C<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">015</span>D, U<span class="subst">+</span><span class="number">015</span>D, U<span class="subst">+</span><span class="number">015</span>E<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">015</span>F, U<span class="subst">+</span><span class="number">015</span>F, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0160</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0161</span>,U<span class="subst">+</span><span class="number">0161</span>, U<span class="subst">+</span><span class="number">0162</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0163</span>, U<span class="subst">+</span><span class="number">0163</span>, U<span class="subst">+</span><span class="number">0164</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0165</span>, U<span class="subst">+</span><span class="number">0165</span>, U<span class="subst">+</span><span class="number">0166</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0167</span>, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0167</span>,U<span class="subst">+</span><span class="number">0168</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0169</span>, U<span class="subst">+</span><span class="number">0169</span>, U<span class="subst">+</span><span class="number">016</span>A<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">016</span>B, U<span class="subst">+</span><span class="number">016</span>B, U<span class="subst">+</span><span class="number">016</span>C<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">016</span>D, U<span class="subst">+</span><span class="number">016</span>D, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">016</span>E<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">016</span>F,U<span class="subst">+</span><span class="number">016</span>F, U<span class="subst">+</span><span class="number">0170</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0171</span>, U<span class="subst">+</span><span class="number">0171</span>, U<span class="subst">+</span><span class="number">0172</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0173</span>, U<span class="subst">+</span><span class="number">0173</span>, U<span class="subst">+</span><span class="number">0174</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0175</span>,<span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0175</span>,U<span class="subst">+</span><span class="number">0176</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0177</span>, U<span class="subst">+</span><span class="number">0177</span>, U<span class="subst">+</span><span class="number">0178</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">00</span>FF, U<span class="subst">+</span><span class="number">00</span>FF, U<span class="subst">+</span><span class="number">0179</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">017</span>A, U<span class="subst">+</span><span class="number">017</span>A, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">017</span>B<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">017</span>C,U<span class="subst">+</span><span class="number">017</span>C, U<span class="subst">+</span><span class="number">017</span>D<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">017</span>E, U<span class="subst">+</span><span class="number">017</span>E, U<span class="subst">+</span><span class="number">0410.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">042</span>F<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0430.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">044</span>F, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0430.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">044</span>F,U<span class="subst">+</span><span class="number">05</span>D0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">05</span>EA, U<span class="subst">+</span><span class="number">0531.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">0556</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">0561.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">0586</span>, U<span class="subst">+</span><span class="number">0561.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">0587</span>, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0621.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">063</span>A, U<span class="subst">+</span><span class="number">01</span>B9,U<span class="subst">+</span><span class="number">01</span>BF, U<span class="subst">+</span><span class="number">0640.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">064</span>A, U<span class="subst">+</span><span class="number">0660.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">0669</span>, U<span class="subst">+</span><span class="number">066</span>E, U<span class="subst">+</span><span class="number">066</span>F, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0671.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">06</span>D3, U<span class="subst">+</span><span class="number">06</span>F0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">06</span>FF,U<span class="subst">+</span><span class="number">0904.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">0939</span>, U<span class="subst">+</span><span class="number">0958.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">095</span>F, U<span class="subst">+</span><span class="number">0960.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">0963</span>, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0966.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">096</span>F, U<span class="subst">+</span><span class="number">097</span>B<span class="built_in">..</span>U<span class="subst">+</span><span class="number">097</span>F,U<span class="subst">+</span><span class="number">0985.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">09</span>B9, U<span class="subst">+</span><span class="number">09</span>CE, U<span class="subst">+</span><span class="number">09</span>DC<span class="built_in">..</span>U<span class="subst">+</span><span class="number">09E3</span>, U<span class="subst">+</span><span class="number">09E6</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">09</span>EF, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0</span>A05<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>A39, U<span class="subst">+</span><span class="number">0</span>A59<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>A5E,U<span class="subst">+</span><span class="number">0</span>A66<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>A6F, U<span class="subst">+</span><span class="number">0</span>A85<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>AB9, U<span class="subst">+</span><span class="number">0</span>AE0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>AE3, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0</span>AE6<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>AEF, U<span class="subst">+</span><span class="number">0</span>B05<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>B39,U<span class="subst">+</span><span class="number">0</span>B5C<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>B61, U<span class="subst">+</span><span class="number">0</span>B66<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>B6F, U<span class="subst">+</span><span class="number">0</span>B71, U<span class="subst">+</span><span class="number">0</span>B85<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>BB9, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0</span>BE6<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>BF2, U<span class="subst">+</span><span class="number">0</span>C05<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>C39,U<span class="subst">+</span><span class="number">0</span>C66<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>C6F, U<span class="subst">+</span><span class="number">0</span>C85<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>CB9, U<span class="subst">+</span><span class="number">0</span>CDE<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>CE3, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0</span>CE6<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>CEF, U<span class="subst">+</span><span class="number">0</span>D05<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>D39, U<span class="subst">+</span><span class="number">0</span>D60,U<span class="subst">+</span><span class="number">0</span>D61, U<span class="subst">+</span><span class="number">0</span>D66<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>D6F, U<span class="subst">+</span><span class="number">0</span>D85<span class="built_in">..</span>U<span class="subst">+</span><span class="number">0</span>DC6, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">1900.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">1938</span>, U<span class="subst">+</span><span class="number">1946.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">194</span>F, U<span class="subst">+</span>A800<span class="built_in">..</span>U<span class="subst">+</span>A805,U<span class="subst">+</span>A807<span class="built_in">..</span>U<span class="subst">+</span>A822, U<span class="subst">+</span><span class="number">0386</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B1, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">03</span>AC<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B1, U<span class="subst">+</span><span class="number">0388</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B5, U<span class="subst">+</span><span class="number">03</span>AD<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B5,U<span class="subst">+</span><span class="number">0389</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B7, U<span class="subst">+</span><span class="number">03</span>AE<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B7, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">038</span>A<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B9, U<span class="subst">+</span><span class="number">0390</span><span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B9, U<span class="subst">+</span><span class="number">03</span>AA<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B9,U<span class="subst">+</span><span class="number">03</span>AF<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B9, U<span class="subst">+</span><span class="number">03</span>CA<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B9, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">038</span>C<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>BF, U<span class="subst">+</span><span class="number">03</span>CC<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>BF, U<span class="subst">+</span><span class="number">038</span>E<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C5,U<span class="subst">+</span><span class="number">03</span>AB<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C5, U<span class="subst">+</span><span class="number">03</span>B0<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C5, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">03</span>CB<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C5, U<span class="subst">+</span><span class="number">03</span>CD<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C5, U<span class="subst">+</span><span class="number">038</span>F<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C9,U<span class="subst">+</span><span class="number">03</span>CE<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C9, U<span class="subst">+</span><span class="number">03</span>C2<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C3, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">0391.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">03</span>A1<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>B1<span class="built_in">..</span>U<span class="subst">+</span><span class="number">03</span>C1,U<span class="subst">+</span><span class="number">03</span>A3<span class="built_in">..</span>U<span class="subst">+</span><span class="number">03</span>A9<span class="subst">-&gt;</span>U<span class="subst">+</span><span class="number">03</span>C3<span class="built_in">..</span>U<span class="subst">+</span><span class="number">03</span>C9, U<span class="subst">+</span><span class="number">03</span>B1<span class="built_in">..</span>U<span class="subst">+</span><span class="number">03</span>C1, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">03</span>C3<span class="built_in">..</span>U<span class="subst">+</span><span class="number">03</span>C9, U<span class="subst">+</span><span class="number">0E01</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">0E2</span>E,U<span class="subst">+</span><span class="number">0E30</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">0E3</span>A, U<span class="subst">+</span><span class="number">0E40</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">0E45</span>, U<span class="subst">+</span><span class="number">0E47</span>, U<span class="subst">+</span><span class="number">0E50</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">0E59</span>, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span>A000<span class="built_in">..</span>U<span class="subst">+</span>A48F, U<span class="subst">+</span><span class="number">4E00</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">9</span>FBF,U<span class="subst">+</span><span class="number">3400.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">4</span>DBF, U<span class="subst">+</span><span class="number">20000.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">2</span>A6DF, U<span class="subst">+</span>F900<span class="built_in">..</span>U<span class="subst">+</span>FAFF, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">2</span>F800<span class="built_in">..</span>U<span class="subst">+</span><span class="number">2</span>FA1F, U<span class="subst">+</span><span class="number">2E80</span><span class="built_in">..</span>U<span class="subst">+</span><span class="number">2</span>EFF,U<span class="subst">+</span><span class="number">2</span>F00<span class="built_in">..</span>U<span class="subst">+</span><span class="number">2</span>FDF, U<span class="subst">+</span><span class="number">3100.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">312</span>F, U<span class="subst">+</span><span class="number">31</span>A0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">31</span>BF, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">3040.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">309</span>F, U<span class="subst">+</span><span class="number">30</span>A0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">30</span>FF,U<span class="subst">+</span><span class="number">31</span>F0<span class="built_in">..</span>U<span class="subst">+</span><span class="number">31</span>FF, U<span class="subst">+</span>AC00<span class="built_in">..</span>U<span class="subst">+</span>D7AF, U<span class="subst">+</span><span class="number">1100.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">11</span>FF, <span class="subst">\</span></div><div class="line">        U<span class="subst">+</span><span class="number">3130.</span><span class="built_in">.</span>U<span class="subst">+</span><span class="number">318</span>F, U<span class="subst">+</span>A000<span class="built_in">..</span>U<span class="subst">+</span>A48F,U<span class="subst">+</span>A490<span class="built_in">..</span>U<span class="subst">+</span>A4CF </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>跟新下索引效果非常明显，即使 佛 陶 园艺 馆 店 理 限公司 这样分割的非常明显的词也能准确的搜索到相应的酒店。</p>
+<p>最后附上我之前给内部做分享的一个 <a href="http://sou.la/blog/usr/uploads/2014/11/2146981545.pdf" target="_blank" rel="external">PPT</a>。</p>
+<hr>
+<ul>
+<li>2014-11-06 11:03:00 C</li>
+<li>2014-11-12 10:01:55 U</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/11/06/sphinx-1ngram/" data-id="69pmj6l5fbqdyt09" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sphinx/">sphinx</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-emulate_prepare" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/05/emulate_prepare/" class="article-date">
+  <time datetime="2014-08-05T09:48:54.000Z" itemprop="datePublished">8月 5 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/05/emulate_prepare/">PDO中的emluate prepare (模拟预处理)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先说说什么是 <a href="http://php.net/manual/en/book.pdo.php" target="_blank" rel="external">PDO</a> , 如果你是 MS 系的 Web 开发人员那你一定会知道 <a href="http://zh.wikipedia.org/zh/ADO" target="_blank" rel="external">ADO（ActiveX Data Objects）</a>，其实 PDO 跟 ADO 差不多一样它实现了大部分关系型数据库(MySQL, MSSQL, SQLite, PostgreSQL)的访问层。PS: Java 也有个 JDO 。</p>
+<p>PHP 官方对它的解释如下:</p>
+<blockquote>
+<p>PDO provides a data-access abstraction layer, which means that, regardless of which database you’re using, you use the same functions to issue queries and fetch data. PDO does not provide a database abstraction; it doesn’t rewrite SQL or emulate missing features. You should use a full-blown abstraction layer if you need that facility.<br>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/05/emulate_prepare/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/08/05/emulate_prepare/" data-id="ag3whu8iqbgocmm1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdo/">pdo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-debug" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/01/php-debug/" class="article-date">
+  <time datetime="2014-08-01T02:06:34.000Z" itemprop="datePublished">8月 1 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/01/php-debug/">PHP Debug技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>啥也不说，直接上代码。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">'debug'</span>]))</div><div class="line">   register_shutdown_function(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">        var_dump(error_get_last());</div><div class="line">   }); <span class="comment">//加在头部 无需修改任何配置 对程序无害 绿色</span></div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/08/01/php-debug/" data-id="gv9coos6kizgcfyq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-how-to-export-big-data-to-xlsx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/01/how-to-export-big-data-to-xlsx/" class="article-date">
+  <time datetime="2014-07-01T08:02:46.000Z" itemprop="datePublished">7月 1 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/01/how-to-export-big-data-to-xlsx/">PHP中如何导出大量数据到Excel</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2>
+<p>这是我的一个小 class : <a href="https://github.com/qpwoeiru96/soucode/blob/master/MyExcel.php" target="_blank" rel="external">MyExcel</a> 的实现解析，MyExcel 是一个快速导出数据到 Excel 的类。在我们线上实际环境中 14个字段的10000行数据从 PHP 请求开始到 MyExcel 渲染结束只需要3秒钟，这其中还包含 MySQL 后台数据的请求!!!截图如下：</p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/07/3681779040.png" alt="MyExcel Example"></p>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/07/01/how-to-export-big-data-to-xlsx/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/07/01/how-to-export-big-data-to-xlsx/" data-id="ups7ftowl128wnrz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-yii-tips" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/12/13/yii-tips/" class="article-date">
+  <time datetime="2013-12-13T02:43:00.000Z" itemprop="datePublished">12月 13 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/12/13/yii-tips/">Yii中的小坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="不靠谱的CDbCriteria">不靠谱的CDbCriteria</h2>
+<p>当有如下的代码执行，最终 <code>$criteria</code> 是怎么样的？</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$criteria</span> = <span class="keyword">new</span> \CDbCriteria;</div><div class="line"><span class="variable">$criteria</span>-&gt;compare(<span class="string">'id'</span>, <span class="keyword">array</span>());</div><div class="line"><span class="variable">$criteria</span>-&gt;compare(<span class="string">'id'</span>, <span class="string">''</span>);</div><div class="line"><span class="variable">$criteria</span>-&gt;compare(<span class="string">'id'</span>, <span class="keyword">null</span>);</div><div class="line"><span class="variable">$criteria</span>-&gt;compare(<span class="string">'id'</span>, <span class="keyword">false</span>);</div><div class="line">var_dump(<span class="variable">$criteria</span>);</div></pre></td></tr></table></figure>
+
+<p>如果没踩过坑，或者没看过 <a href="https://github.com/yiisoft/yii/blob/master/framework/db/schema/CDbCriteria.php#L400" target="_blank" rel="external">CDbCriteria</a> 注释的童鞋估计都会被深深的迷惑了！</p>
+
+        
+          <p class="article-more-link">
+            <a href="/2013/12/13/yii-tips/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2013/12/13/yii-tips/" data-id="eqgopq1f2e2ogn5u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-extend-character" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/11/16/extend-character/" class="article-date">
+  <time datetime="2013-11-15T18:12:00.000Z" itemprop="datePublished">11月 16 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/11/16/extend-character/">单片机入门之扩展字模</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>双十一的时候，手贱抽了几个红包，如何用掉呢 ，想在当当买几本书，后来想想就凭自己这种惰性估计买回来也不会看！所以就买了个单片机，实在没东西可以买了，再说红包也就那么50元。</p>
+<p>刚刚今天到手，做了个LED的测试，心想有点简单啊，干脆弄弄彩屏的东西吧！看了下Demo，也非常简单啊，改了代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#include&lt;reg51.h&gt;</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span>"gui.h"</span></div><div class="line"></div><div class="line"><span class="comment">/****************************************************************************</span></div><div class="line">*函数名    ：main</div><div class="line">*输  入    ：无</div><div class="line">*输  出    ：无</div><div class="line">*功  能    ：主函数</div><div class="line">*说  明    ：由于单片机显示图片的时候，程序比较大，如果你使用的是89C52的单片机，</div><div class="line">*          * 请注意你程序的大小是否超过了单片机的内存大小，超过了会运行失败。</div><div class="line">****************************************************************************/</div><div class="line"></div><div class="line"><span class="keyword">void</span> main (<span class="keyword">void</span>)</div><div class="line">{</div><div class="line">    TFT_Init();  <span class="comment">//初始化TFT</span></div><div class="line">    GUI_ClearScreen(BLACK);</div><div class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</div><div class="line">    {</div><div class="line">        GUI_Write32CnChar(<span class="number">22</span>, <span class="number">0</span>, <span class="string">"普中科技"</span>, RED, BLACK);</div><div class="line">        GUI_Line(<span class="number">22</span>, <span class="number">29</span>, <span class="number">150</span>, <span class="number">29</span>, RED);</div><div class="line">        GUI_WriteASCII(<span class="number">30</span>, <span class="number">30</span>, <span class="string">"PRECHIN"</span>, RED, BLACK);</div><div class="line">        GUI_Line(<span class="number">10</span>, <span class="number">55</span>, <span class="number">164</span>, <span class="number">55</span>, RED);</div><div class="line">        GUI_WriteASCII(<span class="number">0</span>, <span class="number">56</span>,<span class="string">"!@#45^&amp;fsf"</span>, RED, BLACK);</div><div class="line">        GUI_Write14CnChar(<span class="number">0</span>, <span class="number">90</span>, <span class="string">"年月日星期摄氏度"</span>, RED, BLACK);</div><div class="line">        <span class="keyword">while</span>(<span class="number">1</span>);                   </div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+        
+          <p class="article-more-link">
+            <a href="/2013/11/16/extend-character/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2013/11/16/extend-character/" data-id="ovpa1j8ulg328p9f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-fastcgi_finish_request" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/11/07/fastcgi_finish_request/" class="article-date">
+  <time datetime="2013-11-07T14:19:00.000Z" itemprop="datePublished">11月 7 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/11/07/fastcgi_finish_request/">快速提高php响应能力之fastcgi_finish_request篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>继上次写过 <a href="http://sou.la/blog/IT/php-coolie" title="软件开发记事之php coolie诞生记" target="_blank" rel="external">软件开发记事之php coolie诞生记</a>&nbsp;我一直觉得在特定环境下应该有更好的优化方法，比如当存在 fastcgi_finish_request 这样的函数的时候。看以下的代码：</p>
+
+        
+          <p class="article-more-link">
+            <a href="/2013/11/07/fastcgi_finish_request/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2013/11/07/fastcgi_finish_request/" data-id="ajfhdz1a276yo633" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-upgrade" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/23/php-upgrade/" class="article-date">
+  <time datetime="2013-07-22T17:38:59.000Z" itemprop="datePublished">7月 23 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/23/php-upgrade/">PHP每次升级都升级了什么？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2>
+<p>我是2010年中旬开始自学PHP的，那时候大家用的PHP版本还是5.2甚至是5.1,这几年一直在学PHP，可以说是见证了从PHP 5.2到PHP 5.5的过程。不怕大家笑话，那时我看个 <a href="http://zh.wikipedia.org/zh/MVC" title="MVC - 维基百科，自由的百科全书" target="_blank" rel="external">MVC</a> 都非常的困难。那时多菜呢，学了半年之后的也就是2011年初，还在看MVC，一个 《最简单的PHP_MVC留言本实例.doc》看了又看实在是看不懂。不解啊，困惑啊，后来突飞猛进的一天是就业实习期间跟 <a href="http://www.703804.com/" title="柒零叁网是温州本地人气最旺的网络社区" target="_blank" rel="external">柒零叁</a> 的技术负责人有过一次交道，然后照猫画虎的按照他的路子写了一个MagicPHP，在这期间深入学习了MVC（其实真说起来还不是完全意义上的MVC只是类似。），自认为从那天起PHP才算是入门。那时的代码写得是非常的烂，按照今天的标准要是我组里谁给我发现写出这种代码，绝对会给我吐槽到死的。可是就在当时703的技术负责人邀请我进入703，我觉得我的代码风格起到了一定因素，所以我至今都认为 &ldquo;<strong>没有能力不行的只有天赋不够或者态度不行的</strong>&rdquo;。</p>
+<p>有点扯远了，今天说的是&ldquo;PHP每次升级都升级了什么&rdquo;,我觉得将我的 PHP 背景代入下应该更有说服感。</p>
+<p>我觉得 PHP 每次升级都是围绕着几个大的功能点来的，哪几个呢？我列一下:</p>
+
+        
+          <p class="article-more-link">
+            <a href="/2013/07/23/php-upgrade/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2013/07/23/php-upgrade/" data-id="z5usi9b14o4z8e13" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-sucks-things" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/04/20/php-sucks-things/" class="article-date">
+  <time datetime="2012-04-19T17:34:00.000Z" itemprop="datePublished">4月 20 2012</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/04/20/php-sucks-things/">PHP的一点历史遗留问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PHP 同 JavaScript 一样并不是一开始就设计的很完善的语言，都是作者一步一步完善过来的。因为兼容原因很多历史遗留问题就成了 PHPer 心头的一大恨。那我们看一下都有哪些坑是PHPer需要注意的。</p>
+
+        
+          <p class="article-more-link">
+            <a href="/2012/04/20/php-sucks-things/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2012/04/20/php-sucks-things/" data-id="g7rv01hg0zug3e5q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/tags/php/page/2/">2</a><a class="extend next" rel="next" href="/tags/php/page/2/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-graphics/">computer graphics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdo/">pdo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sphinx/">sphinx</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10.00px;">C#</a><a href="/tags/architecture/" style="font-size: 10.00px;">architecture</a><a href="/tags/computer-graphics/" style="font-size: 10.00px;">computer graphics</a><a href="/tags/css3/" style="font-size: 10.00px;">css3</a><a href="/tags/java/" style="font-size: 10.00px;">java</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a><a href="/tags/log/" style="font-size: 16.67px;">log</a><a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a><a href="/tags/nodejs/" style="font-size: 10.00px;">node.js</a><a href="/tags/pdo/" style="font-size: 10.00px;">pdo</a><a href="/tags/php/" style="font-size: 20.00px;">php</a><a href="/tags/sphinx/" style="font-size: 10.00px;">sphinx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">July 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/31/log-20141231/">2014 - 2015</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/svn-auto-push/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/how-to-build-your-first-php's-extension/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 QPWOEIRU96<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/qpwoeiru96" class="mobile-nav-link">Github</a>
+  
+    <a href="http://weibo.com/qpwoeiru96" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+
+<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

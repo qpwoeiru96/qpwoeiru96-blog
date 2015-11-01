@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C#中对图形快速栅格化的另类方法 | Yet Another Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在编写 红外热像图在线监测系统 这个软件的时候，需要在界面上画图形并且图形覆盖区域的一些温度信息，简单一点讲就是判断图形内点的集合，然后去取这些点在对应热图像的温度数据然后再图表上渲染出来，可能这对于学过计算机图形学的大神来说很容易啊，抡着 DDA、Bresenham、Scan-Line Filling 这些大锤就出来了，但是对于我这个算法渣我就痛苦了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#中对图形快速栅格化的另类方法">
+<meta property="og:url" content="http://blog.sou.la/2014/08/08/quick-rasterize/">
+<meta property="og:site_name" content="Yet Another Blog">
+<meta property="og:description" content="在编写 红外热像图在线监测系统 这个软件的时候，需要在界面上画图形并且图形覆盖区域的一些温度信息，简单一点讲就是判断图形内点的集合，然后去取这些点在对应热图像的温度数据然后再图表上渲染出来，可能这对于学过计算机图形学的大神来说很容易啊，抡着 DDA、Bresenham、Scan-Line Filling 这些大锤就出来了，但是对于我这个算法渣我就痛苦了。">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2014/08/3826554130.png">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2014/08/247601891.png">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2014/08/2351538065.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#中对图形快速栅格化的另类方法">
+<meta name="twitter:description" content="在编写 红外热像图在线监测系统 这个软件的时候，需要在界面上画图形并且图形覆盖区域的一些温度信息，简单一点讲就是判断图形内点的集合，然后去取这些点在对应热图像的温度数据然后再图表上渲染出来，可能这对于学过计算机图形学的大神来说很容易啊，抡着 DDA、Bresenham、Scan-Line Filling 这些大锤就出来了，但是对于我这个算法渣我就痛苦了。">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yet Another Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Write by Q</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/qpwoeiru96">Github</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/qpwoeiru96">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.sou.la"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-quick-rasterize" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/08/quick-rasterize/" class="article-date">
+  <time datetime="2014-08-08T09:47:03.000Z" itemprop="datePublished">8月 8 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C#中对图形快速栅格化的另类方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在编写 红外热像图在线监测系统 这个软件的时候，需要在界面上画图形并且图形覆盖区域的一些温度信息，简单一点讲就是判断图形内点的集合，然后去取这些点在对应热图像的温度数据然后再图表上渲染出来，可能这对于学过计算机图形学的大神来说很容易啊，抡着 <a href="http://en.wikipedia.org/wiki/Digital_differential_analyzer_%28graphics_algorithm%29" target="_blank" rel="external">DDA</a>、<a href="http://zh.wikipedia.org/zh/%E5%B8%83%E9%9B%B7%E6%A3%AE%E6%BC%A2%E5%A7%86%E7%9B%B4%E7%B7%9A%E6%BC%94%E7%AE%97%E6%B3%95" target="_blank" rel="external">Bresenham</a>、<a href="http://netclass.csu.edu.cn/NCourse/hep089/Chapter2/CG_Txt_2_015.htm" target="_blank" rel="external">Scan-Line Filling</a> 这些大锤就出来了，但是对于我这个算法渣我就痛苦了。</p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/08/3826554130.png" alt="enter image description here"></p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/08/247601891.png" alt="enter image description here"></p>
+<p><a id="more"></a><br>不过算法渣自然有算法渣的方法：直接在 <code>System.Drawing.Graphics</code> 绘出图形然后取点，反正 RGBA 任何通道大于的值 0 的那么必定是点在图形内的点。</p>
+<p>来一个多边形填充的例子：</p>
+<figure class="highlight C#"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;<span class="keyword">int</span>[]&gt; <span class="title">GetPixels</span>(PointCollection Points)</div><div class="line">{</div><div class="line">    List&lt;<span class="keyword">int</span>[]&gt; list = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>[]&gt;{};</div><div class="line">    </div><div class="line">    <span class="comment">//这里暂定图形的最大大小为320，240 如果更智能的需要判断图形的边界区域动态调整</span></div><div class="line">    System.Drawing.Bitmap img = <span class="keyword">new</span> System.Drawing.Bitmap(<span class="number">320</span>, <span class="number">240</span>);</div><div class="line">    System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(img);</div><div class="line">    System.Drawing.SolidBrush brush = <span class="keyword">new</span> System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>));</div><div class="line"></div><div class="line">    List&lt;System.Drawing.Point&gt; ps = <span class="keyword">new</span> List&lt;System.Drawing.Point&gt;();</div><div class="line">    <span class="comment">//多边形点的定义</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Points.Count; i++)</div><div class="line">    {</div><div class="line">        <span class="keyword">int</span> x = (<span class="keyword">int</span>)Points[i].X;</div><div class="line">        <span class="keyword">int</span> y = (<span class="keyword">int</span>)Points[i].Y;</div><div class="line">        ps.Add(<span class="keyword">new</span> System.Drawing.Point(x, y));</div><div class="line">    }</div><div class="line"></div><div class="line">    g.FillPolygon(brush, ps.ToArray());</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">320</span>; x++)</div><div class="line">    {</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> y = <span class="number">0</span>; y &lt; <span class="number">240</span>; y++)</div><div class="line">        {</div><div class="line">            <span class="keyword">var</span> Color = img.GetPixel(x, y);            </div><div class="line">            <span class="keyword">if</span> (Color.R &gt; <span class="number">127</span>)</div><div class="line">            {</div><div class="line">                list.Add(<span class="keyword">new</span> <span class="keyword">int</span>[] { x, y });</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">return</span> list;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>顺便我还写了一个例子来看看 Bresenham 跟上面这种方法的区别，简直就是没有区别。虽然在性能上差了点，但是这个方法通用啊，秒杀了大多数 .NET 自带的图形，即使再复杂的图形也是求并集的问题，妈妈再也不用我算法写不对了。</p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/08/2351538065.png" alt="enter image description here"></p>
+<p><a href="http://sou.la/blog/usr/uploads/2014/08/345582477.zip" target="_blank" rel="external">DEMO 代码下载</a></p>
+<hr>
+<ul>
+<li>2014-08-08 17:47:03 C</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/08/08/quick-rasterize/" data-id="y4i9c47wt0t70xob" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-graphics/">computer graphics</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/10/28/log-20141028/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          说说最近看过的几部电影
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/08/05/emulate_prepare/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PDO中的emluate prepare (模拟预处理)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-graphics/">computer graphics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdo/">pdo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sphinx/">sphinx</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10.00px;">C#</a><a href="/tags/architecture/" style="font-size: 10.00px;">architecture</a><a href="/tags/computer-graphics/" style="font-size: 10.00px;">computer graphics</a><a href="/tags/css3/" style="font-size: 10.00px;">css3</a><a href="/tags/java/" style="font-size: 10.00px;">java</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a><a href="/tags/log/" style="font-size: 16.67px;">log</a><a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a><a href="/tags/nodejs/" style="font-size: 10.00px;">node.js</a><a href="/tags/pdo/" style="font-size: 10.00px;">pdo</a><a href="/tags/php/" style="font-size: 20.00px;">php</a><a href="/tags/sphinx/" style="font-size: 10.00px;">sphinx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">July 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/31/log-20141231/">2014 - 2015</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/svn-auto-push/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/how-to-build-your-first-php's-extension/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 QPWOEIRU96<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/qpwoeiru96" class="mobile-nav-link">Github</a>
+  
+    <a href="http://weibo.com/qpwoeiru96" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+
+<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

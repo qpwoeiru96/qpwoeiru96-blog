@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>谈谈 SexyTemplate | Yet Another Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景
+SexyTemplate 是我最近写的一个模板引擎，初衷是吐槽一下 PHPCMS 的模板引擎，以及我们前端经常用 artTemplate 来制作我们的前端页面，为了方便移植啊。
+所以我也仿照 artTemplate 写了一个模板引擎，第一代版本应该是一个下午就写出来了，速度应该说是非常快，这其中有两点：第一个仿造别人的思路去写一个东西，第二个是本人浸淫 PHP (拍黄片) 多年，语法什么的早">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈 SexyTemplate">
+<meta property="og:url" content="http://blog.sou.la/2014/11/10/sexy_template/">
+<meta property="og:site_name" content="Yet Another Blog">
+<meta property="og:description" content="背景
+SexyTemplate 是我最近写的一个模板引擎，初衷是吐槽一下 PHPCMS 的模板引擎，以及我们前端经常用 artTemplate 来制作我们的前端页面，为了方便移植啊。
+所以我也仿照 artTemplate 写了一个模板引擎，第一代版本应该是一个下午就写出来了，速度应该说是非常快，这其中有两点：第一个仿造别人的思路去写一个东西，第二个是本人浸淫 PHP (拍黄片) 多年，语法什么的早">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="谈谈 SexyTemplate">
+<meta name="twitter:description" content="背景
+SexyTemplate 是我最近写的一个模板引擎，初衷是吐槽一下 PHPCMS 的模板引擎，以及我们前端经常用 artTemplate 来制作我们的前端页面，为了方便移植啊。
+所以我也仿照 artTemplate 写了一个模板引擎，第一代版本应该是一个下午就写出来了，速度应该说是非常快，这其中有两点：第一个仿造别人的思路去写一个东西，第二个是本人浸淫 PHP (拍黄片) 多年，语法什么的早">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yet Another Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Write by Q</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/qpwoeiru96">Github</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/qpwoeiru96">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.sou.la"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sexy_template" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/10/sexy_template/" class="article-date">
+  <time datetime="2014-11-10T11:08:56.000Z" itemprop="datePublished">11月 10 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      谈谈 SexyTemplate
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景">背景</h2>
+<p><a href="https://github.com/qpwoeiru96/SexyTemplate" target="_blank" rel="external">SexyTemplate</a> 是我最近写的一个模板引擎，初衷是吐槽一下 PHPCMS 的模板引擎，以及我们前端经常用 <a href="https://github.com/aui/artTemplate" target="_blank" rel="external">artTemplate</a> 来制作我们的前端页面，为了方便移植啊。</p>
+<p>所以我也仿照 artTemplate 写了一个模板引擎，第一代版本应该是一个下午就写出来了，速度应该说是非常快，这其中有两点：第一个仿造别人的思路去写一个东西，第二个是本人浸淫 PHP (拍黄片) 多年，语法什么的早已经非常熟悉了。</p>
+<h2 id="使用方法">使用方法</h2>
+<p>使用方法一项秉承着我的原则：KISS （Keep It Simple, Stupid）, 简单易用，再说复杂的我也写不出来啊。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实例化一个编译类</span></div><div class="line"><span class="variable">$ST</span> = <span class="keyword">new</span> SexyTemplate\Compiler();</div><div class="line"><span class="variable">$template</span> = <span class="string">'&lt;pre&gt;hello world! this is &lt;%var_dump($self)%&gt;. &lt;%==$content%&gt;&lt;/pre&gt;'</span>;</div><div class="line"></div><div class="line"><span class="comment">//开启全部的语法糖</span></div><div class="line"><span class="variable">$st</span><span class="variable">-&gt;enableAllSyntax</span>();</div><div class="line"></div><div class="line"><span class="comment">//开启debug功能会提示语法错误</span></div><div class="line"><span class="variable">$st</span><span class="variable">-&gt;debug</span> = <span class="keyword">true</span>;</div><div class="line"></div><div class="line"><span class="comment">//编译完成之后 会返回一个执行包装器</span></div><div class="line"><span class="variable">$wrapper</span> = <span class="variable">$ST</span><span class="variable">-&gt;compile</span>(<span class="variable">$template</span>);</div><div class="line"></div><div class="line"><span class="comment">//你可以打印查看编译出来的源</span></div><div class="line"><span class="comment">//highlight_string('&lt;?php ' . $wrapper);</span></div><div class="line"></div><div class="line"><span class="comment">//绑定 $self 环境 并且输入变量执行</span></div><div class="line"><span class="keyword">print</span> <span class="variable">$wrapper</span></div><div class="line">    <span class="variable">-&gt;bind</span>(<span class="variable">$this</span>)</div><div class="line">    <span class="variable">-&gt;render</span>([<span class="string">'content'</span> =&gt; <span class="string">'i am SexyTemplate'</span>]);</div></pre></td></tr></table></figure>
+
+<p>可以再 <a href="http://tools.sou.la/SexyTemplate/demo/" target="_blank" rel="external">线上</a> 体验一下 SexyTemplate 的在线编译功能。</p>
+<h2 id="语法支持">语法支持</h2>
+<p>第一代是非常的简单，只是将形如下面的模板字符串：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hello world, i am &lt;<span class="variable">%=</span><span class="variable">$name</span><span class="variable">%&gt;</span></div><div class="line">&lt;<span class="variable">%foreach</span> (<span class="variable">$favourites</span> as <span class="variable">$fav</span>) {<span class="variable">%&gt;</span></div><div class="line">i like &lt;<span class="variable">%=</span><span class="variable">$fav</span><span class="variable">%&gt;</span>. </div><div class="line">&lt;<span class="variable">%}</span><span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
+
+<p>转换成相应的PHP代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">extract(<span class="variable">$vars</span>);<span class="keyword">unset</span>(<span class="variable">$vars</span>);<span class="variable">$STR</span> = <span class="string">""</span>; <span class="variable">$STC</span> = <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$s</span>)</span> <span class="title">use</span><span class="params">(&<span class="variable">$STR</span>)</span> </span>{ <span class="variable">$STR</span> .= <span class="variable">$s</span>;};</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">hello world, i am ');</div><div class="line"><span class="variable">$STV</span> = <span class="variable">$name</span>;<span class="variable">$STC</span>(htmlspecialchars(<span class="variable">$STV</span>));<span class="keyword">unset</span>(<span class="variable">$STV</span>);</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">');</div><div class="line"><span class="keyword">foreach</span> (<span class="variable">$favourites</span> <span class="keyword">as</span> <span class="variable">$fav</span>) {;</div><div class="line"><span class="variable">$STC</span>(<span class="string">'</span></div><div class="line">i like ');</div><div class="line"><span class="variable">$STV</span> = <span class="variable">$fav</span>;<span class="variable">$STC</span>(htmlspecialchars(<span class="variable">$STV</span>));<span class="keyword">unset</span>(<span class="variable">$STV</span>);</div><div class="line"><span class="variable">$STC</span>(<span class="string">'. </span></div><div class="line">');</div><div class="line">};</div><div class="line"><span class="keyword">unset</span>(<span class="variable">$STC</span>);<span class="keyword">return</span> <span class="variable">$STR</span>;</div></pre></td></tr></table></figure>
+
+<p>诸位看官你们一看就知道这逼格明显不够高。很多东西还没有弄到，比如一些装逼的语法糖，所以第二版本我着重处理了一下语法糖。</p>
+<p>比如支持这样的语法糖（第一代已经支持）:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PHP 的起始标签是 &lt;<span class="variable">%=</span><span class="variable">$startTag</span><span class="variable">%&gt;</span>， 闭合标签是 &lt;<span class="variable">%=</span>=<span class="variable">$endTag</span><span class="variable">%&gt;</span> 。</div></pre></td></tr></table></figure>
+
+<p>生成这样的表达式:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'PHP 的起始标签是 '</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$startTag</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'， 闭合标签是 '</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="variable">$endTag</span>;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">' 。'</span>;</div></pre></td></tr></table></figure>
+
+<p>还有这样的语法糖:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="vbscript">&lt;%<span class="keyword">loop</span> $article[<span class="string">"tags"</span>] $tag%&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span><span class="vbscript">&lt;%=$tag%&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></div><div class="line"><span class="vbscript">&lt;%/<span class="keyword">loop</span>%&gt;</span></div><div class="line"><span class="vbscript">&lt;%<span class="keyword">loop</span> $items $index $item%&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="vbscript">&lt;%=$item-&gt;name%&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line"><span class="vbscript">&lt;%/<span class="keyword">loop</span>%&gt;</span></div></pre></td></tr></table></figure>
+
+<p>生成这样的表达式:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">foreach</span>(<span class="variable">$article</span>[<span class="string">"tags"</span>] <span class="keyword">as</span> <span class="variable">$tag</span>):;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">    &lt;a href="#"&gt;';</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$tag</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'&lt;/a&gt;</span></div><div class="line">';</div><div class="line"><span class="keyword">endforeach</span>;;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">';</div><div class="line"><span class="keyword">foreach</span>(<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$index</span> =&gt; <span class="variable">$item</span>):;</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">    &lt;p&gt;';</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$item</span><span class="variable">-&gt;name</span>);</div><div class="line"><span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'&lt;/p&gt;</span></div><div class="line">';</div><div class="line"><span class="keyword">endforeach</span>;;</div></pre></td></tr></table></figure>
+
+<p>这样的语法糖支持的代码写的非常简单，比如第一个的转义字符串的功能，代码里面仅仅是这样的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 用来支持 == 跟 = 输出/转义输出</div><div class="line"> */</div><div class="line">$<span class="keyword">this</span>-&gt;insertParser(<span class="string">'#^(?&lt;mark&gt;={1,2}) *(?&lt;statement&gt;.*)#i'</span>, function ($mark, $statement) {</div><div class="line">    <span class="keyword">return</span> T_COLLECT_HEAD . ($mark === <span class="string">'=='</span> ? $statement : <span class="string">"htmlspecialchars({$statement})"</span>);</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>即使第二个 loop 稍微复杂了点，但也不过是这样的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$varRe</span> = <span class="string">'\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'</span>;</div><div class="line"><span class="variable">$varMixRe</span> = <span class="string">'\$[a-zA-Z_\x7f-\xff][^ ]*'</span>;</div><div class="line"></div><div class="line"><span class="variable">$this</span>-&gt;insertParser(<span class="string">"#^/loop$|^loop {1,}(?&lt;array&gt;{<span class="variable">$varMixRe</span>}) {1,}(?&lt;key&gt;{<span class="variable">$varRe</span>}) *(?&lt;val&gt;{<span class="variable">$varRe</span>})?#"</span>, function(<span class="variable">$array</span>, <span class="variable">$key</span>, <span class="variable">$val</span>, <span class="variable">$matches</span>) {</div><div class="line">    <span class="keyword">if</span> (!<span class="variable">$array</span>) <span class="keyword">return</span> <span class="string">"endforeach;"</span>;</div><div class="line">    <span class="keyword">return</span> <span class="variable">$val</span> ? <span class="string">"foreach({<span class="variable">$array</span>} as {<span class="variable">$key</span>} =&gt; {<span class="variable">$val</span>}):"</span> : <span class="string">"foreach({<span class="variable">$array</span>} as {<span class="variable">$key</span>}):"</span>;</div><div class="line">});</div></pre></td></tr></table></figure>
+
+<p>一切依赖于神奇的方法: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 插入语法分析钩子</div><div class="line"> *</div><div class="line"> *<span class="javadoctag"> @param</span> string $re 正则表达式</div><div class="line"> *<span class="javadoctag"> @param</span> callable $callback 调用函数</div><div class="line"> *<span class="javadoctag"> @param</span> bool $insertAtEnd 是否插入在最后面</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> function <span class="title">insertParser</span>($re, callable $callback, $insertAtEnd = <span class="keyword">false</span>);</div></pre></td></tr></table></figure>
+
+<p>通过这个方法你可以非常简单的添加自己所需要的语法，无需复杂的语法分析知识，当然这也有一个毛病就是正则的分析能力明显没有完善的语法扫描器强，容易出现遗漏或者误判的情况。特别是针对字符串分析，如果不依赖堆栈（stack) 等数据结构是很容易出现误判的。</p>
+<h2 id="语法错误提示">语法错误提示</h2>
+<p>一个模板引擎非常重要的一点就是错误提示功能，否则很难进行模板开发。</p>
+<p>比如原始模板是这样的:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="variable">%loop</span> <span class="variable">$items</span> <span class="variable">$index</span> <span class="variable">$item</span><span class="variable">%&gt;</span></div><div class="line">    &lt;<span class="variable">%=</span><span class="variable">$item</span>-&gt;name<span class="variable">%&gt;</span></div><div class="line">&lt;<span class="variable">%/</span>looop<span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
+
+<p>loop 多了一个 o，看一下错误提示是如何提示的:</p>
+<p>错误信息: syntax error, unexpected ‘/‘<br>错误位置: 第8行<br>模板代码:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> &lt;<span class="variable">%loop</span> <span class="variable">$items</span> <span class="variable">$index</span> <span class="variable">$item</span><span class="variable">%&gt;</span></div><div class="line"><span class="number">2</span>     &lt;<span class="variable">%=</span><span class="variable">$item</span>-&gt;name<span class="variable">%&gt;</span></div><div class="line"><span class="number">3</span> &lt;<span class="variable">%/</span>looop<span class="variable">%&gt;</span></div></pre></td></tr></table></figure>
+
+<p>PHP代码:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1 <span class="php"><span class="preprocessor">&lt;?php</span> </span></div><div class="line"><span class="number">2</span> <span class="keyword">foreach</span>(<span class="variable">$items</span> <span class="keyword">as</span> <span class="variable">$index</span> =&gt; <span class="variable">$item</span>):;</div><div class="line"><span class="number">3</span> <span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">4    ';</div><div class="line"><span class="number">5</span> <span class="variable">$SEXY_TEMPLATE</span> .= htmlspecialchars(<span class="variable">$item</span><span class="variable">-&gt;name</span>);</div><div class="line"><span class="number">6</span> <span class="variable">$SEXY_TEMPLATE</span> .= <span class="string">'</span></div><div class="line">7 ';</div><div class="line"><span class="number">8</span> /looop;</div></pre></td></tr></table></figure>
+
+<p>这里有一个缺陷是未能在原始位置提示出位置，这个在前期通过跟踪 $line 是可以搞定的，但是用户一旦添加自定义的语法糖那么这个跟踪很可能就变得无效，但是即使这样，这样的错误提示对于修复语法错误也是绰绰有余了。想想 Smarty 为了能在扫描阶段就提示语法错误放了多少东西进去，而且还没完全解决好！！！</p>
+<h2 id="模板包含">模板包含</h2>
+<p><del><strong>这一块不打算包含进实际的 SexyTemplate 功能中，事实上 loop 这个语法糖也不会包含进去，因为 SexyTemplate 的特性简单但是扩展性强，除了默认的 == 跟 = 这两个语法糖其他语法糖皆不会包含在内。</strong></del></p>
+<p>原谅我在这里打脸了，幸好打的不算是很严重，语法糖是包含的，但是默认是不开启的。而且编译文件功能也包含在内但是形成了另外一个单独的 FileCompiler 类。</p>
+<p>include 这个东西PHP是自带的，但是明显包含的不可能是未经过编译的模板文件对吧，所以这一块需要 SexyTemplate 特别处理下，也是通过语法糖，当然更重要的是处理引用关系。</p>
+<p>Talk is cheap. Show me the code.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//插入include的语法分析正则</span></div><div class="line"><span class="variable">$this</span><span class="variable">-&gt;insertParser</span>(<span class="string">'#^include +([\'"])(?&lt;file&gt;[^\1]+)\1$#'</span>, <span class="keyword">array</span>(<span class="variable">$this</span>, <span class="string">'parseInclude'</span>));</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 分析引用数据</div><div class="line"> *</div><div class="line"> *<span class="phpdoc"> @param</span> string $file 文件名称</div><div class="line"> *<span class="phpdoc"> @param</span> array $matches 匹配到的数据</div><div class="line"> *<span class="phpdoc"> @return</span> bool|\SexyTemplate\Wrapper</div><div class="line"> *<span class="phpdoc"> @throws</span> Exception</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">parseInclude</span><span class="params">(<span class="variable">$file</span>, <span class="variable">$matches</span>)</span></span></div><div class="line">{</div><div class="line">    <span class="comment">//判断文件是否存在</span></div><div class="line">    <span class="variable">$filePath</span> = <span class="variable">$this</span><span class="variable">-&gt;templateDir</span> . DIRECTORY_SEPARATOR . <span class="variable">$file</span> . <span class="variable">$this</span><span class="variable">-&gt;templateExt</span>;</div><div class="line">    <span class="variable">$filePath</span> = str_replace([<span class="string">'/'</span>, <span class="string">'\\'</span>], DIRECTORY_SEPARATOR, <span class="variable">$filePath</span>);</div><div class="line"></div><div class="line">    <span class="comment">//不存在抛出异常 这个不算是模板语法错误</span></div><div class="line">    <span class="keyword">if</span>(!file_exists(<span class="variable">$filePath</span>)) {</div><div class="line">        <span class="variable">$position</span> = <span class="string">"&lt;%$matches[0]%&gt;"</span>;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="keyword">Exception</span>(<span class="string">"template file '{$filePath}' is not found, pleast check at {$position}."</span>);</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="comment">//直接编译即可 而且也支持模板里面嵌套模板</span></div><div class="line">    <span class="keyword">return</span> <span class="variable">$this</span><span class="variable">-&gt;compile</span>(file_get_contents(<span class="variable">$filePath</span>));</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>同志们，寥寥几行就完美支持了模板引用，太“神奇”了。当然这里需要继承自 SexyTemplate ，具体代码可以查看 类 FileCompiler 。</p>
+<h2 id="布局(layout)/继承(extend)">布局(layout)/继承(extend)</h2>
+<p>按照 Jade 里面的 layout 思想其实跟 include 差不多，只不过是先编译 layout.html 再将表达式插入布局其中，同时再添加个对 &lt;%=content%&gt; 的处理。所以稍微改写一下上面的代码即可以支持 Jade 里面的 layout 处理方式。</p>
+<p>至于 Smarty 里面的 extend 跟 block 的实现着稍显麻烦，这个需要数据结构的支持，事实上是将模板打成这样如图的数据结构，这样能保证层级结构正确，无论是继承还是包含只是相应的两两多维数组之间的合并操作。当然这只是我的猜想未去验证，不过也八九不离十，这个无法仅仅通过插入语法分析器去完成，需要更改 compile 方法的逻辑 (OMG！！！)。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">normalObj = {</div><div class="line">    <span class="string">"children"</span> : [],</div><div class="line">    <span class="string">"name"</span> : <span class="string">"body"</span>,</div><div class="line">}</div><div class="line"></div><div class="line">[</div><div class="line"><span class="label">    normalObj:</span>head</div><div class="line"><span class="label">        normalObj:</span>css</div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">        normalObj:</span><span class="keyword">js</span></div><div class="line"><span class="label">    normalObj:</span>body</div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">        normalObj:</span><span class="string">"cotent"</span></div><div class="line"><span class="label">        normalObj:</span><span class="string">"html"</span></div><div class="line"><span class="label">    normalObj:</span>foot</div><div class="line">]</div></pre></td></tr></table></figure>
+
+<h2 id="其他">其他</h2>
+<p>$self 变量的支持使得 模板可以调用运行环境开放的公共方法。</p>
+<p>还是一句话：KISS。虽然 Simple 但是强大的扩展能力使得 SexyTemplate “无所不能啊”。</p>
+<hr>
+<ul>
+<li>2014-11-10 19:08:56 C</li>
+<li>2014-11-11 15:04:13 U</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/11/10/sexy_template/" data-id="tnm7j7cft3xpwyoh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/27/how-to-build-your-first-php's-extension/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/06/sphinx-1ngram/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Sphinx 一元切分</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-graphics/">computer graphics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdo/">pdo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sphinx/">sphinx</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10.00px;">C#</a><a href="/tags/architecture/" style="font-size: 10.00px;">architecture</a><a href="/tags/computer-graphics/" style="font-size: 10.00px;">computer graphics</a><a href="/tags/css3/" style="font-size: 10.00px;">css3</a><a href="/tags/java/" style="font-size: 10.00px;">java</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a><a href="/tags/log/" style="font-size: 16.67px;">log</a><a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a><a href="/tags/nodejs/" style="font-size: 10.00px;">node.js</a><a href="/tags/pdo/" style="font-size: 10.00px;">pdo</a><a href="/tags/php/" style="font-size: 20.00px;">php</a><a href="/tags/sphinx/" style="font-size: 10.00px;">sphinx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">July 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/31/log-20141231/">2014 - 2015</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/svn-auto-push/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/how-to-build-your-first-php's-extension/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 QPWOEIRU96<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/qpwoeiru96" class="mobile-nav-link">Github</a>
+  
+    <a href="http://weibo.com/qpwoeiru96" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+
+<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

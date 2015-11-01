@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PHP每次升级都升级了什么？ | Yet Another Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言
+我是2010年中旬开始自学PHP的，那时候大家用的PHP版本还是5.2甚至是5.1,这几年一直在学PHP，可以说是见证了从PHP 5.2到PHP 5.5的过程。不怕大家笑话，那时我看个 MVC 都非常的困难。那时多菜呢，学了半年之后的也就是2011年初，还在看MVC，一个 《最简单的PHP_MVC留言本实例.doc》看了又看实在是看不懂。不解啊，困惑啊，后来突飞猛进的一天是就业实习期间跟 柒">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP每次升级都升级了什么？">
+<meta property="og:url" content="http://blog.sou.la/2013/07/23/php-upgrade/">
+<meta property="og:site_name" content="Yet Another Blog">
+<meta property="og:description" content="前言
+我是2010年中旬开始自学PHP的，那时候大家用的PHP版本还是5.2甚至是5.1,这几年一直在学PHP，可以说是见证了从PHP 5.2到PHP 5.5的过程。不怕大家笑话，那时我看个 MVC 都非常的困难。那时多菜呢，学了半年之后的也就是2011年初，还在看MVC，一个 《最简单的PHP_MVC留言本实例.doc》看了又看实在是看不懂。不解啊，困惑啊，后来突飞猛进的一天是就业实习期间跟 柒">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP每次升级都升级了什么？">
+<meta name="twitter:description" content="前言
+我是2010年中旬开始自学PHP的，那时候大家用的PHP版本还是5.2甚至是5.1,这几年一直在学PHP，可以说是见证了从PHP 5.2到PHP 5.5的过程。不怕大家笑话，那时我看个 MVC 都非常的困难。那时多菜呢，学了半年之后的也就是2011年初，还在看MVC，一个 《最简单的PHP_MVC留言本实例.doc》看了又看实在是看不懂。不解啊，困惑啊，后来突飞猛进的一天是就业实习期间跟 柒">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yet Another Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Write by Q</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/qpwoeiru96">Github</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/qpwoeiru96">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.sou.la"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-php-upgrade" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/23/php-upgrade/" class="article-date">
+  <time datetime="2013-07-22T17:38:59.000Z" itemprop="datePublished">7月 23 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP每次升级都升级了什么？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2>
+<p>我是2010年中旬开始自学PHP的，那时候大家用的PHP版本还是5.2甚至是5.1,这几年一直在学PHP，可以说是见证了从PHP 5.2到PHP 5.5的过程。不怕大家笑话，那时我看个 <a href="http://zh.wikipedia.org/zh/MVC" title="MVC - 维基百科，自由的百科全书" target="_blank" rel="external">MVC</a> 都非常的困难。那时多菜呢，学了半年之后的也就是2011年初，还在看MVC，一个 《最简单的PHP_MVC留言本实例.doc》看了又看实在是看不懂。不解啊，困惑啊，后来突飞猛进的一天是就业实习期间跟 <a href="http://www.703804.com/" title="柒零叁网是温州本地人气最旺的网络社区" target="_blank" rel="external">柒零叁</a> 的技术负责人有过一次交道，然后照猫画虎的按照他的路子写了一个MagicPHP，在这期间深入学习了MVC（其实真说起来还不是完全意义上的MVC只是类似。），自认为从那天起PHP才算是入门。那时的代码写得是非常的烂，按照今天的标准要是我组里谁给我发现写出这种代码，绝对会给我吐槽到死的。可是就在当时703的技术负责人邀请我进入703，我觉得我的代码风格起到了一定因素，所以我至今都认为 &ldquo;<strong>没有能力不行的只有天赋不够或者态度不行的</strong>&rdquo;。</p>
+<p>有点扯远了，今天说的是&ldquo;PHP每次升级都升级了什么&rdquo;,我觉得将我的 PHP 背景代入下应该更有说服感。</p>
+<p>我觉得 PHP 每次升级都是围绕着几个大的功能点来的，哪几个呢？我列一下:</p>
+<a id="more"></a>
+
+<h2 id="一、&ldquo;更安全&rdquo;">一、&ldquo;更安全&rdquo;</h2>
+<p>其实这是个伪命题，因为安全这一块往往都不掌握在 PHP 语言开发者的手中，而是 PHP 代码编写者的手中，然后为什么要放在这里呢？这得从 PHP 的 “<a href="http://php.net/manual/zh/features.safe-mode.php" title="安全模式" target="_blank" rel="external">safe mode</a>“ 跟 “<a href="http://www.php.net/manual/zh/security.magicquotes.php" title="魔术引号" target="_blank" rel="external">magic quote</a>“ 说起，这对难兄难弟都恰好是在 PHP 5.3.0 起废弃并将自 PHP 5.4.0 起移除。关于安全模式官方已经很好的说明了废弃的理由:</p>
+<figure class="highlight blockquote"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">PHP</span> 的安全模式是为了试图解决共享服务器（<span class="literal">shared</span>-server）安全问题而设立的。在结构上，试图在 <span class="type">PHP</span> 层上解决这个问题是不合理的，但修改 web 服务器层和操作系统层显得非常不现实。因此许多人，特别是 <span class="type">ISP</span>，目前使用安全模式。</div></pre></td></tr></table></figure>
+
+<p>而魔术引号，官方也间接的说明了理由:</p>
+<figure class="highlight blockquote"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">可移植性 编程时认为其打开或并闭都会影响到移植性。可以用 [<span class="link_label">get_magic_quotes_gpc()</span>](<span class="link_url">http://www.php.net/manual/zh/function.get-magic-quotes-gpc.php</span>) 来检查是否打开，并据此编程。</div><div class="line"></div><div class="line">性能 由于并不是每一段被转义的数据都要插入数据库的，如果所有进入 PHP 的数据都被转义的话，那么会对程序的执行效率产生一定的影响。在运行时调用转义函数（如[<span class="link_label">addslashes()</span>](<span class="link_url">http://www.php.net/manual/zh/function.addslashes.php</span>)）更有效率。尽管 <span class="code">`php.ini-dist`</span> 默认打开了这个选项，但是 <span class="code">`php.ini-recommended`</span> 默认却关闭了它，主要是出于性能的考虑。</div><div class="line"></div><div class="line">不便 由于不是所有数据都需要转义，在不需要转义的地方看到转义的数据就很烦。比如说通过表单发送邮件，结果看到一大堆的 \'。针对这个问题，可以使用 [<span class="link_label">stripslashes()</span>](<span class="link_url">http://www.php.net/manual/zh/function.stripslashes.php</span>) 函数处理。</div></pre></td></tr></table></figure>
+
+<p>其实我觉得开了安全模式对于大部分应用都存在着致命的伤害，很多函数都不能用，而且将执行 UID 与文件 UID 绑定也是一大阻碍。其实在我用过的虚拟主机中我从没发现 PHP 有开过安全模式的，并且如果空间提供商如果觉得安全模式能阻止跨站攻击(此跨站非彼跨站)的话，那么说明这空间提供商脑子一定是被踢了。</p>
+<p>而魔术引号我觉得这个其实弊大于利了，因为可移植性的需要，所以 <a href="http://www.dedecms.com/" title="织梦CMS 官方网站 - 内容管理系统" target="_blank" rel="external">DEDECMS</a> 就有了如下的代码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//DEDECMS install.php line: 27 - 29</span></div><div class="line"><span class="keyword">foreach</span>(<span class="keyword">Array</span>(<span class="string">'_GET'</span>,<span class="string">'_POST'</span>,<span class="string">'_COOKIE'</span>) <span class="keyword">as</span> <span class="variable">$_request</span>)</div><div class="line">{</div><div class="line">    <span class="keyword">foreach</span>(<span class="variable">$$_request</span> <span class="keyword">as</span> <span class="variable">$_k</span> =&gt; <span class="variable">$_v</span>) ${<span class="variable">$_k</span>} = RunMagicQuotes(<span class="variable">$_v</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//DEDECMS install.inc.php line: 9 - 18</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">RunMagicQuotes</span><span class="params">(&amp;<span class="variable">$str</span>)</span></span></div><div class="line">{</div><div class="line">    <span class="keyword">if</span>(!get_magic_quotes_gpc()) {</div><div class="line">        <span class="keyword">if</span>( is_array(<span class="variable">$str</span>) )</div><div class="line">            <span class="keyword">foreach</span>(<span class="variable">$str</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$val</span>) <span class="variable">$str</span>[<span class="variable">$key</span>] = RunMagicQuotes(<span class="variable">$val</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="variable">$str</span> = addslashes(<span class="variable">$str</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="variable">$str</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>这代码要是明眼人一看都知道已经可以造成 &ldquo;变量覆盖&rdquo; 了，稍微研究下源代码就可以实现 <a href="http://bbs.jiasule.com/thread-3233-1-1.html" title="【2013.05.02】DedeCMS安全漏洞[信息更新2013.06.03]" target="_blank" rel="external">漏洞利用</a> 了。</p>
+<p>还有PHP的 <a href="http://www.laruence.com/2011/12/30/2435.html" title="PHP数组的Hash冲突实例" target="_blank" rel="external">HASH DDOS</a> (<a href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4885" title="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4885" target="_blank" rel="external">CVE-2011-4885</a>) 攻击也在 <a href="http://php.net/releases/5_3_9.php" title="PHP 5.3.9 Release Announcement" target="_blank" rel="external">PHP 5.3.9</a> 跟 PHP 5.4中修复了。</p>
+<p>在最新的 PHP 5.5 中特地增加了新的简单的密码加密 API ，应对越来越不安全的传统的 MD5 加密方式。</p>
+<p>新的密码哈希 API 默认使用了 <a href="http://zh.wikipedia.org/zh-cn/Bcrypt" title="Wiki bcrypt" target="_blank" rel="external">bcrypt</a> 算法，示例如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Before PHP 5.5.0</span></div><div class="line">crypt(<span class="string">'rasmuslerdorf'</span>, <span class="string">'$2a$07$abcdefghijklmnopqrstuv$'</span>);</div><div class="line">crypt(<span class="variable">$inputPassword</span>, <span class="variable">$truePassword</span>) === <span class="variable">$truePassword</span>;</div><div class="line"></div><div class="line"><span class="comment">//After PHP 5.5.0</span></div><div class="line">password_hash(<span class="string">'rasmuslerdorf'</span>, PASSWORD_BCRYPT , [<span class="string">'salt'</span> =&gt; <span class="string">'abcdefghijklmnopqrstuv'</span>, <span class="string">'cost'</span> =&gt; <span class="string">'7'</span>]);</div><div class="line">password_verify(<span class="variable">$inputPassword</span>, <span class="variable">$truePassword</span>);</div></pre></td></tr></table></figure>
+
+<p>看上去更长了，但是其实你只需要这样就可以了 <code>password_hash(&#39;rasmuslerdorf&#39;, PASSWORD_BCRYPT)</code>,而在之前你如果需要显性调用bcrypt算法还需要指定特殊格式的 <code>$salt</code>。</p>
+<p>其实每次PHP发布新的版本的时候都会有一个 <code>Security Enhancements and Fixes</code> 专门来说明这一块的更新的。</p>
+<h2 id="二、&ldquo;更高效&rdquo;">二、&ldquo;更高效&rdquo;</h2>
+<p>更高效这里应该指的是两个方面，一个是 PHP 执行代码的速度更高效，第二个是开发者开发的速度更高效。</p>
+<p>首先讲第一个方面:代码高效最简单的体现方式就是执行速度更快已经内存占用更小，我没有实际接触过这两方面的benchmark。但是根据网上得来的评价<sup><a href="http://onlinephpfunctions.com/benchmarks" title="PHP versions Benchmark" target="_blank" rel="external">[1]</a></sup> <sup><a href="http://www.phoronix.com/scan.php?page=news_item&amp;px=MTM0NjI" title="Benchmarking The Performance Of PHP 5.5" target="_blank" rel="external">[2]</a></sup> <sup><a href="http://www.eschrade.com/page/magento-performance-on-php-5-3-5-4-and-5-5rc3/" title="Magento Performance on PHP 5.3, 5.4 and 5.5RC3" target="_blank" rel="external">[3]</a></sup>来看:PHP的每一个升级版本相比于上一个版本都是有轻微的性能提升，无论是在执行速度上还是内存占用上。</p>
+<p>讲到开发效率举一个简单的例子吧：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//需求:获取某个MySQL返回数据数组中的某列ID的时候</span></div><div class="line"></div><div class="line"><span class="comment">//Before PHP 5.3.0</span></div><div class="line"><span class="variable">$data</span> = <span class="keyword">array</span>();</div><div class="line"><span class="keyword">foreach</span>(<span class="variable">$result</span> <span class="keyword">as</span> <span class="variable">$val</span>) {</div><div class="line">    <span class="variable">$data</span>[] = <span class="variable">$val</span>[<span class="string">'id'</span>];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//After PHP 5.3.0</span></div><div class="line"><span class="variable">$data</span> = array_map(<span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$val</span>)</span> </span>{ <span class="keyword">return</span> <span class="variable">$val</span>[<span class="string">'id'</span>]; }, <span class="variable">$result</span>);</div><div class="line"></div><div class="line"><span class="comment">//After PHP 5.5.0</span></div><div class="line"><span class="variable">$data</span> = array_column(<span class="variable">$result</span>, <span class="string">'id'</span>);</div></pre></td></tr></table></figure>
+
+<p>剩下的我列举一些我感觉比较重要的开发效率的升级吧:</p>
+<figure class="highlight blockquote"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">**<span class="type">PHP</span> <span class="number">5</span>.<span class="number">2</span>**</div><div class="line"></div><div class="line"><span class="type">JSON</span> extension was added <span class="keyword">and</span> enabled by default.</div><div class="line"></div><div class="line">**<span class="type">PHP</span> <span class="number">5</span>.<span class="number">3</span>**</div><div class="line"></div><div class="line"><span class="type">Added</span> lambda functions <span class="keyword">and</span> closures.</div><div class="line"><span class="type">Added</span> <span class="string">"?:"</span> operator. (<span class="type">Marcus</span>)</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> namespaces. (<span class="type">Dmitry</span>, <span class="type">Stas</span>, <span class="type">Gregory</span>, <span class="type">Marcus</span>)</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> <span class="type">Late</span> <span class="type">Static</span> <span class="type">Binding</span>. (<span class="type">Dmitry</span>, <span class="type">Etienne</span> <span class="type">Kneuss</span>)</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> __callStatic() magic <span class="keyword">method</span>. (<span class="type">Sara</span>)</div><div class="line"><span class="type">Added</span> forward_static_call(_array) to complete <span class="type">LSB</span>. (<span class="type">Mike</span> <span class="type">Lively</span>)</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> dynamic access <span class="keyword">of</span> <span class="keyword">static</span> members <span class="keyword">using</span> $foo::myFunc(). (<span class="type">Etienne</span> <span class="type">Kneuss</span>)</div><div class="line"><span class="type">Added</span> __DIR__ constant. (<span class="type">Lars</span> <span class="type">Strojny</span>)</div><div class="line"></div><div class="line">**<span class="type">PHP</span> <span class="number">5</span>.<span class="number">4</span>**</div><div class="line"></div><div class="line"><span class="type">Added</span> short <span class="type">array</span> syntax support ([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]), see <span class="type">UPGRADING</span> guide <span class="keyword">for</span> full details.</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> <span class="type">Traits</span>.</div><div class="line"><span class="type">Added</span> class member access on instantiation (e.g. (new foo)-&gt;bar()) support.</div><div class="line"><span class="type">Built</span>-<span class="keyword">in</span> webserver <span class="keyword">in</span> <span class="type">CLI</span> mode to simplify development workflows <span class="keyword">and</span> testing</div><div class="line"><span class="type">The</span> session extension can now track the upload progress <span class="keyword">of</span> files.</div><div class="line"></div><div class="line">**<span class="type">PHP</span> <span class="number">5</span>.<span class="number">5</span>**</div><div class="line"></div><div class="line"><span class="type">Added</span> generators <span class="keyword">and</span> coroutines.</div><div class="line"><span class="type">Added</span> the <span class="keyword">finally</span> keyword.</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> constant <span class="type">array</span>/<span class="type">string</span> dereferencing.</div><div class="line"><span class="type">Added</span> scalar class name resolution via ::class.</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> <span class="keyword">using</span> empty() on the <span class="literal">result</span> <span class="keyword">of</span> function calls <span class="keyword">and</span> other expressions.</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> non-scalar <span class="type">Iterator</span> keys <span class="keyword">in</span> foreach.</div><div class="line"><span class="type">Added</span> support <span class="keyword">for</span> list() constructs <span class="keyword">in</span> foreach statements.</div><div class="line"><span class="type">Added</span> the <span class="type">Zend</span> <span class="type">OPcache</span> extension <span class="keyword">for</span> opcode caching.</div></pre></td></tr></table></figure>
+
+<p>捡几个重点的讲一下：</p>
+<ul>
+<li><p><q>JSON extension was added and enabled by default.</q> 这个特性使得我们无需在自行加载第三方 <a href="http://www.json.org/" title="JavaScript Object Notation" target="_blank" rel="external">JSON</a> 解析器，只需使用自带方法<code>json_encode</code>,<code>json_decode</code>就可以了。</p>
+</li>
+<li><p><q>Added lambda functions and closures.</q> 这个特性可以见我的文章: <a href="http://sou.la/blog/PHP/Closure-In-PHP" title="PHP中的闭包" target="_blank" rel="external">PHP中的闭包</a>。</p>
+</li>
+<li><p><q>Added support for namespaces.</q> 这个特性我觉得很重要，写Class的时候终于不需要再加上长长的Package前缀了。</p>
+</li>
+<li><p><q>Added <strong>DIR</strong> constant.</q> 这个特性看起来不是很重要，但是它不知道替代了多少的<code>dirname(__FILE__)</code>。</p>
+</li>
+<li><p><q>Added support for Traits. 这个特性也可以见我的文章： <a href="http://sou.la/blog/IT/php-traits-samples" title="PHP traits 使用范例" target="_blank" rel="external">PHP traits 使用范例</a></q></p>
+</li>
+<li><p><q>Built-in webserver in CLI mode to simplify development workflows and testing</q> 这个使得初学者在开发的时候终于不用再配置Web环境了。</p>
+</li>
+<li><p><q>Added the Zend OPcache extension for opcode caching.</q> 这个使得APC都没用用武之地了。</p>
+</li>
+</ul>
+<p>因为涉及到的特性非常的多，我就不一一解释了，有兴趣的自行Google。</p>
+<h2 id="三、&ldquo;更人性化&rdquo;">三、&ldquo;更人性化&rdquo;</h2>
+<p>人性化似乎更PHP的升级一点都没关系，但其实不然。因为很多时候PHP的新特性并不是凭空产生的，而是经过广大用户的讨论以及PHP核心开发组的投票。比如这个<a href="http://zh.wikipedia.org/zh/RFC" title="wiki - RFC" target="_blank" rel="external">RFC</a>：<a href="https://wiki.php.net/rfc/generators" title="Request for Comments: Generators" target="_blank" rel="external">Request for Comments: Generators</a> 的建立时间是2012-06-05，但直到最近的PHP 5.5.0才去实现，你可以从 <a href="https://wiki.php.net/rfc" title="PHP RFC" target="_blank" rel="external">PHP RFC</a> 这个站点去了解各种各样的RFC，事实上你可以从RFC中看出PHP下一个版本的大致样子。</p>
+<p>除了PHP自己的RFC，PHP同时也会实现一部分的 <a href="http://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E4%BB%BB%E5%8A%A1%E7%BB%84" title="互联网工程任务组" target="_blank" rel="external">IETF</a>的RFC，以使得PHP更符合世界标准。</p>
+<h2 id="总结">总结</h2>
+<p>你觉得我还需要总结么？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2013/07/23/php-upgrade/" data-id="z5usi9b14o4z8e13" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/11/07/fastcgi_finish_request/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          快速提高php响应能力之fastcgi_finish_request篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/04/20/php-sucks-things/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP的一点历史遗留问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-graphics/">computer graphics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdo/">pdo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sphinx/">sphinx</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10.00px;">C#</a><a href="/tags/architecture/" style="font-size: 10.00px;">architecture</a><a href="/tags/computer-graphics/" style="font-size: 10.00px;">computer graphics</a><a href="/tags/css3/" style="font-size: 10.00px;">css3</a><a href="/tags/java/" style="font-size: 10.00px;">java</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a><a href="/tags/log/" style="font-size: 16.67px;">log</a><a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a><a href="/tags/nodejs/" style="font-size: 10.00px;">node.js</a><a href="/tags/pdo/" style="font-size: 10.00px;">pdo</a><a href="/tags/php/" style="font-size: 20.00px;">php</a><a href="/tags/sphinx/" style="font-size: 10.00px;">sphinx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">July 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/31/log-20141231/">2014 - 2015</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/svn-auto-push/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/how-to-build-your-first-php's-extension/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 QPWOEIRU96<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/qpwoeiru96" class="mobile-nav-link">Github</a>
+  
+    <a href="http://weibo.com/qpwoeiru96" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+
+<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

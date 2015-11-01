@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>一个小规模创业项目的架构变迁史 | Yet Another Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原作者：赵震一 发布于: 2014-03-26 12:07:58推荐下作者的译书： 购买地址
+
+创业是个经久不衰的buzzword，尤其是在《黑客与画家》一书引入国内后，大批技术屌丝怀揣梦想，涌入了创业大潮。而我也曾是该洪流中的一员，但是在经历四年的创业后，并没有取得令人满意的成绩，所以我选择了回到企业，换一种方式来实现自己的价值。但是，我还是决定使用“创业”二字来做一次标题党。
+有这样的一群程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个小规模创业项目的架构变迁史">
+<meta property="og:url" content="http://blog.sou.la/2014/08/01/repost-1/">
+<meta property="og:site_name" content="Yet Another Blog">
+<meta property="og:description" content="原作者：赵震一 发布于: 2014-03-26 12:07:58推荐下作者的译书： 购买地址
+
+创业是个经久不衰的buzzword，尤其是在《黑客与画家》一书引入国内后，大批技术屌丝怀揣梦想，涌入了创业大潮。而我也曾是该洪流中的一员，但是在经历四年的创业后，并没有取得令人满意的成绩，所以我选择了回到企业，换一种方式来实现自己的价值。但是，我还是决定使用“创业”二字来做一次标题党。
+有这样的一群程序">
+<meta property="og:image" content="http://218.249.32.138/web/9787121231155.jpg">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2014/08/3709715088.jpg">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2014/08/4271280513.jpg">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2014/08/1970944829.jpg">
+<meta property="og:image" content="http://sou.la/blog/usr/uploads/2014/08/3832218367.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个小规模创业项目的架构变迁史">
+<meta name="twitter:description" content="原作者：赵震一 发布于: 2014-03-26 12:07:58推荐下作者的译书： 购买地址
+
+创业是个经久不衰的buzzword，尤其是在《黑客与画家》一书引入国内后，大批技术屌丝怀揣梦想，涌入了创业大潮。而我也曾是该洪流中的一员，但是在经历四年的创业后，并没有取得令人满意的成绩，所以我选择了回到企业，换一种方式来实现自己的价值。但是，我还是决定使用“创业”二字来做一次标题党。
+有这样的一群程序">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Yet Another Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yet Another Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Write by Q</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/qpwoeiru96">Github</a>
+        
+          <a class="main-nav-link" href="http://weibo.com/qpwoeiru96">Weibo</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.sou.la"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-repost-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/01/repost-1/" class="article-date">
+  <time datetime="2014-08-01T15:50:37.000Z" itemprop="datePublished">8月 1 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一个小规模创业项目的架构变迁史
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原作者：<a href="http://weibo.com/emsn1026" target="_blank" rel="external">赵震一</a> 发布于: 2014-03-26 12:07:58<br>推荐下作者的译书：<img src="http://218.249.32.138/web/9787121231155.jpg" alt="RESTful Web APIs中文版"> <a href="http://www.phei.com.cn/module/goods/wssd_content.jsp?bookid=40042" target="_blank" rel="external">购买地址</a></p>
+<hr>
+<p>创业是个经久不衰的buzzword，尤其是在《黑客与画家》一书引入国内后，大批技术屌丝怀揣梦想，涌入了创业大潮。而我也曾是该洪流中的一员，但是在经历四年的创业后，并没有取得令人满意的成绩，所以我选择了回到企业，换一种方式来实现自己的价值。但是，我还是决定使用“创业”二字来做一次标题党。</p>
+<p>有这样的一群程序员，他们的主要工作是负责企业的后台管理系统开发，大部分时间在与业务逻辑打交道，并且可能由于公司分工明细，产品的用户也不多等原因，他们几乎不需要考虑服务器、数据库等运维工程师需要考虑的性能问题，并且对互联网产品中经常要考虑的并发同步、事务控制、可用性保障等没有太多的概念，而当时的我就是这样一个程序员，因此这一路走了不少弯路。在看了厂内这么多高大上的技术分享之后，我也来聊聊我在创业期间经历的一个小规模系统的架构变迁以及在这个过程中遇到的问题，技术平常无奇，只做泛泛之谈。</p>
+<p>我要谈论的这个创业项目是一个线上优惠券平台，并且是围绕阿里这个大平台的：我们通过调用TOP的各类API及拼装UMP工具来构建优惠券营销工具；服务器使用的是万网的云主机；而我们的客户也是淘宝、天猫的买家卖家。其实每个创业项目的生死大都不是技术上的原因造成的，但是我在本文中主要聊的是技术方面的话题，如果要问这个系统为什么没有用到高大上的技术，那么我只能说业务没有上去，所以没有熬到需要高大上技术的阶段。</p>
+<p>作为创业项目，大部分人的思路是采用简单熟悉的技术方案尽快发布一个原型，然后根据用户与市场的反馈进行快速地迭代。技术与架构上的解决方案都是在支撑现有业务遇到了瓶颈或是预见到将会遇到问题时才会改进或变化。为了避免过度设计，我也是这么干的。下面就按阶段来聊聊我们的优惠券平台在这个过程中的系统架构变迁，该系统主要采用的是Java相关的技术。</p>
+<a id="more"></a>
+
+<h2 id="阶段1:初始架构">阶段1:初始架构</h2>
+<p><strong>需求：卖家应用+ RESTful API</strong><br><strong>系统架构：Tomcat + MySQL</strong></p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/08/3709715088.jpg" alt="阶段一架构图"></p>
+<p>产品说明：卖家应用是在淘宝卖家服务市场出售的一款应用，拥有2000左右的卖家用户。卖家可以在该应用中创建优惠券相关的营销活动，并由我们的系统将卖家的优惠券推送到三方的渠道进行推广，从而为卖家店铺吸引买家流量。而RESTful API（从本质上讲，只是HTTP API，并不那么RESTful，关于RESTful的主题，我本人也尚在摸索，并打算在另一篇文章中再来讨论）就是我们与三方渠道系统进行交互的通道。</p>
+<p>架构说明：卖家应用的特点是用户基数小，登录时间点离散，商家只会在要使用这些应用开展营销活动或是查看活动数据时才会登进来，创建完活动后都是系统后台在进行相关的处理，在这过程中商家无须再参与。所以由卖家web访问产生的对系统的压力很小。而RESTful API的调用量也并不大，一天最多只有数万次调用。所以为了快速满足这样的需求，我采用了最简单的应用服务器+数据库的系统架构，从软件整体看来，就是普通的B/S架构。</p>
+<p>问题：大部分时间系统的服务是正常的，但三方渠道向我们反馈，偶尔会出现访问我们API超时的情况。卖家也反映有时会登录不进系统，或者进行某个操作时长时间没有响应。这么点访问量，为什么会出现服务不可用的情况呢？</p>
+<p>排查：使用top命令查看系统情况，发现系统负载并不高。查看应用异常日志，发现有获取数据库连接超时的异常。当时采用的数据连接池是c3p0，查看了配置发现最大的连接配置是20，按理说应付这样的量应该是够的。但是后来发现，卖家应用中有部分的业务操作是批量作业（比如轮询TOP来同步订单状态），触发后会长时间会有大量并发线程占用数据库连接来完成工作，导致一旦批量作业集中被触发时，个别的业务操作就长时间等待数据库连接，直到超时。</p>
+<p>解决方案：将批量作业的触发改为凌晨的后台定时作业，并对不同业务的数据连接池进行了隔离，并按需调整了连接池大小，让不同业务间互不影响。</p>
+<h2 id="阶段2:动态资源与静态资源分离">阶段2:动态资源与静态资源分离</h2>
+<p><strong>需求:新增了买家应用</strong><br><strong>系统架构：Apache + AJP + Tomcat + MySQL</strong></p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/08/4271280513.jpg" alt="阶段二架构图"></p>
+<p>产品说明：淘宝以前有个买家应用的频道（现在已经被U站取代），第三方服务商接入的方式就是在淘宝的iframe里嵌入自家的url作为回调地址，用户访问该应用时，淘宝会将认证后的一些用户的信息发送到三方应用的这个回调url上。这样一来，接入的应用就可以享受到来自淘宝的买家流量。我们在当时也上线了一个买家应用，该应用展示了阶段1中卖家应用中的卖家所创建的优惠券，这是一个让买家挑选优惠券，并领用优惠券后去店铺消费的应用。这样一来，除了三方渠道，我们也拥有了自己的消费及引流渠道。</p>
+<p>架构说明：由于买家应用的页面有着大量的图片信息，而我们服务器的上行带宽只有5Mb，请注意，是小b。所以我们提前将带宽加大了一倍（说实话这仍然是杯水车薪），并且做了静态资源与动态请求的分离。使用Apache作为反向代理，并通过rewrite和AJP作了请求重写和路由，Tomcat作为应用服务器只处理动态请求，而Apache则能发挥高性能HTTP服务器处理静态资源的优势。因为当时觉得并发请求数并不高，所以Apache采用了prefork子进程模式，使其处理性能更高。</p>
+<p>问题1：商家上传的优惠券图片有的很大，有几百k，我们一个页面有几十张优惠券的图片需要展示，导致用户打开页面非常慢，体验非常不好，并且长时间占用http连接，服务器的上行带宽被占尽。</p>
+<p>解决方案1：采用Imagick和Jmagick对上传图片进行压缩来减小图片体积，但是实际尝试后发现由于商家上传的图片规格不一，有损压缩的比例很难调准到适应每一种图片格式和规格。最后采用了商家的店铺图片空间来作为CDN使用，由于TOP有操作店铺图片空间的API，而每个商家又有一定量的免费空间，所以我们免费的得到了CDN功能，而该空间会对上传图片进行多种分辨率的压缩，通过在图片URL上加上分辨率参数就可以灵活适用于多种场景。</p>
+<p>问题2：我们的服务器OS是Centos5，有时系统访问量大时，客户端就无法连接到服务器，甚至ssh上去操作都会被拒绝，即使登上服务器后，也无法打开日志文件查看异常。这样的情况让我们一度认为遭到了攻击。</p>
+<p>解决方案2：经过不断排查系统日志及google，发现是由于系统默认的最大打开文件数带来的限制，因为在Linux下，每打开一个socket都需要占用一个文件句柄，所以某些版本系统的默认值1024非常容易被耗尽，导致无法再打开连接和文件，修改ulimit的对应值后问题解决。</p>
+<p>问题3：自从有了来自买家应用官方入口和运营同学整来的流量后，网站就频繁挂起。我们通常都比较后知后觉，一旦网站挂起几乎要等到用户投诉后才发现。挂起的现象大同小异，就是访问我们的应用后，浏览器中的页面白屏，并一直处于等待状态。往往发生这样的情况后，为了第一时间解决故障，我都选择了重启应用服务器，重启是万金油，但是重启并不能解决根本问题，多则几天，少则几分钟，网站又会挂起。</p>
+<p>排查：使用ps命令查看进程状态，发现httpd子进程数越来越多。通过不断的排查，发现Tomcat的工作线程数配置过小，因为没有使用页面静态化和缓存，大量的动态请求涌入Tomcat和MySQL，而Tomcat的工作线程数、数据库连接池的最大连接数、MySQL数据库连接数任何一项被占尽，其余的请求都只能等待而无法得到处理，有时个别的多线程操作还占着线程锁，一旦无法获取数据库连接，超时间会一直占着线程锁，导致大量的线程阻塞等待。</p>
+<p>解决方案3：部分页面做了静态化，增加memcached缓存来缓解动态请求的压力。另一方面，也了解到整个系统从前到后就像是由多个阀门拼接起来的管道链路，链路任何一处出现瓶颈，都会造成系统挂起。所以根据压力特征做好压测，将web服务器的子进程数、Tomcat的工作线程数、数据连接池数以及MySQL的最大连接数调整到一个合适的比例和数值非常重要。同时，为了主动发现问题，我们购买了监控宝的监控服务，一旦服务器的各项指标（apache连接数、CPU指标、MySQL连接数等）达到设定的阀值，监控宝便会通过短信和邮件进行及时的通知和报警，让我们能尽早发现问题，从而保障系统的稳定性和可用性。</p>
+<h2 id="阶段3:服务化改造">阶段3:服务化改造</h2>
+<p><strong>需求：多个卖家应用+多个三方渠道+一个独立网站+手机APP（安卓+iOS）</strong><br><strong>系统架构：Apache + PHP（JSON-RPC与Java交互）+ AJP +多个Tomcat（Hessian交互）+ Memcached+ MySQL（读写分离）</strong></p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/08/1970944829.jpg" alt="阶段三架构图"></p>
+<p>产品说明：随着业务的发展和细分，卖家应用和三方渠道数量增多，并且为了打造自己的独立流量，我们开发了一个独立网站（拥有独立域名），同时为了拥抱移动互联网，我们开发了iOS和安卓的两款优惠券APP。</p>
+<p>架构说明：因为业务系统的增多，在多个业务应用中存在着大量重复的业务逻辑代码，而他们在数据库也冗余了大量相似的表结构和业务数据，比如卡券的类型、商家数据和用户数据，每次修改或升级功能需要发布多个系统。所以为了解耦和梳理业务，我们进行了服务化改造，将核心的业务拆分成了三块，即卡券库（封装了各种卡券的实现逻辑和卡券的库存明细）、卡券供应商（多个让商家可以创建卡券和营销活动的卖家应用）、卡券发放渠道（像买家应用、网站、APP这些卡券发放渠道，面向买家），这三组服务类比于淘宝的体系便是商品、卖家和买家的概念。卡券库暴露Hessian服务接口供卡券供应商调用进行对卡券的入库操作，而渠道方通过RESTful接口（外部渠道和手机APP）或Hessian服务（内部系统，部署在一个局域网中）获取并消费卡券，并通过接口将卡券的消费数据回流到卡券库。网站为了适应快速开发和迭代，我们选择了PHP，与Java端的交互使用了json-rpc。我们采用了Mysql的replication来做数据库主备，把一些数据实时性要求不高的业务做了读写分离，大部分的查询走备库。</p>
+<p>问题：系统多了，数据量也多了（个别数据表达到千万数据量），在整个改造过程中，经历过各种宕机，但是每次的原因都层出不穷，我选取几个原因及对应的解决方案进行下介绍。</p>
+<p>原因1：数据库的数据量过大，部分数据表达到了千万数量级，查询变慢，导致IO和CPU负载很高。</p>
+<p>解决方案1：通过使用show processlist可以查看mysql每个连接的状态及运行时间，一般碰到个别运行时间很久的慢查询，可以通过kill + id将查询语句杀死。在降低IO方面，主要采取了分表策略，将部分千万级别的数据表进行水平拆分，主要根据某些业务字段（比如优惠券id、活动id等），以尽可能平均的方式（比如某id号或某字符串的hash值对10取模）将表拆分，让单张表控制在百万数量级之内。部分具有时间特性的记录，采用了mysql自带的分区功能，按月份进行了分区。在降低CPU负载方面，对查询频次高的表根据业务特性建立索引，部分索引尽可能覆盖到查询。</p>
+<p>原因2：系统IO负载很高，并且排除了数据库的问题，最后经过排查，发现原因来自应用服务器写入的异常日志，部分业务在异常没有修复的情况下，持续抛出异常并写入日志，导致占用了大量的磁盘IO，有时甚至会将磁盘撑满，导致数据库无妨访问。<br>解决方案2：通过dstat、iotop、iftop查看io的情况，找到io负载最高的线程，结合top –H和jstack定位具体的JVM问题线程，从而根据异常日志修复对应的业务逻辑。同时编写cron任务对磁盘进行定期清理，并对磁盘容量进行监控，超过阀值后报警，并需要人工进行处理。</p>
+<p>问题3：由于线程锁、数据库锁等各种对并发资源的控制不合理，造成系统会偶尔出现死锁，并逐渐耗尽各种资源。</p>
+<p>解决方案3：使用show engine innodb status查看事务回滚的异常和对应的sql，并且查看应用本身的日志。另一方面，通过jstack查看各jvm的线程状态，查找那些异常的工作线程。一般我在处理对数据并发操作的同步时，同一进程内会采用Java自身的线程对象锁（即synchronized块、方法或采用JDK Concurrent包下的工具）来锁住业务逻辑，而跨进程操作时（比如多个JVM需要同时操作数据库时）会采用数据库的悲观锁（即select … for update）。所以在编写程序时（特别是结合多种或多个资源的同步锁时），需要理清并发操作的多个进程或线程之间对资源加锁及释放的顺序，不然就会真得遇到以前只会在书本上看到的“死锁”。另外，不同的数据库及存储引擎也都有着多种锁的类型，不同的锁的粒度也不尽相同。比如innodb的行级锁（间隙锁），就要求我们尽可能在并发操作数据时采用合理的where条件，让该条件尽可能落在索引上（或者说尽可能将索引建立在合适的查询列上）来尽可能避免全表的锁（全表锁可以避免数据库死锁，但是降低了并发吞吐率）。我曾碰到过一个问题，有一个业务涉及到在mysql分区表上进行事务操作，但是并发的两个update语句貌似产生了死锁，我个人估计（只是估计，并没有验证）是因为每个update语句都需要修改跨分区的多条记录，而两个事务在不同的分区上都持有着各自的行级锁，并等待对方的锁释放，从而产生死锁。比如事务A的update语句需要修改id为1，2，3的记录，事务B需要修改id为4、5、6的记录，其中1，2，6在分区1，而3，4，5在分区2，在底层不同的分区其实被作为独立的表处理，那么在加锁时，对跨分区的记录1，2，3加锁时是否是一个原子操作让我非常疑惑，如果不是原子操作则会出现在事物A锁了分区1的记录1、2，要再去锁分区2的记录3，而事物B锁了分区2的记录4，5，要去锁分区1的记录6，那么死锁将会产生。在我遇到的案例中，最终由于超时，mysql认为这两个事务已经发生了死锁，最终它将一个它认为规模较小的事务进行了回滚，我在日志中看到了事物的回滚日志。一旦在系统中出现了死锁，就会连锁反应产生大量的问题。比如在调用RESTful接口时，接口服务端的工作线程如果出现了死锁而阻塞住，那么接口客户端的线程也会一直被hold住而得不到响应，随着后续大量请求的阻塞（对应的服务端的工作线程的锁无法获取而一直阻塞），会造成把客户端系统的线程数也撑爆。我当时就出现过这样的情况，为了避免接口的客户端系统被服务方系统拖垮，需要在客户端设置超时时间，如果使用httpClient作为客户端组件的话，就需要合理设置它的连接及读取响应的超时时间，这样才能真正在服务化架构中将多个系统进行解耦。</p>
+<h2 id="阶段4:消息中间件的引入+搜索服务">阶段4:消息中间件的引入+搜索服务</h2>
+<p><strong>需求：支持对卡券交易的准实时交易跟踪+新增搜索服务</strong><br><strong>系统架构：Apache + AJP +多个Tomcat（Hessian交互）+长连接服务+消息中间件+lucene + Memcached+ MySQL(读写分离)</strong></p>
+<p><img src="http://sou.la/blog/usr/uploads/2014/08/3832218367.jpg" alt="阶段四架构图"></p>
+<p>产品说明：原来我们的优惠券和交易状态的同步需要以轮询的方式去调用TOP进行同步，随着商家数的增长，同步时间越来越久，卡券状态的时效性也一直无法满足商家的需求。但是淘宝开放平台提供了一种基于HTTP长连接的方式来实时向我们这样的ISV提供我们订阅的交易、商品变更等类型的消息，从而能让我们实时获知优惠券参与的交易的状态变化，这就是我所谓的支持对卡券交易的准实时交易跟踪。而另一方面，随着卡券数量、类型的增多，用户需要便捷快速地搜索他想要的优惠券，这样才能提升我们优惠券的领取率和转化率，所以我们提供了搜索服务。</p>
+<p>架构说明：由于实时的消息量比较多，平时白天差不多平均每秒有30-100个左右，而消息是Json格式的，我们需要对每个消息进行解析，然后根据业务进行筛选、复制转发，更加耗时的环节是需要进行多次数据库查询、TOP接口调用等操作后才最终消费掉该消息。所以凭我们当时的计算资源要在1秒钟内实时消费掉这么多消息是不可能的，更何况会遇上活动，那么产生的消息量可能是100倍的提升。所以我们采用了消息中间件来进行缓冲，同时为多个业务系统的消息消费起到路由功能。另一方面，为了提供搜索服务，我选择了Lucene来作为全文检索引擎，从MySQL备库读取数据建立索引。</p>
+<p>问题1：由于我们的架构基本是基于Java技术栈的，所以在选择MQ时我选择了Java实现的ActiveMQ，但是当时我所使用的5.5.1版貌似有一个bug。个别queue中的消息会随机（就是随时有可能，即使消息负载不是很高）出现pending的状态，然后该queue里的消息就会持续增长而不再被消费（日志中会出现大量的IOException），由于消息queue会把超过内存限制的部分持久化到文件中，导致一天下来就可能有几十万条消息没有被消费，一方面使得业务的实时性受到了影响，另一方面这些消息会撑爆磁盘。而这个bug最坑爹的地方就是一旦queue pending并有大量消息持久化到磁盘之后，只能重启AMQ才能恢复，但是在重启时会有一定的概率出现耗尽系统虚拟内存的现象，你可以在top中看到virt持续飙升，直到达到几十g，最后服务器就挂了。AMQ的不稳定让人睡不好觉。</p>
+<p>解决方案1：开始由于无法预测消息何时会pending，所以我写了一个程序定时去AMQ的监控页面去抓取消息queue的数量，一旦消息积累超过我指定的阀值（比如2000），那么我默认它已经pending，然后改程序便会像我发出邮件告警。一旦收到告警，我便会进入监控页面进行确认并人工修复。但是这样做无法避免我上文提到的那个bug，即造成服务器宕机的问题，唯一能做的就是我在重启AMQ后同步监控top，一旦发现virt异常，就马上杀掉该进程再重启AMQ（速度一定要快，不然系统会马上宕掉）。还有一点就是一旦这种情况出现在半夜或周末，我无法及时查收到告警邮件时，那么系统很可能会在我察觉前被pending的消息撑爆。为了彻底的解决这个问题，而又无须南辕北辙的去深究AMQ的底层（因为创业团队没有这个精力和资源），我选择了采用RabbitMQ来替换AMQ，而事实证明RMQ非常的稳定，它还具备了RESTful API，可以用来监控queue的状态（无须编写程序来抓取监控页面了）。另一方面，RabbitMQ所实现的AMQP规范也较JMS更加优秀，其中的Exchange的概念及其规则可以满足大部分的消费者路由需求。</p>
+<p>问题2：消息量大时，发现MQ貌似被穿透了，业务系统还是无法支撑，CPU飙升，内存也捉襟见肘。<br>解决方案2：业务系统中很多线程池的配置开始较为随意，感觉配置大点没关系。特别是MQ的消费者部分，由于配置的线程数过大，导致MQ的消息消费者线程数量急速攀升，CS切换造成了CPU的高负载，另一方面，每个线程都会需要占用内存，而JVM full GC会造成CPU Load的飙升，大量的工作线程也会导致数据连接池不够用，然后全部被阻塞等待连接。这样一来，MQ形同虚设，大量的消息涌入应用服务器，导致缓冲的效果不够明显。所以我最终根据业务需要，调整了不同业务的线程池大小（根据IO密集和CPU密集进行区分），同时调整了JVM的内存参数。个别支持前端服务的JVM为了保证响应不停顿，将GC方式改成了CMS。<br>问题3：搜索服务在建立索引时需要对记录进行分词，但是采用默认的单字切割或二元切割会导致搜索的匹配不精确，而采用IK分析器配合字典来进行中文分词又无法满足某些需求：比如用户在输入“美邦”时要能匹配到美特斯邦威的优惠券。<br>解决方案3：通过不断尝试，采用了一些比较山寨且需要人肉的做法。一方面通过人工的方式向字典添加具有电商特色的词条，另一方面通过人工的方式向每个品牌的记录添加必要的精准关键词，从而在分词时建起该些词到doc的倒排索引，并提升了在向量计算时的匹配度。</p>
+<p>问题4：我们的业务有需要人工干预搜索的排序权重，即不仅仅限于文本相似度的匹配，比如某些品牌或某些类型的优惠券权重要高于另一些，高面值的优惠券要高于低面值的，天猫店的要高于C店的，当然，这都是相对而非绝对的，优惠券每一种属性都会影响某张优惠券的整体权重。</p>
+<p>解决方案4：因为对搜索没什么经验，所以我采用的方式是在建立索引阶段，向document写入boost值前重新根据我指定的规则计算每条记录以及每个field的boost值，然后写入document。就我实验的效果来看，还是不错的。<br>问题5：消息量较大时，数据库连接池频繁出现获取链接超时。</p>
+<p>解决方案5：发现是C3P0本身的性能瓶颈，改用阿里的Druid后毫无压力。</p>
+<p>  以上是我对当时的一个创业项目的系统架构变迁及其过程中碰到的个别技术问题的回忆，有些琐碎，也有些粗糙。由于很多问题当时没有具体记录下来，对于问题与技术点的描述不是非常的严谨，没有提供具体的配置或代码，个别的阐述纯粹是个人的理解和思路，口水比较多。欢迎有耐心看了本文的同学给予反馈及斧正，也希望给那些曾经跟我一样是个纯粹的业务程序员的同学在对小规模互联网系统的架构设计上带来一些思路。ps：原本架构挺简单的，第一次使用OmniGraffle画图，画得过于复杂了….</p>
+<p>非常幸运地是我目前加入了商业智能部的数据产品研发团队，希望通过这次机会让自己进入一个崭新的领域。大数据是又一个buzzword，希望自己能在实际的工作中对它有更加深刻的认识。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.sou.la/2014/08/01/repost-1/" data-id="rpf1hg45bg4zme2k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/architecture/">architecture</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/08/05/emulate_prepare/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PDO中的emluate prepare (模拟预处理)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/08/01/php-debug/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP Debug技巧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/computer-graphics/">computer graphics</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdo/">pdo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sphinx/">sphinx</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10.00px;">C#</a><a href="/tags/architecture/" style="font-size: 10.00px;">architecture</a><a href="/tags/computer-graphics/" style="font-size: 10.00px;">computer graphics</a><a href="/tags/css3/" style="font-size: 10.00px;">css3</a><a href="/tags/java/" style="font-size: 10.00px;">java</a><a href="/tags/javascript/" style="font-size: 10.00px;">javascript</a><a href="/tags/log/" style="font-size: 16.67px;">log</a><a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a><a href="/tags/nodejs/" style="font-size: 10.00px;">node.js</a><a href="/tags/pdo/" style="font-size: 10.00px;">pdo</a><a href="/tags/php/" style="font-size: 20.00px;">php</a><a href="/tags/sphinx/" style="font-size: 10.00px;">sphinx</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">August 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">July 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">June 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12">December 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11">November 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">July 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/31/log-20141231/">2014 - 2015</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/04/recovery-data-from-binlog/">从 MySQL binlog 中找回指定的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/svn-auto-push/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/27/how-to-build-your-first-php's-extension/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/10/sexy_template/">谈谈 SexyTemplate</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 QPWOEIRU96<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/qpwoeiru96" class="mobile-nav-link">Github</a>
+  
+    <a href="http://weibo.com/qpwoeiru96" class="mobile-nav-link">Weibo</a>
+  
+</nav>
+    
+
+<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
